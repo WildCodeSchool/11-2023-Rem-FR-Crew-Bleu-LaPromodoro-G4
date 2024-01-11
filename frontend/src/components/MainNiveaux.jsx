@@ -1,4 +1,4 @@
-import "./style/MainNiveaux.css";
+import "../style/MainNiveaux.css";
 
 function MainNiveaux() {
   return (

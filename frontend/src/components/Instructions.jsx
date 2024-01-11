@@ -1,4 +1,4 @@
-import "./style/Instructions.css";
+import "../style/Instructions.css";
 import { useState } from "react";
 
 import Bar from "../assets/bar.png";
