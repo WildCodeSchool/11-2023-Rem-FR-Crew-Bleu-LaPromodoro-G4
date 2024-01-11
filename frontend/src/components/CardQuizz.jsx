@@ -1,22 +1,39 @@
 import React from "react";
 import "./CardQuizz.css";
 
-function CardQuizz({ q, r, w }) {
+function CardQuizz({ question, answer1, answer2, validAnswer, input1, input2 }) {
+  const handleClick = () => {
+    const choice1 = document.getElementById(input1);
+    console.log(choice1);
+    const choice2 = document.getElementById(input2);
+    console.log(validAnswer);
+
+    if (choice1.checked === true && validAnswer === 1) {
+      console.log("bravo");
+    } else if (choice2.checked === true && validAnswer === 2) {
+      console.log("bravo");
+    } else {
+      console.log("perdu");
+    }
+  };
+
   return (
     <div className="questionCard">
-      <p>{q}</p>
+      <p>{question}</p>
 
       <div>
-        <input type="radio" id="q1" name="drone" value="q1" checked />
-        <label htmlFor="q1">{r}</label>
+        <input type="radio" id={input1} name="drone" value={input1} />
+        <label htmlFor={input1}>{answer1}</label>
       </div>
       <div>
-        <input type="radio" id="q2" name="drone" value="q2" checked />
-        <label htmlFor="q2">{w}</label>
+        <input type="radio" id={input2} name="drone" value={input2} />
+        <label htmlFor={input2}>{answer2}</label>
       </div>
-      
+
       <div>
-        <button type="submit">Valider</button>
+        <button type="submit" onClick={handleClick}>
+          Valider
+        </button>
         <button type="submit">Question suivante</button>
       </div>
     </div>
