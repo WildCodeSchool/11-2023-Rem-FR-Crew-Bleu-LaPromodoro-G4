@@ -2,6 +2,7 @@ import "../root.css";
 import "./Onboarding.css";
 import { useState, useEffect } from "react";
 
+import themeImgDef from "../assets/themedef.png";
 import themeImg1 from "../assets/theme1.png";
 import themeImg2 from "../assets/theme2.png";
 import themeImg3 from "../assets/theme3.png";
@@ -11,11 +12,9 @@ function Onboarding() {
   const [userName, setUserName] = useState(
     localStorage.getItem("userName") || ""
   );
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "");
-
-  //  A VOIR
-  const [themeClr, setThemeClr] = useState(
-true);
+  const [selectedTheme, setSelectedTheme] = useState(
+    localStorage.getItem("selectedTheme")
+  );
 
   //  Initialisation des use effect pour voir les changements en temps réel + stocker les infos dans le localstorage
 
@@ -23,11 +22,8 @@ true);
     localStorage.setItem("userName", userName);
   }, [userName]);
   useEffect(() => {
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-  useEffect(() => {
-    localStorage.setItem("themeClr", themeClr);
-  }, [theme]);
+    localStorage.setItem("theme", selectedTheme);
+  }, [selectedTheme]);
 
   // Fonction changement de nom en temps réel
   const handleNameChange = (event) => {
@@ -37,27 +33,64 @@ true);
     const nextButton = document.getElementById("onboarding-btn-next");
 
     if (newUserName.trim() !== "") {
-      nextButton.classList.add("onboarding-btn-next-active-theme1");
+      nextButton.classList.add("btn-next-active");
     } else {
-      nextButton.classList.remove("onboarding-btn-next-active-theme1");
+      nextButton.classList.remove("btn-next-active");
     }
   };
 
   // Fonction changement de theme et couleur de bouton au click sur le theme
-  const handleThemeChange = (selectedTheme, selectedClr) => {
-    setTheme(selectedTheme);
-    setThemeClr(selectedClr);
+
+  const elementStyle = [
+    {
+      theme: "default",
+      color: "#b3b3b3",
+      backgroundColor: "#f2f2f2",
+      crs: "",
+      preview: themeImgDef,
+    },
+    {
+      theme: 1,
+      color: "white",
+      backgroundColor: "#f58fd8",
+      crs: "pointer",
+      preview: themeImg1,
+    },
+    {
+      theme: 2,
+      color: "white",
+      backgroundColor: "#FF9E67",
+      crs: "pointer",
+      preview: themeImg2,
+    },
+    {
+      theme: 3,
+      color: "white",
+      backgroundColor: "#49D9FF",
+      crs: "pointer",
+      preview: themeImg3,
+    },
+  ];
+
+  const handleThemeChange = (theme) => {
+    setSelectedTheme(theme);
   };
 
+  const getButtonStyle = () => {
+    switch (selectedTheme) {
+      case "theme1":
+        return elementStyle[1];
+      case "theme2":
+        return elementStyle[2];
+      case "theme3":
+        return elementStyle[3];
+      default:
+        return elementStyle[0];
+    }
+  };
+
+  const buttonStyle = getButtonStyle();
   // TEST BUTTON COLOR UPDATE THEME
-
-
-
-  const themes = [
-    { id: 1, src: themeImg1 /* clr: themeClr1 */ },
-    { id: 2, src: themeImg2 /* clr: themeClr2 */ },
-    { id: 3, src: themeImg3 /* clr: themeClr3 */ },
-  ];
 
   return (
     <div className="onboarding-grid">
@@ -70,7 +103,7 @@ true);
               <input
                 id=""
                 name="Name"
-                placeholder="Jack"
+                placeholder="Pop Simoké"
                 type="text"
                 value={userName}
                 onChange={handleNameChange}
@@ -79,28 +112,47 @@ true);
             <div className="input-div">
               <h2>Choisis un thème</h2>
               <div className="theme-selection">
-                {themes.map((theme) => (
-                  <button
-                    type="button"
-                    key={theme.id}
-                    className="theme-selection-button"
-                    onClick={() => handleThemeChange(theme.src, theme.clr)}
-                  >
-                    <img src={theme.src} alt="This is your thumbnail" />
-                  </button>
-                ))}
+                {/* Bouton THEME 1 */}
+                <button
+                  type="button"
+                  className="theme-selection-button"
+                  onClick={() => handleThemeChange("theme1")}
+                >
+                  <img src={themeImg1} alt="Theme1 button" />
+                </button>
+                {/* Bouton THEME 2 */}
+                <button
+                  type="button"
+                  className="theme-selection-button"
+                  onClick={() => handleThemeChange("theme2")}
+                >
+                  <img src={themeImg2} alt="Theme2 button" />
+                </button>
+                {/* Bouton THEME 3 */}
+                <button
+                  type="button"
+                  className="theme-selection-button"
+                  onClick={() => handleThemeChange("theme3")}
+                >
+                  <img src={themeImg3} alt="Theme3 button" />
+                </button>
               </div>
             </div>
           </div>
           <div className="theme-card-preview">
-            <img src={theme} alt="" />
-            <h3>{userName || "Nom"}</h3>
+            <img src={buttonStyle.preview} alt="" />
+            <h3>{userName || ""}</h3>
           </div>
         </div>
         <button
           id="onboarding-btn-next"
           type="button"
           className="onboarding-btn-next"
+          style={{
+            color: buttonStyle.color,
+            backgroundColor: buttonStyle.backgroundColor,
+            cursor: buttonStyle.crs,
+          }}
         >
           Suivant
         </button>

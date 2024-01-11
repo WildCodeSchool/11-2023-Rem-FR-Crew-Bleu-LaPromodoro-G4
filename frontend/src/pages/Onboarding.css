@@ -31,21 +31,16 @@ h2 {
   font-size: 1rem;
   font-weight: bold;
   padding: 1rem 2rem;
-  background-color: #f2f2f2;
-  color: #b3b3b3;
 }
 
-.onboarding-btn-next-active-theme1 {
-  background-color: #f58fd8;
-  color: white;
-  cursor: pointer;
-}
+/*
 .onboarding-btn-next-active-theme2 {
   background-color: #f48a27;
 }
 .onboarding-btn-next-active-theme3 {
   background-color: #1cbfeb;
 }
+*/
 
 .onboarding-wrapper {
   width: 100%;
@@ -74,7 +69,7 @@ h2 {
 
 .theme-card-preview h3 {
   position: absolute;
-  bottom: 2rem;
+  bottom: 1rem;
   font-size: 1.5rem;
   font-weight: bold;
   color: white;
