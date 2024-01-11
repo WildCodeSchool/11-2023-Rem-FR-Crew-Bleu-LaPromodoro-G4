@@ -33,9 +33,6 @@ function CardQuizz({
       (choice2.checked === true && validAnswer === 2)
     ) {
       incrementCount();
-    } else {
-      // eslint-disable-next-line no-restricted-syntax
-      console.log("perdu");
     }
   };
 
