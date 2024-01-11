@@ -4,7 +4,7 @@ import Speech from "react-text-to-speech";
 // import logo from "../assets/Group_1.png";
 
 function ListenGame() {
-  const Words = [
+  const words = [
     { id: "1", word: "Poulet" },
     { id: "2", word: "Nature" },
     { id: "3", word: "Armoire" },
@@ -37,12 +37,12 @@ function ListenGame() {
   const [quizFinished, setQuizFinished] = useState(false);
   // state initialisée comme tableau où seront stockée les réponses de l'utilisateur (remplit de null qui change aux rentrées d'input du user)
   const [userAnswers, setUserAnswers] = useState(
-    Array(Words.length).fill(null)
+    Array(words.length).fill(null)
   );
 
   // Fonction appelée lors du passage au mot suivant
   const handleNextWord = () => {
-    const correctWord = Words[currentWordIndex].word.toUpperCase();
+    const correctWord = words[currentWordIndex].word.toUpperCase();
     const isCorrect = userInput === correctWord;
 
     // Mise à jour des réponses de l'utilisateur
@@ -57,7 +57,7 @@ function ListenGame() {
 
     // Passage au mot suivant ou fin du quiz
     setCurrentWordIndex((prevIndex) => {
-      if (prevIndex < Words.length - 1) {
+      if (prevIndex < words.length - 1) {
         setUserInput("");
         return prevIndex + 1;
       }
@@ -85,16 +85,23 @@ function ListenGame() {
         <div className="leave">Quitter</div>
         <p className="level">Niveau 1: Écoute</p>
       </div>
+      {quizFinished && (
+        <div className="end">
+          <p>Quiz terminé !</p>
+        </div>
+      )}
       <div className="game">
         <div className="quizSpace">
-          <Speech
-            className="speech"
-            text={Words[currentWordIndex].word}
-            pitch={1.5}
-            rate={2}
-            volume={0.3}
-            startBtn={startBtn}
-          />
+          <div className={quizFinished ? "myNoSpeech" : "mySpeech"}>
+            <Speech
+              className="speech"
+              text={words[currentWordIndex].word}
+              pitch={1.5}
+              rate={2}
+              volume={0.3}
+              startBtn={startBtn}
+            />
+          </div>
           <input
             className="wordType"
             type="text"
@@ -114,7 +121,7 @@ function ListenGame() {
         </div>
         {/* Barre de progression, si les user answers sont true active classe true sinon false */}
         <div className="progressBar">
-          {Words.map((word, index) => {
+          {words.map((word, index) => {
             let className = "";
 
             if (userAnswers[index] !== null) {
@@ -126,11 +133,6 @@ function ListenGame() {
         </div>
         <div className="score">{`${userScore}/10`}</div>
       </div>
-      {quizFinished && (
-        <div className="end">
-          <p>Quiz finished! Well played!</p>
-        </div>
-      )}
     </>
   );
 }
