@@ -1,0 +1,128 @@
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+.onboarding-grid {
+  margin: auto;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+.onboarding-container {
+  width: 80vw;
+  max-width: 800px;
+  background-color: #fff;
+  color: #2e2e2e;
+  padding: 3rem;
+  border-radius: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.onboarding-btn-next {
+  border: none;
+  border-radius: 3rem;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  background-color: #f2f2f2;
+  color: #b3b3b3;
+}
+
+.onboarding-btn-next-active-theme1 {
+  background-color: #f58fd8;
+  color: white;
+  cursor: pointer;
+}
+.onboarding-btn-next-active-theme2 {
+  background-color: #f48a27;
+}
+.onboarding-btn-next-active-theme3 {
+  background-color: #1cbfeb;
+}
+
+.onboarding-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+.user-input {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-around;
+}
+.theme-card-preview {
+  width: 50%;
+  height: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3rem;
+  overflow: hidden;
+}
+
+.theme-card-preview h3 {
+  position: absolute;
+  bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.theme-card-preview img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-div input {
+  border: none;
+  border-radius: 3rem;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 80%;
+  padding: 1rem 2rem;
+  background-color: #f2f2f2;
+}
+
+::placeholder {
+  color: #b3b3b3;
+  opacity: 1;
+}
+
+.theme-selection {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.theme-selection-button {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 6rem;
+  overflow: hidden;
+}
+
+.theme-selection img {
+  width: 100%;
+  height: 100%;
+}
