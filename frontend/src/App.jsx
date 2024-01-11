@@ -1,9 +1,9 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <nav>
+      {/* <nav>
         <Link to="/">Welcome</Link>
         <Link to="/profile">Profile</Link>
         <Link to="/level"> Level</Link>
@@ -11,7 +11,7 @@ function App() {
         <Link to="/synonym">Synonim</Link>
         <Link to="/quizz">Quizz</Link>
         <Link to="/reward">Reward</Link>
-      </nav>
+      </nav> */}
       <main>
         <Outlet />
       </main>
