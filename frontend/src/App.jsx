@@ -11,7 +11,7 @@ function App() {
         <Link to="/synonym">Synonim</Link>
         <Link to="/quizz">Quizz</Link>
         <Link to="/reward">Reward</Link>
-        <Link to="/MotsBrouillés">Mots Brouillés</Link>
+        <Link to="/JeuOrdreLettres">Mots Brouillés</Link>
       </nav>
       <main>
         <Outlet />
