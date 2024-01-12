@@ -11,6 +11,7 @@ import Speech from "./pages/Speech";
 import Synonim from "./pages/Synonym";
 import Quizz from "./pages/Quizz";
 import Reward from "./pages/Reward";
+// import motsbrouillées from "./pages/motsbrouillés";
 
 const router = createBrowserRouter([
   {
