@@ -1,11 +1,11 @@
-import { Link, Outlet } from "react-router-dom";
+// import { Link, Outlet } from "react-router-dom";
 import Onboarding from "./pages/Onboarding";
 
 function App() {
   return (
-      <main>
-        <Onboarding />
-      </main>
+    <main>
+      <Onboarding />
+    </main>
   );
 }
 

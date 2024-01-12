@@ -47,6 +47,7 @@ h2 {
   display: flex;
   flex-direction: row;
   gap: 3rem;
+  cursor: oi;
 }
 .user-input {
   width: 50%;
