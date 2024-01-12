@@ -5,13 +5,20 @@ function JeuOrdreLettres() {
   const [reponseUtilisateur, setReponseUtilisateur] = useState("");
   const [resultat, setResultat] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [motAdeviner, setMotAdeviner] = useState("");
 
   useEffect(() => {
     const obtenirMotAleatoire = () => {
       const mots = ["chat", "poulet", "bonjour"];
       const motAleatoire = mots[Math.floor(Math.random() * mots.length)];
+      setMotAdeviner(motAleatoire);
+      const tableauCaractere = motAleatoire.split("");
+      tableauCaractere.sort(() => {
+        return 0.5 - Math.random();
+      });
 
-      return motAleatoire;
+      const stringSort = tableauCaractere.join("");
+      return stringSort;
     };
 
     // Inicia o jogo obtendo uma palavra aleatória
@@ -20,7 +27,7 @@ function JeuOrdreLettres() {
   }, []);
 
   const verificationReponse = () => {
-    const reponseCorrecte = mot.split("").sort().join("");
+    const reponseCorrecte = motAdeviner;
 
     if (reponseUtilisateur === reponseCorrecte) {
       setResultat("Bravo !");

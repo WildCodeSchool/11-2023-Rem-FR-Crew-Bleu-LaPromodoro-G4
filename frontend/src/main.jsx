@@ -11,7 +11,7 @@ import Speech from "./pages/Speech";
 import Synonim from "./pages/Synonym";
 import Quizz from "./pages/Quizz";
 import Reward from "./pages/Reward";
-// import motsbrouillées from "./pages/motsbrouillés";
+import JeuOrdreLettres from "./pages/JeuOrdreLettres";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/reward",
         element: <Reward />,
+      },
+      {
+        path: "/JeuOrdreLettres",
+        element: <JeuOrdreLettres />,
       },
     ],
   },
