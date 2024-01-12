@@ -1,13 +1,16 @@
 import "../style/MainNiveaux.css";
+import { Link } from "react-router-dom";
 
 function MainNiveaux() {
   return (
     <div className="container">
       <div className="niveau1">
         <h2>Niveau 1: Ecoute</h2>
-        <button type="button" className="btnEnter1">
-          Entrer
-        </button>
+        <Link to="/speech">
+          <button type="button" className="btnEnter1">
+            Entrer
+          </button>
+        </Link>
         <img
           src="/src/assets/cadenas.png"
           alt="icone cadenas"
@@ -16,9 +19,11 @@ function MainNiveaux() {
       </div>
       <div className="niveau2">
         <h2>Niveau 2: Synonymes</h2>
-        <button type="button" className="btnEnter2">
-          Entrer
-        </button>
+        <Link to="/synonym">
+          <button type="button" className="btnEnter2">
+            Entrer
+          </button>
+        </Link>
         <img
           src="/src/assets/cadenas.png"
           alt="icone cadenas"
