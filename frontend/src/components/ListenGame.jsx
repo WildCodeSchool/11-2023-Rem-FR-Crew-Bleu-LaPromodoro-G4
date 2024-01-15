@@ -1,35 +1,31 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../style/ListenGame.css";
 import Speech from "react-text-to-speech";
 import AnswerBillesComponent from "./AnswerBillesComponent";
-
-// import logo from "../assets/Group_1.png"
+import speaker from "../assets/speak.png";
 
 function ListenGame() {
   const words = [
     { id: "1", word: "Poulet" },
     { id: "2", word: "Nature" },
     { id: "3", word: "Armoire" },
-    { id: "4", word: "Rembarde" },
+    { id: "4", word: "Rambarde" },
     { id: "5", word: "Chaloupe" },
     { id: "6", word: "Hareng" },
     { id: "7", word: "Grenouille" },
     { id: "8", word: "Rododindron" },
     { id: "9", word: "Tilleul" },
-    { id: "10", word: "chrysanthème" },
+    { id: "10", word: "Chrysanthème" },
   ];
 
-  const startBtn = (
-    <button className="my-start-btn" type="button">
-      Cliquez pour écouter
-    </button>
-  );
+  const startBtn = <img src={speaker} alt="speak" className="speaker" />;
 
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [userInput, setUserInput] = useState("");
   const [quizFinished, setQuizFinished] = useState(false);
   const [userScore, setUserScore] = useState(
-    parseInt(localStorage.getItem("totalScore"), 10) || 10
+    parseInt(localStorage.getItem("totalScore"), 10)
   );
 
   useEffect(() => {
@@ -81,7 +77,10 @@ function ListenGame() {
   return (
     <>
       <div className="header">
-        <div className="leave">Quitter</div>
+        <Link to="/level" className="leave">
+          {" "}
+          Quitter
+        </Link>
         <p className="level">Niveau 1: Écoute</p>
       </div>
       {quizFinished && (
@@ -95,12 +94,13 @@ function ListenGame() {
             text={words[currentWordIndex].word}
             pitch={1.5}
             rate={2}
-            volume={0.3}
+            volume={0.5}
             startBtn={startBtn}
           />
           <input
             className="wordType"
             type="text"
+            placeholder="tapez le mot ici"
             value={userInput}
             onChange={handleInputChange}
             onKeyDown={handleInputChange}

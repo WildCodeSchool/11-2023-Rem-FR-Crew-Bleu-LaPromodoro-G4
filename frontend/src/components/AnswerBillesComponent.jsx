@@ -1,7 +1,7 @@
 import "../style/AnswerBillesComponent.css";
 import PropTypes from "prop-types";
 
-const AnswerBillesComponent = ({ answers }) => {
+function AnswerBillesComponent({ answers }) {
   return (
     <div className="progress-container">
       {answers.map((answer, index) => {
@@ -14,15 +14,16 @@ const AnswerBillesComponent = ({ answers }) => {
           billesClass += " notcorrect";
           billesText = "F";
         }
+        const key = `${answer}-${index}`;
         return (
-          <div key={index} className={billesClass}>
+          <div key={key} className={billesClass}>
             {billesText}
           </div>
         );
       })}
     </div>
   );
-};
+}
 
 AnswerBillesComponent.propTypes = {
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
