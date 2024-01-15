@@ -1,10 +1,9 @@
-// import { Link, Outlet } from "react-router-dom";
-import Onboarding from "./pages/Onboarding";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <main>
-      <Onboarding />
+      <Outlet />
     </main>
   );
 }
