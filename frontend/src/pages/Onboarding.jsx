@@ -1,6 +1,7 @@
 import "../root.css";
 import "./Onboarding.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import themeImgDef from "../assets/themedef.png";
 import themeImg1 from "../assets/theme1.png";
@@ -149,19 +150,21 @@ function Onboarding() {
             <h3>{userName || ""}</h3>
           </div>
         </div>
-        <button
-          id="onboarding-btn-next"
-          type="button"
-          className="onboarding-btn-next"
-          style={{
-            color: userTheme.color,
-            backgroundColor: userTheme.backgroundColor,
-            cursor: userTheme.crs,
-          }}
-          onClick={storeDataNext}
-        >
-          Suivant
-        </button>
+        <Link to="/menu">
+          <button
+            id="onboarding-btn-next"
+            type="button"
+            className="onboarding-btn-next"
+            style={{
+              color: userTheme.color,
+              backgroundColor: userTheme.backgroundColor,
+              cursor: userTheme.crs,
+            }}
+            onClick={storeDataNext}
+          >
+            Suivant
+          </button>
+        </Link>
       </div>
     </div>
   );
