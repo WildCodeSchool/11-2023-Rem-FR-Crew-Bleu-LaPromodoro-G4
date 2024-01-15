@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
 import "../style/AnswerBillesComponent.css";
+import PropTypes from "prop-types";
 
 function AnswerBillesComponent({ answers }) {
   return (
