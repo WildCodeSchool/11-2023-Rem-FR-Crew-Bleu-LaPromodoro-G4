@@ -1,21 +1,11 @@
-import { Link, Outlet } from "react-router-dom";
+// import { Link, Outlet } from "react-router-dom";
+import Onboarding from "./pages/Onboarding";
 
 function App() {
   return (
-    <>
-      <nav>
-        <Link to="/">Welcome</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/level"> Level</Link>
-        <Link to="/speech">Speech</Link>
-        <Link to="/synonym">Synonim</Link>
-        <Link to="/quizz">Quizz</Link>
-        <Link to="/reward">Reward</Link>
-      </nav>
-      <main>
-        <Outlet />
-      </main>
-    </>
+    <main>
+      <Onboarding />
+    </main>
   );
 }
 
