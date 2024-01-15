@@ -33,21 +33,11 @@ h2 {
   padding: 1rem 2rem;
 }
 
-/*
-.onboarding-btn-next-active-theme2 {
-  background-color: #f48a27;
-}
-.onboarding-btn-next-active-theme3 {
-  background-color: #1cbfeb;
-}
-*/
-
 .onboarding-wrapper {
   width: 100%;
   display: flex;
   flex-direction: row;
   gap: 3rem;
-  cursor: oi;
 }
 .user-input {
   width: 50%;
