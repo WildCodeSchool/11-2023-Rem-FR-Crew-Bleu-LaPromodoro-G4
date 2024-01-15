@@ -5,7 +5,7 @@ import React from "react";
 import App from "./App";
 
 import Welcome from "./pages/Welcome";
-import Profile from "./pages/Profile";
+import Menu from "./pages/Menu";
 import Level from "./pages/Level";
 import Speech from "./pages/Speech";
 import Synonim from "./pages/Synonym";
@@ -21,8 +21,8 @@ const router = createBrowserRouter([
         element: <Welcome />,
       },
       {
-        path: "/profile",
-        element: <Profile />,
+        path: "/menu",
+        element: <Menu />,
       },
       {
         path: "/level",

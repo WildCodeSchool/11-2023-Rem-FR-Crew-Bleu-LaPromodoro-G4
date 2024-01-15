@@ -6,7 +6,7 @@ import Instructions from "../components/Instructions";
 
 import MainNiveaux from "../components/MainNiveaux";
 
-function Profile() {
+function Menu() {
   return (
     <>
       <Lapin />
@@ -16,4 +16,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default Menu;
