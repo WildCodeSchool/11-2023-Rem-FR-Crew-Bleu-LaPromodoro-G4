@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "../style/ListenGame.css";
 import Speech from "react-text-to-speech";
 import AnswerBillesComponent from "./AnswerBillesComponent";
@@ -77,10 +77,10 @@ function ListenGame() {
   return (
     <>
       <div className="header">
-        <Link to="/level" className="leave">
+        <div to="/level" className="leave">
           {" "}
           Quitter
-        </Link>
+        </div>
         <p className="level">Niveau 1: Écoute</p>
       </div>
       {quizFinished && (
