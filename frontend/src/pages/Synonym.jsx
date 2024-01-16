@@ -1,7 +1,12 @@
 import React from "react";
+import WordSynonymComponent from "../components/WordSynonymComponent";
 
 function Synonym() {
-  return <p> hello synonym </p>;
+  return (
+    <div>
+      <WordSynonymComponent />
+    </div>
+  );
 }
 
 export default Synonym;

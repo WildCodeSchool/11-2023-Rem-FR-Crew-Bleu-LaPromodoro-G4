@@ -5,10 +5,10 @@ import React from "react";
 import App from "./App";
 
 import Onboarding from "./pages/Onboarding";
-import Profile from "./pages/Profile";
+import Menu from "./pages/Menu";
 import Level from "./pages/Level";
 import Speech from "./pages/Speech";
-import Synonim from "./pages/Synonym";
+import WordSynonymComponent from "./components/WordSynonymComponent";
 import Quizz from "./pages/Quizz";
 import Reward from "./pages/Reward";
 
@@ -21,8 +21,8 @@ const router = createBrowserRouter([
         element: <Onboarding />,
       },
       {
-        path: "/profile",
-        element: <Profile />,
+        path: "/menu",
+        element: <Menu />,
       },
       {
         path: "/level",
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/synonym",
-        element: <Synonim />,
+        element: <WordSynonymComponent />,
       },
       {
         path: "/quizz",

@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: white;
+  position: absolute;
+  top: 25%;
+  right: 5%;
+  height: 460px;
+  width: 480px;
+  border-radius: 60px;
+  padding: 35px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.niveau1,
+.niveau2,
+.niveau3,
+.niveau4 {
+  display: flex;
+  margin-top: 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleDefinition {
+  filter: blur(4px);
+}
+
+a {
+  text-decoration: none;
+}
+.btnEnter1,
+.btnEnter2,
+.btnEnter3 .btnEnter4 {
+  cursor: pointer;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 30px;
+  background-color: rgb(253, 173, 190);
+  color: white;
+  font-weight: 600;
+}
+
+.btnEnter1 {
+  display: block;
+}
+.btnEnter2 {
+  display: block;
+}
+.btnEnter3 {
+  display: none;
+}
+
+.btnEnter4 {
+  display: none;
+}
+
+.btnEnter1:hover,
+.btnEnter2:hover,
+.btnEnter3:hover .btnEnter4:hover {
+  transform: scale(1.1);
+}
+
+.lock1 {
+  display: none;
+  padding: 20px 40px;
+  border-radius: 30px;
+  height: 50px;
+  color: white;
+}
+.lock2 {
+  display: none;
+  padding: 20px 40px;
+  border-radius: 30px;
+  height: 50px;
+  color: white;
+}
+.lock3 {
+  padding: 20px 40px;
+  height: 50px;
+  color: white;
+}
+
+.lock4 {
+  padding: 20px 40px;
+  height: 50px;
+  color: white;
+}

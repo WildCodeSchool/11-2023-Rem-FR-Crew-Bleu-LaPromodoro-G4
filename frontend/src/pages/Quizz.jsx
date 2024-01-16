@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import CardQuizz from "../components/CardQuizz";
+import AnswerBillesComponent from "../components/AnswerBillesComponent";
+
+const answerBullets = ["", "", "", "", ""];
 
 const quizzAnimal = [
   {
@@ -69,16 +72,31 @@ const quizzAnimal = [
 ];
 
 function Quizz() {
-  const [count, setCount] = useState(1);
-  const incrementCount = () => {
-    setCount(count + 1);
+  const [refresh, setRefresh] = useState(0);
+  const [count, setCount] = useState(0);
+
+  const incrementCount = (cardId, isRight) => {
+    const score = isRight ? count + 1 : count;
+    // update of state with a new value
+    setCount(score);
+
+    // forcing pages to refresh if the score didn't change
+    setRefresh(refresh + 1);
+
+    // get div element from HTML page to put the score inside
     const divScore = document.getElementById("score");
-    divScore.innerHTML = count;
+    divScore.innerHTML = score;
+
+    // changed element of answer array into correct
+    answerBullets[cardId - 1] = isRight ? "correct" : "notcorrect";
+
+    // store the score in the local storage
+    localStorage.setItem("quizzScore", score.toString());
   };
 
   const handleClick1 = () => {
     const div = document.getElementById("card1");
-    div.classList.remove("cardsHide");
+    div.classList.remove("cardsHide"); // remove hide CSS to show the card
   };
   const handleClick2 = () => {
     const div = document.getElementById("card2");
@@ -101,7 +119,7 @@ function Quizz() {
     <div>
       <div>score:</div>
       <div id="score">0</div>
-      <h2>Fais le quizz et test ton niveau</h2>
+      <h2>Quizz</h2>
       <button type="submit" onClick={handleClick1}>
         1{" "}
       </button>
@@ -115,6 +133,7 @@ function Quizz() {
           input2="input2"
           incrementCount={incrementCount}
           buttonValidate="buttonValidate1"
+          id={1}
         />
       </div>
       <button type="submit" onClick={handleClick2}>
@@ -130,6 +149,7 @@ function Quizz() {
           input2="input4"
           incrementCount={incrementCount}
           buttonValidate="buttonValidate2"
+          id={2}
         />
       </div>
       <button type="submit" onClick={handleClick3}>
@@ -145,6 +165,7 @@ function Quizz() {
           input2="input6"
           incrementCount={incrementCount}
           buttonValidate="buttonValidate3"
+          id={3}
         />
       </div>
       <button type="submit" onClick={handleClick4}>
@@ -160,6 +181,7 @@ function Quizz() {
           input2="input8"
           incrementCount={incrementCount}
           buttonValidate="buttonValidate4"
+          id={4}
         />
       </div>
       <button type="submit" onClick={handleClick5}>
@@ -175,8 +197,10 @@ function Quizz() {
           input2="input10"
           incrementCount={incrementCount}
           buttonValidate="buttonValidate5"
+          id={5}
         />
       </div>
+      <AnswerBillesComponent answers={answerBullets} />
     </div>
   );
 }
