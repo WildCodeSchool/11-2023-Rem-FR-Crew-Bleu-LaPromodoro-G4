@@ -2,7 +2,7 @@ import Spline from "@splinetool/react-spline";
 
 function Lapin() {
   return (
-    <Spline scene="https://prod.spline.design/PFGzNRMnj4wrYOj0/scene.splinecode" />
+    <Spline scene="https://prod.spline.design/swlhocd6OG6xkhxi/scene.splinecode" />
   );
 }
 
