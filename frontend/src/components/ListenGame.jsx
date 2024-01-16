@@ -24,12 +24,14 @@ function ListenGame() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [userInput, setUserInput] = useState("");
   const [quizFinished, setQuizFinished] = useState(false);
-  const [userScore, setUserScore] = useState(
-    parseInt(localStorage.getItem("totalScore"), 10)
-  );
+  const [userScore, setUserScore] = useState(() => {
+    const storedScore = localStorage.getItem("totalScore");
+    const parsedScore = parseInt(storedScore, 10);
+    return Number.isNaN(parsedScore) ? 0 : parsedScore;
+  });
 
   useEffect(() => {
-    localStorage.setItem("totalScore", userScore.toString());
+    localStorage.setItem("totalScore", Math.min(userScore, 10));
   }, [userScore]);
 
   const reinitialiserLocalStorage = () => {
@@ -51,7 +53,7 @@ function ListenGame() {
     });
 
     if (isCorrect) {
-      setUserScore((prevScore) => prevScore + 1);
+      setUserScore((prevScore) => Math.min(prevScore + 1, 10));
     }
 
     setCurrentWordIndex((prevIndex) => {

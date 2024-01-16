@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import AnswerBillesComponent from "./AnswerBillesComponent";
 import "../style/WordSynonymComponent.css";
 
@@ -97,6 +98,7 @@ function WordSynonymComponent() {
     correctSynonyms: [],
   });
   const [selectedSynonym, setSelectedSynonym] = useState("");
+  // const [confirmedSynonym, setConfirmedSynonym] = useState("");
   const [questionNumber, setQuestionNumber] = useState(1);
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState(Array(10).fill(null));
@@ -104,6 +106,9 @@ function WordSynonymComponent() {
   const totalQuestions = 10;
 
   useEffect(() => {
+    if (!localStorage.getItem("totalScore")) {
+      localStorage.setItem("totalScore", "10");
+    }
     if (questionNumber <= totalQuestions) {
       const randomIndex = Math.floor(Math.random() * words.length);
       const newWord = words[randomIndex];
@@ -111,6 +116,7 @@ function WordSynonymComponent() {
         ...newWord.correctSynonyms,
         ...newWord.falseSynonyms,
       ]);
+      randomArray(mixedSynonyms);
       setCurrentWord({ ...newWord, synonyms: mixedSynonyms });
     }
   }, [questionNumber]);
@@ -126,29 +132,39 @@ function WordSynonymComponent() {
     setAnswers(updatedAnswers);
 
     if (isCorrect) {
-      setScore((prevScore) => prevScore + 1);
+      setScore((prevScore) => {
+        const newScore = Math.min(prevScore + 1, 20);
+        const existingScore =
+          parseInt(localStorage.getItem("totalScore"), 10) || 10;
+        const updatedTotalScore = Math.min(existingScore + 1, 20);
+        localStorage.setItem("totalScore", updatedTotalScore.toString());
+        return newScore;
+      });
     }
+    // console.info(
+    //   `Question Numéro: ${questionNumber}, / ${totalQuestions}`
+    // );
+    // console.info(`Is Correct: ${isCorrect}, nouvo score: ${newScore}`);
 
     if (questionNumber < totalQuestions) {
-      setQuestionNumber((prevNumber) => prevNumber + 1);
+      setQuestionNumber(questionNumber + 1);
       setSelectedSynonym("");
     } else if (questionNumber === totalQuestions) {
+      // console.info(
+      //   "totalScore dans le localStorage: ${updatedScore}"
+      // );
       setShowSynonyms(false);
     }
-  };
-
-  const resetGame = () => {
-    setQuestionNumber(1);
-    setScore(0);
-    setAnswers(Array(10).fill(null));
-    setSelectedSynonym("");
-    setShowSynonyms(true);
   };
 
   return (
     <div>
       <div className="retour">
-        {/* <button className="quit-button">Quitter</button> */}
+        <Link to="/menu">
+          <button type="button" className="quit-button">
+            Quitter
+          </button>
+        </Link>
         <h2 className="level-title">Niveau 2 : Trouve les synonymes</h2>
       </div>
       <div className="game-container">
@@ -160,8 +176,8 @@ function WordSynonymComponent() {
             <div className="synonyms-container">
               {currentWord.synonyms.map((synonym) => (
                 <button
-                  type="button"
                   key={synonym}
+                  type="button"
                   className={`synonym-button ${
                     selectedSynonym === synonym ? "selected" : ""
                   }`}
@@ -174,24 +190,13 @@ function WordSynonymComponent() {
           )}
         </div>
         <div className="container-button">
-          {selectedSynonym && (
-            <button
-              className="confirm-button"
-              onClick={confirmSynonym}
-              type="button"
-            >
-              Valider
-            </button>
-          )}
-          {!showSynonyms && (
-            <button
-              type="button"
-              className="restart-button"
-              onClick={resetGame}
-            >
-              Redémarrer / Menu
-            </button>
-          )}
+          <button
+            className="confirm-button"
+            onClick={confirmSynonym}
+            type="button"
+          >
+            Valider
+          </button>
         </div>
         <AnswerBillesComponent answers={answers} />
       </div>
