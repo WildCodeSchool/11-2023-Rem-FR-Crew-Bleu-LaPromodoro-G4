@@ -5,7 +5,7 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .retour {
@@ -34,8 +34,8 @@
 .card {
   background-color: white;
   padding: 50px;
-  height: 300px;
-  width: 600px;
+  height: 400px;
+  width: 650px;
   border-radius: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow */
   display: flex;
@@ -129,25 +129,25 @@
 }
 
 .confirm-button {
-  background-color: #c0a3ff; /* Button color */
   color: white;
-  padding: 10px 20px;
+  background-color: #f58fd8;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
-  margin-top: -300px;
+  border-radius: 3rem;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  margin-top: 20px;
 }
 
 .restart-button {
-  background-color: #c0a3ff; /* Button color */
   color: white;
-  padding: 10px 20px;
+  background-color: #f58fd8;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
-  margin-top: -300px;
+  border-radius: 3rem;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  margin-top: 20px;
 }
 
 .progress-container {
