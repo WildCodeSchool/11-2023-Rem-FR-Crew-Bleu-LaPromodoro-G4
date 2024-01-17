@@ -150,7 +150,7 @@ function Onboarding() {
             <h3>{userName || ""}</h3>
           </div>
         </div>
-        <Link to="/menu">
+        <Link to={`/menu?username=${userName}`}>
           <button
             id="onboarding-btn-next"
             type="button"
@@ -169,5 +169,4 @@ function Onboarding() {
     </div>
   );
 }
-
 export default Onboarding;

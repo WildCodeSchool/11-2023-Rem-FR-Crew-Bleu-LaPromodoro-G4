@@ -36,12 +36,19 @@
 }
 
 .popup-content {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 100px 200px 150px;
   justify-content: space-around;
+  background-color: aqua;
 }
 
 .bar {
   position: absolute;
   bottom: 2%;
   left: 15%;
+}
+
+.titleEtapes {
+  text-align: start;
 }

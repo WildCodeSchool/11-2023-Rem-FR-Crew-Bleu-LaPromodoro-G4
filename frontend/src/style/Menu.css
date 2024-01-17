@@ -1,0 +1,58 @@
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2500px;
+  min-height: 100vh;
+}
+
+.mainContent {
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.mainContainer {
+  position: relative;
+  width: 100vw;
+  max-width: 2000px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.dialogue {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  background-color: rgba(255, 144, 168, 0);
+  color: rgba(255, 144, 168, 0);
+  border-radius: 100px;
+  border: none;
+  height: 200px;
+  width: 200px;
+  cursor: pointer;
+  padding-top: 25px;
+}
+
+.dialogue-content {
+  position: fixed;
+  top: 29%;
+  left: 35%;
+  background-color: white;
+  border-radius: 35px;
+  border: none;
+  padding: 25px 25px 25px 25px;
+  font-size: 1.7em;
+}
+
+.triangle {
+  position: fixed;
+  top: 34%;
+  left: 36%;
+  width: 0;
+  height: 0;
+  border-top: 7.5px solid transparent;
+  border-left: 25px solid rgb(255, 255, 255);
+  border-bottom: 50px solid transparent;
+}
