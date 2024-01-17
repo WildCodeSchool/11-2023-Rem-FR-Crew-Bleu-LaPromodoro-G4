@@ -25,18 +25,18 @@
 }
 
 .scoreQuizz {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
 
 .instruction {
-  display:flex;
+  display: flex;
   justify-content: center;
 }
 
 .buttonCard {
-  display:flexbox;
+  display: flexbox;
   background-color: rgba(178, 211, 213, 0.728);
   cursor: pointer;
   border: none;
@@ -44,29 +44,82 @@
   border-radius: 30px;
   color: white;
   font-weight: 600;
-  margin:5px; 
-  }
+  margin: 15px;
+}
 
-  .buttonCard:hover {
-    transform: scale(1.1);
-  }
+.buttonCard:hover {
+  transform: scale(1.1);
+}
 
-  .buttonContainer {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-  }
-
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
 .cardsHide {
   display: none;
 }
-.questionCard {
-  background: transparent;
-  border-style: solid;
+.questionCardContainer {
   border-width: 4px 4px 4px 4px;
   border-color: rgb(62, 129, 162);
-  border-radius: 0.3rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  padding: 2em;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  height: 300px;
+  width: 550px;
 }
 
+.listenContainer {
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width:100%;
+}
+
+.buttonListen {
+  display:flex;
+  flex-direction: row;
+  border: none;
+  border-radius: 30px;
+}
+
+.buttonValidate {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: grey;
+  color: white;
+  font-weight: 600;
+}
+
+.buttonValidate:hover {
+  transform: scale(1.1);
+}
+.inputCardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputRadio1 {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.inputRadio2 {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
 
