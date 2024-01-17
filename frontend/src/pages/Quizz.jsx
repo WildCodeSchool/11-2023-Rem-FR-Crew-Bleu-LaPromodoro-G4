@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CardQuizz from "../components/CardQuizz";
 import AnswerBillesComponent from "../components/AnswerBillesComponent";
-
-const answerBullets = ["", "", "", "", ""];
 
 const quizzAnimal = [
   {
@@ -73,26 +71,47 @@ const quizzAnimal = [
 ];
 
 function Quizz() {
-  const [refresh, setRefresh] = useState(0);
-  const [count, setCount] = useState(0);
+  // const [refresh, setRefresh] = useState(0);
+  const [count, setCount] = useState(() => {
+    const storedScore = localStorage.getItem("totalScore");
+    const parsedScore = storedScore ? parseInt(storedScore, 10) : 20;
+    return Number.isNaN(parsedScore) ? 20 : Math.max(parsedScore, 20);
+  });
+
+  useEffect(() => {
+    localStorage.setItem("totalScore", count.toString());
+  }, [count]);
+
+  const [answerBullets, setAnswerBullets] = useState(
+    Array(quizzAnimal.length).fill("")
+  );
 
   const incrementCount = (cardId, isRight) => {
-    const score = isRight ? count + 1 : count;
-    // update of state with a new value
-    setCount(score);
+    if (isRight) {
+      setCount((prevCount) => Math.min(prevCount + 1, 30));
+      answerBullets[cardId - 1] = "correct";
+    } else {
+      answerBullets[cardId - 1] = "notcorrect";
+    }
+    // const incrementCount = (cardId, isRight) => {
+    //   const score = isRight ? count + 1 : count;
+    //   // update of state with a new value
+    //   setCount(score);
 
     // forcing pages to refresh if the score didn't change
-    setRefresh(refresh + 1);
+    // setRefresh((prevRefresh) => prevRefresh + 1);
 
     // get div element from HTML page to put the score inside
     const divScore = document.getElementById("score");
-    divScore.innerHTML = score;
+    divScore.innerHTML = count.toString();
 
     // changed element of answer array into correct
-    answerBullets[cardId - 1] = isRight ? "correct" : "notcorrect";
+    const updatedBullets = [...answerBullets];
+    updatedBullets[cardId - 1] = isRight ? "correct" : "notcorrect";
+    setAnswerBullets(updatedBullets);
 
     // store the score in the local storage
-    localStorage.setItem("quizzScore", score.toString());
+    localStorage.setItem("totalScore", count.toString());
   };
 
   const handleClick1 = () => {
