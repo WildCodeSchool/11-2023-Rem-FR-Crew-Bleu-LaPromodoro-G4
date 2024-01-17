@@ -1,3 +1,63 @@
+.headerQuizz {
+  margin-top: 1.5em;
+  margin-left: 8em;
+  gap: 2em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.levelQuizz {
+  font-size: 1.2em;
+}
+
+.leaveQuizz {
+  cursor: pointer;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 30px;
+  background-color: rgb(253, 173, 190);
+  color: white;
+  font-weight: 600;
+}
+
+.leaveQuizz:hover {
+  transform: scale(1.1);
+}
+
+.scoreQuizz {
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.instruction {
+  display:flex;
+  justify-content: center;
+}
+
+.buttonCard {
+  display:flexbox;
+  background-color: rgba(178, 211, 213, 0.728);
+  cursor: pointer;
+  border: none;
+  padding: 20px 65px;
+  border-radius: 30px;
+  color: white;
+  font-weight: 600;
+  margin:5px; 
+  }
+
+  .buttonCard:hover {
+    transform: scale(1.1);
+  }
+
+  .buttonContainer {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
 .cardsHide {
   display: none;
 }
@@ -8,3 +68,5 @@
   border-color: rgb(62, 129, 162);
   border-radius: 0.3rem;
 }
+
+

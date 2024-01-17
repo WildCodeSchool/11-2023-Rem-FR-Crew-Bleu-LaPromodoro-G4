@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import CardQuizz from "../components/CardQuizz";
 import AnswerBillesComponent from "../components/AnswerBillesComponent";
 
@@ -117,88 +118,109 @@ function Quizz() {
 
   return (
     <div>
-      <div>score:</div>
-      <div id="score">0</div>
-      <h2>Quizz</h2>
-      <button type="submit" onClick={handleClick1}>
-        1{" "}
-      </button>
-      <div id="card1" className="cardsHide">
-        <CardQuizz
-          question={quizzAnimal[0].question}
-          answer1={quizzAnimal[0].answer1}
-          answer2={quizzAnimal[0].answer2}
-          validAnswer={quizzAnimal[0].validAnswer}
-          input1="input1"
-          input2="input2"
-          incrementCount={incrementCount}
-          buttonValidate="buttonValidate1"
-          id={1}
-        />
+      <div className="headerQuizz">
+        <Link to="/Menu" className="leaveQuizz">
+          {" "}
+          Quitter
+        </Link>
+        <p className="levelQuizz">Niveau 3: Jeu de définitions</p>
       </div>
-      <button type="submit" onClick={handleClick2}>
-        2{" "}
-      </button>
-      <div id="card2" className="cardsHide">
-        <CardQuizz
-          question={quizzAnimal[1].question}
-          answer1={quizzAnimal[1].answer1}
-          answer2={quizzAnimal[1].answer2}
-          validAnswer={quizzAnimal[1].validAnswer}
-          input1="input3"
-          input2="input4"
-          incrementCount={incrementCount}
-          buttonValidate="buttonValidate2"
-          id={2}
-        />
+      <div className="scoreQuizz">
+        <div>Score:</div>
+        <div id="score">0</div>
       </div>
-      <button type="submit" onClick={handleClick3}>
-        3{" "}
-      </button>
-      <div id="card3" className="cardsHide">
-        <CardQuizz
-          question={quizzAnimal[2].question}
-          answer1={quizzAnimal[2].answer1}
-          answer2={quizzAnimal[2].answer2}
-          validAnswer={quizzAnimal[2].validAnswer}
-          input1="input5"
-          input2="input6"
-          incrementCount={incrementCount}
-          buttonValidate="buttonValidate3"
-          id={3}
-        />
+      <h3 className="instruction">
+        Lis la question et choisis la bonne réponse:
+      </h3>
+      <div className="buttonContainer">
+        <button type="submit" className="buttonCard" onClick={handleClick1}>
+          1{" "}
+        </button>
+        <div id="card1" className="cardsHide">
+          <CardQuizz
+            question={quizzAnimal[0].question}
+            answer1={quizzAnimal[0].answer1}
+            answer2={quizzAnimal[0].answer2}
+            validAnswer={quizzAnimal[0].validAnswer}
+            input1="input1"
+            input2="input2"
+            incrementCount={incrementCount}
+            buttonValidate="buttonValidate1"
+            id={1}
+          />
+        </div>
       </div>
-      <button type="submit" onClick={handleClick4}>
-        4{" "}
-      </button>
-      <div id="card4" className="cardsHide">
-        <CardQuizz
-          question={quizzAnimal[3].question}
-          answer1={quizzAnimal[3].answer1}
-          answer2={quizzAnimal[3].answer2}
-          validAnswer={quizzAnimal[3].validAnswer}
-          input1="input7"
-          input2="input8"
-          incrementCount={incrementCount}
-          buttonValidate="buttonValidate4"
-          id={4}
-        />
+      <div className="buttonContainer">
+        <button type="submit" className="buttonCard" onClick={handleClick2}>
+          2{" "}
+        </button>
+        <div id="card2" className="cardsHide">
+          <CardQuizz
+            question={quizzAnimal[1].question}
+            answer1={quizzAnimal[1].answer1}
+            answer2={quizzAnimal[1].answer2}
+            validAnswer={quizzAnimal[1].validAnswer}
+            input1="input3"
+            input2="input4"
+            incrementCount={incrementCount}
+            buttonValidate="buttonValidate2"
+            id={2}
+          />
+        </div>
       </div>
-      <button type="submit" onClick={handleClick5}>
-        5{" "}
-      </button>
-      <div id="card5" className="cardsHide">
-        <CardQuizz
-          question={quizzAnimal[4].question}
-          answer1={quizzAnimal[4].answer1}
-          answer2={quizzAnimal[4].answer2}
-          validAnswer={quizzAnimal[4].validAnswer}
-          input1="input9"
-          input2="input10"
-          incrementCount={incrementCount}
-          buttonValidate="buttonValidate5"
-          id={5}
-        />
+      <div className="buttonContainer">
+        <button type="submit" className="buttonCard" onClick={handleClick3}>
+          3{" "}
+        </button>
+        <div id="card3" className="cardsHide">
+          <CardQuizz
+            question={quizzAnimal[2].question}
+            answer1={quizzAnimal[2].answer1}
+            answer2={quizzAnimal[2].answer2}
+            validAnswer={quizzAnimal[2].validAnswer}
+            input1="input5"
+            input2="input6"
+            incrementCount={incrementCount}
+            buttonValidate="buttonValidate3"
+            id={3}
+          />
+        </div>
+      </div>
+      <div className="buttonContainer">
+        <button type="submit" className="buttonCard" onClick={handleClick4}>
+          4{" "}
+        </button>
+        <div id="card4" className="cardsHide">
+          <CardQuizz
+            question={quizzAnimal[3].question}
+            answer1={quizzAnimal[3].answer1}
+            answer2={quizzAnimal[3].answer2}
+            validAnswer={quizzAnimal[3].validAnswer}
+            input1="input7"
+            input2="input8"
+            incrementCount={incrementCount}
+            buttonValidate="buttonValidate4"
+            id={4}
+          />
+        </div>
+      </div>
+      <div className="buttonContainer">
+        <button type="submit" className="buttonCard" onClick={handleClick5}>
+          5{" "}
+        </button>
+        <div id="card5" className="cardsHide">
+          <CardQuizz
+            question={quizzAnimal[4].question}
+            answer1={quizzAnimal[4].answer1}
+            answer2={quizzAnimal[4].answer2}
+            validAnswer={quizzAnimal[4].validAnswer}
+            input1="input9"
+            input2="input10"
+            incrementCount={incrementCount}
+            buttonValidate="buttonValidate5"
+            id={5}
+          />
+        </div>
       </div>
       <AnswerBillesComponent answers={answerBullets} />
     </div>
