@@ -36,6 +36,8 @@ body {
 }
 
 .leave {
+  font-family: "Gill Sans";
+  font-weight: 600;
   text-decoration: none;
   text-align: center;
   font-size: 1.2em;

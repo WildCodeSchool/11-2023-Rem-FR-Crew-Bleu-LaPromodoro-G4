@@ -103,10 +103,9 @@ function ListenGame() {
           <div className="quizSpace">
             <Speech
               text={words[currentWordIndex].word}
-              pitch={1.5}
-              rate={2}
-              volume={0.5}
+              lang="FR"
               startBtn={startBtn}
+              onError={() => console.error("Browser not supported!")}
             />
             <input
               className="wordType"

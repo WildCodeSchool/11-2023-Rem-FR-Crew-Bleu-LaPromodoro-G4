@@ -162,20 +162,19 @@ function WordSynonymComponent() {
   const endTitle = "Niveau 2 : Trouve les synonymes fini !";
 
   return (
-    <div>
+    <div className="myLevelBody">
       {quizFinished ? (
         ""
       ) : (
-        <div className="retour">
-          <Link to="/menu">
-            <button type="button" className="quit-button">
-              Quitter
-            </button>
+        <div className="header">
+          <Link to="/Menu" className="leave">
+            {" "}
+            Quitter
           </Link>
-          <h2 className="level-title">Niveau 2 : Trouve les synonymes</h2>
+          <p className="level">Niveau 2: Synonyme</p>
         </div>
       )}
-      <div className="game-container">
+      <div className="game">
         {quizFinished ? (
           <Results score={score} level={endTitle} />
         ) : (
@@ -205,21 +204,19 @@ function WordSynonymComponent() {
         )}
         {quizFinished ? (
           <Link to="/menu">
-            <button type="button" className="quit-button">
+            <button type="button" className="leave">
               Quitter
             </button>
           </Link>
         ) : (
           <div className="container-button">
-            <button
-              className="confirm-button"
-              onClick={confirmSynonym}
-              type="button"
-            >
+            <button className="leave" onClick={confirmSynonym} type="button">
               Valider
             </button>
           </div>
         )}
+      </div>
+      <div className="realtime">
         <AnswerBillesComponent answers={answers} />
       </div>
     </div>
