@@ -2,28 +2,25 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../style/ListenGame.css";
 import Speech from "react-text-to-speech";
+import wordsArray from "./ListGameWords";
 import AnswerBillesComponent from "./AnswerBillesComponent";
 import speaker from "../assets/speak.png";
 
+const shuffleArray = (array) => {
+  const newArr = [...array];
+  for (let i = newArr.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+  }
+  return newArr;
+};
+
 function ListenGame() {
-  const words = [
-    { id: "1", word: "Poulet" },
-    { id: "2", word: "Nature" },
-    { id: "3", word: "Armoire" },
-    { id: "4", word: "Rambarde" },
-    { id: "5", word: "Chaloupe" },
-    { id: "6", word: "Hareng" },
-    { id: "7", word: "Grenouille" },
-    { id: "8", word: "Rododindron" },
-    { id: "9", word: "Tilleul" },
-    { id: "10", word: "Chrysanthème" },
-  ];
-
-  const startBtn = <img src={speaker} alt="speak" className="speaker" />;
-
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [words, setWords] = useState([""]);
   const [userInput, setUserInput] = useState("");
   const [quizFinished, setQuizFinished] = useState(false);
+  const [userAnswers, setUserAnswers] = useState(Array(10).fill(null));
   const [userScore, setUserScore] = useState(() => {
     const storedScore = localStorage.getItem("totalScore");
     const parsedScore = parseInt(storedScore, 10);
@@ -31,16 +28,14 @@ function ListenGame() {
   });
 
   useEffect(() => {
+    const shuffledWords = shuffleArray([...wordsArray]).slice(0, 10);
+    setWords(shuffledWords);
     localStorage.setItem("totalScore", Math.min(userScore, 10));
   }, [userScore]);
 
   const reinitialiserLocalStorage = () => {
     setUserScore(0);
   };
-
-  const [userAnswers, setUserAnswers] = useState(
-    Array(words.length).fill(null)
-  );
 
   const handleNextWord = () => {
     const correctWord = words[currentWordIndex].word.toUpperCase();
@@ -76,8 +71,16 @@ function ListenGame() {
     }
   };
 
+  const startBtn = (
+    <img
+      src={speaker}
+      alt="speak"
+      className={quizFinished ? "noSpeaker" : "speaker"}
+    />
+  );
+
   return (
-    <>
+    <div className="myLevelBody">
       <div className="header">
         <Link to="/Menu" className="leave">
           {" "}
@@ -118,14 +121,12 @@ function ListenGame() {
           </div>
         </div>
         <AnswerBillesComponent answers={userAnswers} />
-        <div className="score">
-          Score: {userScore}/{words.length}
-        </div>
+        <div className="score">Score: {userScore}</div>
         <button onClick={reinitialiserLocalStorage} type="button">
           Réinitialiser localStorage
         </button>
       </div>
-    </>
+    </div>
   );
 }
 
