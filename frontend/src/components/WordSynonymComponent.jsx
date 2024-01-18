@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import AnswerBillesComponent from "./AnswerBillesComponent";
 import "../style/WordSynonymComponent.css";
 

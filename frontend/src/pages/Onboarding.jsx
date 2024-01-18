@@ -169,5 +169,4 @@ function Onboarding() {
     </div>
   );
 }
-
 export default Onboarding;
