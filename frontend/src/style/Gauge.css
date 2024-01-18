@@ -7,7 +7,6 @@
 
 .gauge {
   height: 20px;
-  background-color: #ff9e67; /* Couleur de remplissage */
   border-radius: 8px;
   transition: width 0.3s ease-in-out;
 }

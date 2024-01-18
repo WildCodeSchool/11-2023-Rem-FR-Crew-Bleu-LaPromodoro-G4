@@ -6,11 +6,22 @@ function Instructions() {
   const togglePopup = () => {
     setPopupOpen(!popupOpen);
   };
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
 
   return (
     <>
       <div className="container-instructions">
-        <button type="button" className="instructions" onClick={togglePopup}>
+        <button
+          type="button"
+          className="instructions"
+          onClick={togglePopup}
+          style={{
+            color: userTheme.backgroundColor,
+            cursor: userTheme.crs,
+          }}
+        >
           Instructions
         </button>
         {popupOpen && (

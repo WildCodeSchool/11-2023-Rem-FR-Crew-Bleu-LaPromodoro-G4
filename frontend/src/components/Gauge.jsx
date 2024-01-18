@@ -9,10 +9,20 @@ function Gauge() {
   }, []);
   const gaugeWidth = Math.min(100, (score / 30) * 100);
 
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
+
   return (
     <div>
       <div className="gauge-container">
-        <div className="gauge" style={{ width: `${gaugeWidth}%` }} />
+        <div
+          className="gauge"
+          style={{
+            width: `${gaugeWidth}%`,
+            backgroundColor: userTheme.backgroundColor,
+          }}
+        />
       </div>
     </div>
   );
