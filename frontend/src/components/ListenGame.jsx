@@ -28,16 +28,11 @@ function ListenGame() {
     return Number.isNaN(parsedScore) ? 0 : parsedScore;
   });
 
-  const reinitialiserLocalStorage = () => {
-    setUserScore(0);
-  };
-
   useEffect(() => {
     const shuffledWords = shuffleArray([...wordsArray]).slice(0, 10);
     setWords(shuffledWords);
     localStorage.setItem("totalScore", Math.min(userScore, 10));
-    reinitialiserLocalStorage(setUserScore(0));
-  }, []);
+  }, [userScore]);
 
   const handleNextWord = () => {
     const correctWord = words[currentWordIndex].word.toUpperCase();

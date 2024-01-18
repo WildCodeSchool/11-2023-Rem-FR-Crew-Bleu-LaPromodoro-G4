@@ -62,8 +62,8 @@ canvas {
   bottom: 7%;
   left: 15%;
   background-color: white;
-  border-radius: 20px;
-  padding: 10px 30px;
+  border-radius: 3rem;
+  padding: 1.5rem;
   width: 700px;
 }
 
