@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Speech from "react-text-to-speech";
 import CardQuizz from "../components/CardQuizz";
 import AnswerBillesComponent from "../components/AnswerBillesComponent";
 
@@ -94,14 +93,6 @@ function Quizz() {
     } else {
       answerBullets[cardId - 1] = "notcorrect";
     }
-    // const incrementCount = (cardId, isRight) => {
-    //   const score = isRight ? count + 1 : count;
-    //   // update of state with a new value
-    //   setCount(score);
-
-    // forcing pages to refresh if the score didn't change
-    // setRefresh((prevRefresh) => prevRefresh + 1);
-
     // get div element from HTML page to put the score inside
     const divScore = document.getElementById("score");
     divScore.innerHTML = count.toString();

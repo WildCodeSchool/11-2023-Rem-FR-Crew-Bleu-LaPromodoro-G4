@@ -1,6 +1,7 @@
 import React from "react";
 import "../style/CardQuizz.css";
 import PropTypes from "prop-types";
+import Speech from "react-text-to-speech";
 import speaker from "../assets/speak.png";
 
 function CardQuizz({
@@ -25,6 +26,9 @@ function CardQuizz({
     buttonValidate: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
   };
+
+  const startBtn = <img src={speaker} alt="speak" className="speakerQuizz" />;
+
   const handleClick = () => {
     const choice1 = document.getElementById(input1); // to get the 1st html input object from return
     const choice2 = document.getElementById(input2); // to get the 2nd html input object from return
@@ -45,7 +49,13 @@ function CardQuizz({
   return (
     <div className="questionCardContainer">
       <div className="listenContainer">
-        <img src={speaker} alt="speak" className="speakerQuizz" />
+        <Speech
+          text={question}
+          pitch={1.5}
+          rate={1.5}
+          volume={0.5}
+          startBtn={startBtn}
+        />
       </div>
       <h4>{question}</h4>
       <div className="inputCardContainer">
