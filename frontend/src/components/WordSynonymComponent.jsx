@@ -98,11 +98,11 @@ function WordSynonymComponent() {
     correctSynonyms: [],
   });
   const [selectedSynonym, setSelectedSynonym] = useState("");
-  // const [confirmedSynonym, setConfirmedSynonym] = useState("");
   const [questionNumber, setQuestionNumber] = useState(1);
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState(Array(10).fill(null));
   const [showSynonyms, setShowSynonyms] = useState(true);
+  const [quizFinished, setQuizFinished] = useState(false);
   const totalQuestions = 10;
 
   useEffect(() => {
@@ -154,6 +154,7 @@ function WordSynonymComponent() {
       //   "totalScore dans le localStorage: ${updatedScore}"
       // );
       setShowSynonyms(false);
+      setQuizFinished(true);
     }
   };
 
@@ -170,6 +171,12 @@ function WordSynonymComponent() {
       <div className="game-container">
         <div className="card">
           <h3>Sélectionne le synonyme du mot suivant puis valide ta réponse</h3>
+          {quizFinished && (
+            <div className="end">
+              <p>Quiz terminé !</p>
+              {/* Vous pouvez ajouter d'autres éléments ici si nécessaire */}
+            </div>
+          )}
           <div className="score-display">Score: {score}</div>
           <div className="word-display">{currentWord.word}</div>
           {showSynonyms && (
