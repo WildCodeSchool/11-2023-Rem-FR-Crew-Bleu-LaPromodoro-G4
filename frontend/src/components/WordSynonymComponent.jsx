@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import AnswerBillesComponent from "./AnswerBillesComponent";
+import Results from "./Results";
 import "../style/WordSynonymComponent.css";
 
 const randomArray = (array) => {
@@ -159,53 +160,64 @@ function WordSynonymComponent() {
     }
   };
 
+  const endTitle = "Niveau 2 : Trouve les synonymes fini !";
+
   return (
-    <div>
-      <div className="retour">
-        <Link to="/menu">
-          <button type="button" className="quit-button">
+    <div className="myLevelBody">
+      {quizFinished ? (
+        ""
+      ) : (
+        <div className="header">
+          <Link to="/Menu" className="leave">
+            {" "}
             Quitter
-          </button>
-        </Link>
-        <h2 className="level-title">Niveau 2 : Trouve les synonymes</h2>
+          </Link>
+          <p className="level">Niveau 2: Synonyme</p>
+        </div>
+      )}
+      <div className="game">
+        {quizFinished ? (
+          <Results score={score} level={endTitle} />
+        ) : (
+          <div className="card">
+            <h3>
+              Sélectionne le synonyme du mot suivant puis valide ta réponse
+            </h3>
+            {/* <div className="score-display">Score: {score}</div> */}
+            <div className="word-display">{currentWord.word}</div>
+            {showSynonyms && (
+              <div className="synonyms-container">
+                {currentWord.synonyms.map((synonym) => (
+                  <button
+                    key={synonym}
+                    type="button"
+                    className={`synonym-button ${
+                      selectedSynonym === synonym ? "selected" : ""
+                    }`}
+                    onClick={() => handleSynonymSelection(synonym)}
+                  >
+                    {synonym}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+        {quizFinished ? (
+          <Link to="/menu">
+            <button type="button" className="leave">
+              Quitter
+            </button>
+          </Link>
+        ) : (
+          <div className="container-button">
+            <button className="leave" onClick={confirmSynonym} type="button">
+              Valider
+            </button>
+          </div>
+        )}
       </div>
-      <div className="game-container">
-        <div className="card">
-          <h3>Sélectionne le synonyme du mot suivant puis valide ta réponse</h3>
-          {quizFinished && (
-            <div className="end">
-              <p>Quiz terminé !</p>
-              {/* Vous pouvez ajouter d'autres éléments ici si nécessaire */}
-            </div>
-          )}
-          <div className="score-display">Score: {score}</div>
-          <div className="word-display">{currentWord.word}</div>
-          {showSynonyms && (
-            <div className="synonyms-container">
-              {currentWord.synonyms.map((synonym) => (
-                <button
-                  key={synonym}
-                  type="button"
-                  className={`synonym-button ${
-                    selectedSynonym === synonym ? "selected" : ""
-                  }`}
-                  onClick={() => handleSynonymSelection(synonym)}
-                >
-                  {synonym}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-        <div className="container-button">
-          <button
-            className="confirm-button"
-            onClick={confirmSynonym}
-            type="button"
-          >
-            Valider
-          </button>
-        </div>
+      <div className="realtime">
         <AnswerBillesComponent answers={answers} />
       </div>
     </div>

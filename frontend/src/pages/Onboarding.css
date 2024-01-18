@@ -31,6 +31,12 @@ h2 {
   font-size: 1rem;
   font-weight: bold;
   padding: 1rem 2rem;
+  transition: 0.2s;
+}
+
+.onboarding-btn-next:hover {
+  scale: 1.1;
+  transition: 0.2s;
 }
 
 .onboarding-wrapper {

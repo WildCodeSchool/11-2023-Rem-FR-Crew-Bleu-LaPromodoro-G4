@@ -4,6 +4,7 @@ import "../style/ListenGame.css";
 import Speech from "react-text-to-speech";
 import wordsArray from "./ListGameWords";
 import AnswerBillesComponent from "./AnswerBillesComponent";
+import Results from "./Results";
 import speaker from "../assets/speak.png";
 
 const shuffleArray = (array) => {
@@ -32,10 +33,6 @@ function ListenGame() {
     setWords(shuffledWords);
     localStorage.setItem("totalScore", Math.min(userScore, 10));
   }, [userScore]);
-
-  const reinitialiserLocalStorage = () => {
-    setUserScore(0);
-  };
 
   const handleNextWord = () => {
     const correctWord = words[currentWordIndex].word.toUpperCase();
@@ -79,37 +76,49 @@ function ListenGame() {
     />
   );
 
+  const levelTitle = "Niveau 1: Écoute fini !";
+
   return (
     <div className="myLevelBody">
-      <div className="header">
-        <Link to="/Menu" className="leave">
-          {" "}
-          Quitter
-        </Link>
-        <p className="level">Niveau 1: Écoute</p>
-      </div>
-      {quizFinished && (
-        <div className="end">
-          <p>Quiz terminé !</p>
+      {quizFinished ? (
+        ""
+      ) : (
+        <div className="header">
+          <Link to="/Menu" className="leave">
+            {" "}
+            Quitter
+          </Link>
+          <p className="level">Niveau 1: Écoute</p>
         </div>
       )}
       <div className="game">
-        <div className="quizSpace">
-          <Speech
-            text={words[currentWordIndex].word}
-            pitch={1.5}
-            rate={2}
-            volume={0.5}
-            startBtn={startBtn}
-          />
-          <input
-            className="wordType"
-            type="text"
-            placeholder="tapez le mot ici"
-            value={userInput}
-            onChange={handleInputChange}
-            onKeyDown={handleInputChange}
-          />
+        {quizFinished ? (
+          <Results score={userScore} level={levelTitle} />
+        ) : (
+          <div className="quizSpace">
+            <Speech
+              text={words[currentWordIndex].word}
+              lang="FR"
+              startBtn={startBtn}
+              onError={() => console.error("Browser not supported!")}
+            />
+            <input
+              className="wordType"
+              type="text"
+              placeholder="tapez le mot ici"
+              value={userInput}
+              onChange={handleInputChange}
+              onKeyDown={handleInputChange}
+            />
+          </div>
+        )}
+        {/* style du theme */}
+        {quizFinished ? (
+          <Link to="/Menu" className="leave">
+            {" "}
+            Quitter
+          </Link>
+        ) : (
           <div
             className={userInput !== "" ? "my-next-btn" : "no-next-btn"}
             role="button"
@@ -117,14 +126,12 @@ function ListenGame() {
             onClick={handleNextWord}
             onKeyDown={handleKeyDown}
           >
-            Suivant
+            <p>Suivant</p>
           </div>
-        </div>
+        )}
+      </div>
+      <div className="realtime">
         <AnswerBillesComponent answers={userAnswers} />
-        <div className="score">Score: {userScore}</div>
-        <button onClick={reinitialiserLocalStorage} type="button">
-          Réinitialiser localStorage
-        </button>
       </div>
     </div>
   );

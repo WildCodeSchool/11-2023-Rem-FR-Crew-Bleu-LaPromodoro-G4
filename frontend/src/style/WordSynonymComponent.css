@@ -1,11 +1,6 @@
-.game-container {
-  height: 100vh;
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   background-color: #f2f2f2;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
 }
 
 .retour {
@@ -14,15 +9,24 @@
   background-color: #f2f2f2;
 }
 
-.quit-button {
-  background-color: white;
-  border-radius: 40px;
-  width: 8rem;
+.leave {
   border: none;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 2rem;
-  padding: 10px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.2em;
+  color: black;
+  background-color: white;
+  border-radius: 45px 45px 45px 45px;
+  padding: 1rem 2rem;
+  transition: 0.2s;
+}
+
+.leave:hover {
+  color: white;
+  background-color: #f58fd8;
+  cursor: pointer;
+  /* box-shadow: 0 4px 8px rgba(53, 53, 53, 0.4); */
+  scale: 1.1;
 }
 
 .level-title {
@@ -33,33 +37,35 @@
 
 .card {
   background-color: white;
-  padding: 50px;
-  height: 400px;
-  width: 650px;
-  border-radius: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow */
+  padding: 3em;
+  border-radius: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  min-width: 40vw;
+  width: min-content;
+  gap: 2rem;
 }
 
 .card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
   margin-top: 0;
 }
 
 .word-display {
-  font-size: 50px;
-  font-weight: bolder;
+  font-size: 3rem;
+  font-weight: 700;
   color: black; /* Changed from white to black */
-  padding: 15px 50px;
-  margin: 20px;
   background: none; /* Remove the background */
 }
 
 .synonyms-container {
-  border-radius: 20px;
-  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
   margin: 20px;
 }
 
@@ -68,15 +74,17 @@
 }
 
 .synonym-button {
+  font-family: "Gill Sans";
   background-color: #f2f2f2; /* Non-selected color */
   color: black; /* Text color */
-  padding: 10px 25px;
+  padding: 1rem 2rem;
   margin: 10px; /* Adjusted margin */
-  border-radius: 20px;
-  border: 2px solid transparent; /* Add border to maintain size */
+  border-radius: 2rem;
+  border: none;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 1.5rem;
   transition: background-color 0.3s;
+  width: 40%;
 }
 
 .synonym-button.selected {
@@ -84,7 +92,7 @@
   border-color: #c0a3ff; /* Same as background to "remove" border */
 }
 
-.progress-container {
+/* .progress-container {
   display: flex;
   justify-content: center;
 }
@@ -109,7 +117,7 @@
 .answer-billes.notcorrect {
   background-color: #f44336;
   color: white;
-}
+} */
 
 .question-counter {
   font-size: 1em;
@@ -128,17 +136,6 @@
   align-items: center;
 }
 
-.confirm-button {
-  color: white;
-  background-color: #f58fd8;
-  border: none;
-  border-radius: 3rem;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 1rem 2rem;
-  margin-top: 20px;
-}
-
 .restart-button {
   color: white;
   background-color: #f58fd8;
@@ -149,14 +146,14 @@
   padding: 1rem 2rem;
   margin-top: 20px;
 }
-
+/* 
 .progress-container {
   background-color: white;
   border-radius: 20px;
   padding: 10px;
   margin: 20px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .score-display {
   font-size: 16px;
