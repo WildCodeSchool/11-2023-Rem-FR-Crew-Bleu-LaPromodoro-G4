@@ -42,21 +42,32 @@ function CardQuizz({
   };
 
   return (
-    <div className="questionCard">
-      <p>{question}</p>
+    <div className="questionCardContainer">
+      <div className="listenContainer">
+        <button type="button" className="buttonListen">
+          son
+        </button>
+      </div>
+      <h4>{question}</h4>
+      <div className="inputCardContainer">
+        <div className="inputRadio1">
+          {/* using input1 et input2 to identify each input */}
+          <input type="radio" id={input1} name="choice" value={input1} />
+          <label htmlFor={input1}>{answer1}</label>
+        </div>
+        <div className="inputRadio2">
+          <input type="radio" id={input2} name="choice" value={input2} />
+          <label htmlFor={input2}>{answer2}</label>
+        </div>
+      </div>
 
       <div>
-        {/* using input1 et input2 to identify each input */}
-        <input type="radio" id={input1} name="choice" value={input1} />
-        <label htmlFor={input1}>{answer1}</label>
-      </div>
-      <div>
-        <input type="radio" id={input2} name="choice" value={input2} />
-        <label htmlFor={input2}>{answer2}</label>
-      </div>
-
-      <div>
-        <button id={buttonValidate} type="submit" onClick={handleClick}>
+        <button
+          id={buttonValidate}
+          type="submit"
+          className="buttonValidate"
+          onClick={handleClick}
+        >
           Valider
         </button>
       </div>
