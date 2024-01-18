@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Typewriter } from "react-simple-typewriter";
-
 import Lapin from "../components/Lapin";
 import Ours from "../components/Ours";
 import Pig from "../components/Pig";

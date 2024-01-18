@@ -35,13 +35,16 @@ a {
 .btnEnter1,
 .btnEnter2,
 .btnEnter3 .btnEnter4 {
+  font-family: "Gill Sans";
+  font-size: 1.2rem;
+  font-weight: 600;
   cursor: pointer;
   border: none;
-  padding: 20px 40px;
-  border-radius: 30px;
-  background-color: rgb(253, 173, 190);
+  padding: 1rem 2rem;
+  border-radius: 3rem;
   color: white;
   font-weight: 600;
+  transition: 0.2s;
 }
 
 .btnEnter1 {
@@ -61,6 +64,7 @@ a {
 .btnEnter1:hover,
 .btnEnter2:hover,
 .btnEnter3:hover .btnEnter4:hover {
+  transition: 0.2s;
   transform: scale(1.1);
 }
 

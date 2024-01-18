@@ -20,7 +20,7 @@ const elementStyle = [
   {
     id: 1,
     color: "white",
-    backgroundColor: "#f58fd8",
+    backgroundColor: "#49D9FF",
     crs: "pointer",
     evt: "auto",
     preview: themeImg1,
@@ -36,7 +36,7 @@ const elementStyle = [
   {
     id: 3,
     color: "white",
-    backgroundColor: "#49D9FF",
+    backgroundColor: "#f58fd8",
     crs: "pointer",
     evt: "auto",
     preview: themeImg3,
