@@ -117,42 +117,62 @@ function Quizz() {
   const handleClick1 = () => {
     const div = document.getElementById("card1");
     div.classList.remove("cardsHide"); // remove hide CSS to show the card
+    const container = document.getElementById("scroll1");
+    container.scrollIntoView(); // a method that scrolls the page so as to make the element visible.
   };
   const handleClick2 = () => {
     const div = document.getElementById("card2");
     div.classList.remove("cardsHide");
+    const container = document.getElementById("scroll2");
+    container.scrollIntoView();
   };
   const handleClick3 = () => {
     const div = document.getElementById("card3");
     div.classList.remove("cardsHide");
+    const container = document.getElementById("scroll3");
+    container.scrollIntoView();
   };
   const handleClick4 = () => {
     const div = document.getElementById("card4");
     div.classList.remove("cardsHide");
+    const container = document.getElementById("scroll4");
+    container.scrollIntoView();
   };
   const handleClick5 = () => {
     const div = document.getElementById("card5");
     div.classList.remove("cardsHide");
+    const container = document.getElementById("scroll5");
+    container.scrollIntoView();
   };
   const handleClick6 = () => {
     const div = document.getElementById("card6");
     div.classList.remove("cardsHide");
+    const container = document.getElementById("scroll6");
+    container.scrollIntoView();
   };
   const handleClick7 = () => {
     const div = document.getElementById("card7");
     div.classList.remove("cardsHide");
+    const container = document.getElementById("scroll7");
+    container.scrollIntoView();
   };
   const handleClick8 = () => {
     const div = document.getElementById("card8");
     div.classList.remove("cardsHide");
+    const container = document.getElementById("scroll8");
+    container.scrollIntoView();
   };
   const handleClick9 = () => {
     const div = document.getElementById("card9");
     div.classList.remove("cardsHide");
+    const container = document.getElementById("scroll9");
+    container.scrollIntoView();
   };
   const handleClick10 = () => {
     const div = document.getElementById("card10");
     div.classList.remove("cardsHide");
+    const container = document.getElementById("scroll10");
+    container.scrollIntoView();
   };
 
   return (
@@ -171,7 +191,7 @@ function Quizz() {
       <h3 className="instruction">
         Lis la question et choisis la bonne réponse:
       </h3>
-      <div className="buttonContainer">
+      <div id="scroll1" className="buttonContainer">
         <button type="submit" className="buttonCard" onClick={handleClick1}>
           1{" "}
         </button>
@@ -189,7 +209,7 @@ function Quizz() {
           />
         </div>
       </div>
-      <div className="buttonContainer">
+      <div id="scroll2" className="buttonContainer">
         <button type="submit" className="buttonCard" onClick={handleClick2}>
           2{" "}
         </button>
@@ -207,7 +227,7 @@ function Quizz() {
           />
         </div>
       </div>
-      <div className="buttonContainer">
+      <div id="scroll3" className="buttonContainer">
         <button type="submit" className="buttonCard" onClick={handleClick3}>
           3{" "}
         </button>
@@ -225,7 +245,7 @@ function Quizz() {
           />
         </div>
       </div>
-      <div className="buttonContainer">
+      <div id="scroll4" className="buttonContainer">
         <button type="submit" className="buttonCard" onClick={handleClick4}>
           4{" "}
         </button>
@@ -243,7 +263,7 @@ function Quizz() {
           />
         </div>
       </div>
-      <div className="buttonContainer">
+      <div id="scroll5" className="buttonContainer">
         <button type="submit" className="buttonCard" onClick={handleClick5}>
           5{" "}
         </button>
@@ -261,7 +281,7 @@ function Quizz() {
           />
         </div>
       </div>
-      <div className="buttonContainer">
+      <div id="scroll6" className="buttonContainer">
         <button type="submit" className="buttonCard" onClick={handleClick6}>
           6{" "}
         </button>
@@ -279,7 +299,7 @@ function Quizz() {
           />
         </div>
       </div>
-      <div className="buttonContainer">
+      <div id="scroll7" className="buttonContainer">
         <button type="submit" className="buttonCard" onClick={handleClick7}>
           7{" "}
         </button>
@@ -297,7 +317,7 @@ function Quizz() {
           />
         </div>
       </div>
-      <div className="buttonContainer">
+      <div id="scroll8" className="buttonContainer">
         <button type="submit" className="buttonCard" onClick={handleClick8}>
           8{" "}
         </button>
@@ -315,7 +335,7 @@ function Quizz() {
           />
         </div>
       </div>
-      <div className="buttonContainer">
+      <div id="scroll9" className="buttonContainer">
         <button type="submit" className="buttonCard" onClick={handleClick9}>
           9{" "}
         </button>
@@ -333,7 +353,7 @@ function Quizz() {
           />
         </div>
       </div>
-      <div className="buttonContainer">
+      <div id="scroll10" className="buttonContainer">
         <button type="submit" className="buttonCard" onClick={handleClick10}>
           10{" "}
         </button>
