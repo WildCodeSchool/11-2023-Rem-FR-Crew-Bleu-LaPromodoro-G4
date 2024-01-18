@@ -4,7 +4,8 @@
   background-color: white;
   border-radius: 3rem;
   padding: 1.5rem;
-  margin: 20px 0;
+  margin: 3rem;
+  width: min-content;
 }
 
 .answer-billes {

@@ -81,18 +81,24 @@ function ListenGame() {
     />
   );
 
+  const levelTitle = "Niveau 1: Écoute fini !";
+
   return (
     <div className="myLevelBody">
-      <div className="header">
-        <Link to="/Menu" className="leave">
-          {" "}
-          Quitter
-        </Link>
-        <p className="level">Niveau 1: Écoute</p>
-      </div>
+      {quizFinished ? (
+        ""
+      ) : (
+        <div className="header">
+          <Link to="/Menu" className="leave">
+            {" "}
+            Quitter
+          </Link>
+          <p className="level">Niveau 1: Écoute</p>
+        </div>
+      )}
       <div className="game">
         {quizFinished ? (
-          <Results score={userScore} />
+          <Results score={userScore} level={levelTitle} />
         ) : (
           <div className="quizSpace">
             <Speech
@@ -113,19 +119,25 @@ function ListenGame() {
           </div>
         )}
         {/* style du theme */}
-        <div
-          className={userInput !== "" ? "my-next-btn" : "no-next-btn"}
-          role="button"
-          tabIndex={0}
-          onClick={handleNextWord}
-          onKeyDown={handleKeyDown}
-        >
-          <p>Suivant</p>
-        </div>
+        {quizFinished ? (
+          <Link to="/Menu" className="leave">
+            {" "}
+            Quitter
+          </Link>
+        ) : (
+          <div
+            className={userInput !== "" ? "my-next-btn" : "no-next-btn"}
+            role="button"
+            tabIndex={0}
+            onClick={handleNextWord}
+            onKeyDown={handleKeyDown}
+          >
+            <p>Suivant</p>
+          </div>
+        )}
+      </div>
+      <div className="realtime">
         <AnswerBillesComponent answers={userAnswers} />
-        <button onClick={reinitialiserLocalStorage} type="button">
-          Réinitialiser localStorage
-        </button>
       </div>
     </div>
   );
