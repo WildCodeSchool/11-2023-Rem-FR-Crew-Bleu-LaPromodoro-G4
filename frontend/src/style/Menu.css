@@ -1,5 +1,5 @@
 canvas {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 2500px;
@@ -22,14 +22,14 @@ canvas {
 }
 
 .dialogue {
-  position: absolute;
-  top: 50%;
+  position: fixed;
+  top: 43%;
   left: 25%;
   background-color: rgba(255, 144, 168, 0);
   color: rgba(255, 144, 168, 0);
   border-radius: 100px;
   border: none;
-  height: 200px;
+  height: 250px;
   width: 200px;
   cursor: pointer;
   padding-top: 25px;
@@ -55,4 +55,20 @@ canvas {
   border-top: 7.5px solid transparent;
   border-left: 25px solid rgb(255, 255, 255);
   border-bottom: 50px solid transparent;
+}
+
+.gaugeplace {
+  position: absolute;
+  bottom: 7%;
+  left: 15%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px 30px;
+  width: 700px;
+}
+
+.txt-gauge {
+  padding-right: 70px;
+  display: flex;
+  justify-content: space-between;
 }

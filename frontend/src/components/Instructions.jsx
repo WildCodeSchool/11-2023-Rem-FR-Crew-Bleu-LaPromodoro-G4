@@ -28,6 +28,9 @@ function Instructions() {
             </button> */}
           </div>
         )}
+        {/* <div className="gauge-place">
+          
+        </div> */}
       </div>
       {/* <div>
         <img src={Bar} alt="progress bar" className="bar" />

@@ -1,5 +1,4 @@
-import { useState, React } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { Typewriter } from "react-simple-typewriter";
 
 import Lapin from "../components/Lapin";
@@ -7,6 +6,7 @@ import Ours from "../components/Ours";
 import Pig from "../components/Pig";
 import Instructions from "../components/Instructions";
 import MainNiveaux from "../components/MainNiveaux";
+import Gauge from "../components/Gauge";
 
 import "../style/Menu.css";
 
@@ -18,14 +18,13 @@ function Menu() {
   const [userTheme] = useState(userThemeFromLocalStorage);
 
   console.info(`Mon theme choisi : ${userTheme.id}`);
+  const [userName, setUserName] = useState("");
+  // progress bar
 
-  // bulle personnage
-
-  const [dialogue, setDialogue] = useState(false);
-  const changePopup = () => {
-    setDialogue(!dialogue);
-  };
-
+  useEffect(() => {
+    const storedUserName = localStorage.getItem("userName") || "";
+    setUserName(storedUserName);
+  }, []);
   let backgroundComponent;
 
   if (userTheme.id === 1) {
@@ -36,11 +35,12 @@ function Menu() {
     backgroundComponent = <Pig />;
   }
 
-  // Recupere l'username de l'Onboarding
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const username = searchParams.get("username");
+  // bulle personnage
 
+  const [dialogue, setDialogue] = useState(false);
+  const changePopup = () => {
+    setDialogue(!dialogue);
+  };
   return (
     <div className="mainContent">
       <div className="mainContainer">
@@ -59,7 +59,7 @@ function Menu() {
               <p>
                 <Typewriter
                   words={[
-                    `Bonjour ${username} et bienvenue sur Gengo`,
+                    `Bonjour ${userName} et bienvenue sur Gengo`,
                     `Choisi un niveau en appuyant sur 'Entrer'`,
                   ]}
                   loop={1}
@@ -70,6 +70,15 @@ function Menu() {
             </div>
           </div>
         )}
+      </div>
+      <div className="gaugeplace">
+        <div className="txt-gauge">
+          <p>0</p>
+          <p>100</p>
+          <p>200</p>
+          <p>300</p>
+        </div>
+        <Gauge />
       </div>
     </div>
   );

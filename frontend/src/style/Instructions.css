@@ -9,13 +9,11 @@
   border: none;
   padding: 20px 35px;
   border-radius: 30px;
-  color: rgb(238, 118, 144);
+  color: #ff9e67;
   background-color: white;
   font-size: 1.2em;
   font-family: Arial, Helvetica, sans-serif;
-  box-shadow:
-    rgba(255, 144, 168, 0.5) 0px 1px 3px 0px,
-    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 }
 
 .instructions:hover {
@@ -40,7 +38,6 @@
   grid-template-columns: auto auto;
   grid-template-rows: 100px 200px 150px;
   justify-content: space-around;
-  background-color: aqua;
 }
 
 .bar {
@@ -51,4 +48,10 @@
 
 .titleEtapes {
   text-align: start;
+}
+
+.gauge-place {
+  position: absolute;
+  left: 200%;
+  top: 1250%;
 }

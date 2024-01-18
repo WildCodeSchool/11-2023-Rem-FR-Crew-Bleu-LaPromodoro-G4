@@ -150,7 +150,7 @@ function Onboarding() {
             <h3>{userName || ""}</h3>
           </div>
         </div>
-        <Link to={`/menu?username=${userName}`}>
+        <Link to="/menu">
           <button
             id="onboarding-btn-next"
             type="button"
