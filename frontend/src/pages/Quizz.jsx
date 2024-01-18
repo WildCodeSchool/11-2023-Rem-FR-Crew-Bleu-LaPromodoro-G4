@@ -134,6 +134,26 @@ function Quizz() {
     const div = document.getElementById("card5");
     div.classList.remove("cardsHide");
   };
+  const handleClick6 = () => {
+    const div = document.getElementById("card6");
+    div.classList.remove("cardsHide");
+  };
+  const handleClick7 = () => {
+    const div = document.getElementById("card7");
+    div.classList.remove("cardsHide");
+  };
+  const handleClick8 = () => {
+    const div = document.getElementById("card8");
+    div.classList.remove("cardsHide");
+  };
+  const handleClick9 = () => {
+    const div = document.getElementById("card9");
+    div.classList.remove("cardsHide");
+  };
+  const handleClick10 = () => {
+    const div = document.getElementById("card10");
+    div.classList.remove("cardsHide");
+  };
 
   return (
     <div>
@@ -238,6 +258,96 @@ function Quizz() {
             incrementCount={incrementCount}
             buttonValidate="buttonValidate5"
             id={5}
+          />
+        </div>
+      </div>
+      <div className="buttonContainer">
+        <button type="submit" className="buttonCard" onClick={handleClick6}>
+          6{" "}
+        </button>
+        <div id="card6" className="cardsHide">
+          <CardQuizz
+            question={quizzAnimal[5].question}
+            answer1={quizzAnimal[5].answer1}
+            answer2={quizzAnimal[5].answer2}
+            validAnswer={quizzAnimal[5].validAnswer}
+            input1="input11"
+            input2="input12"
+            incrementCount={incrementCount}
+            buttonValidate="buttonValidate6"
+            id={6}
+          />
+        </div>
+      </div>
+      <div className="buttonContainer">
+        <button type="submit" className="buttonCard" onClick={handleClick7}>
+          7{" "}
+        </button>
+        <div id="card7" className="cardsHide">
+          <CardQuizz
+            question={quizzAnimal[6].question}
+            answer1={quizzAnimal[6].answer1}
+            answer2={quizzAnimal[6].answer2}
+            validAnswer={quizzAnimal[6].validAnswer}
+            input1="input13"
+            input2="input14"
+            incrementCount={incrementCount}
+            buttonValidate="buttonValidate7"
+            id={7}
+          />
+        </div>
+      </div>
+      <div className="buttonContainer">
+        <button type="submit" className="buttonCard" onClick={handleClick8}>
+          8{" "}
+        </button>
+        <div id="card8" className="cardsHide">
+          <CardQuizz
+            question={quizzAnimal[7].question}
+            answer1={quizzAnimal[7].answer1}
+            answer2={quizzAnimal[7].answer2}
+            validAnswer={quizzAnimal[7].validAnswer}
+            input1="input15"
+            input2="input16"
+            incrementCount={incrementCount}
+            buttonValidate="buttonValidate8"
+            id={8}
+          />
+        </div>
+      </div>
+      <div className="buttonContainer">
+        <button type="submit" className="buttonCard" onClick={handleClick9}>
+          9{" "}
+        </button>
+        <div id="card9" className="cardsHide">
+          <CardQuizz
+            question={quizzAnimal[8].question}
+            answer1={quizzAnimal[8].answer1}
+            answer2={quizzAnimal[8].answer2}
+            validAnswer={quizzAnimal[8].validAnswer}
+            input1="input17"
+            input2="input18"
+            incrementCount={incrementCount}
+            buttonValidate="buttonValidate9"
+            id={9}
+          />
+        </div>
+      </div>
+      <div className="buttonContainer">
+        <button type="submit" className="buttonCard" onClick={handleClick10}>
+          10{" "}
+        </button>
+        <div id="card10" className="cardsHide">
+          <CardQuizz
+            question={quizzAnimal[9].question}
+            answer1={quizzAnimal[9].answer1}
+            answer2={quizzAnimal[9].answer2}
+            validAnswer={quizzAnimal[9].validAnswer}
+            input1="input19"
+            input2="input20"
+            incrementCount={incrementCount}
+            buttonValidate="buttonValidate10"
+            id={10}
           />
         </div>
       </div>

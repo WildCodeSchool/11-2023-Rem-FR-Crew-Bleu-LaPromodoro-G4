@@ -71,7 +71,7 @@
   align-items: center;
   justify-content: center;
   gap: 2em;
-  padding: 2em;
+  padding: 20px;
   border-radius: 20px;
   flex-wrap: wrap;
   height: 300px;
@@ -79,14 +79,14 @@
 }
 
 .listenContainer {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width:100%;
+  width: 100%;
 }
 
 .buttonListen {
-  display:flex;
+  display: flex;
   flex-direction: row;
   border: none;
   border-radius: 30px;
@@ -122,4 +122,3 @@
   flex-direction: row;
   gap: 15px;
 }
-
