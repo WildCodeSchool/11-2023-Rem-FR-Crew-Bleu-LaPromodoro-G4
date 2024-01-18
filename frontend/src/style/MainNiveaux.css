@@ -8,8 +8,8 @@ body {
   position: absolute;
   top: 25%;
   right: 5%;
-  height: 460px;
-  width: 480px;
+  height: 500px;
+  width: 520px;
   border-radius: 60px;
   padding: 35px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -80,12 +80,12 @@ a {
 }
 .lock3 {
   padding: 20px 40px;
-  height: 50px;
+  height: 70px;
   color: white;
 }
 
 .lock4 {
   padding: 20px 40px;
-  height: 50px;
+  height: 70px;
   color: white;
 }
