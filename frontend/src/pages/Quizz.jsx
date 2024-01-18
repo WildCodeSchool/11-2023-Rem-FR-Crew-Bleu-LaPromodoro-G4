@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Speech from "react-text-to-speech";
 import CardQuizz from "../components/CardQuizz";
 import AnswerBillesComponent from "../components/AnswerBillesComponent";
 

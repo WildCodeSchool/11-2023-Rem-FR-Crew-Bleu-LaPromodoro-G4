@@ -1,6 +1,7 @@
 import React from "react";
 import "../style/CardQuizz.css";
 import PropTypes from "prop-types";
+import speaker from "../assets/speak.png";
 
 function CardQuizz({
   question,
@@ -44,9 +45,7 @@ function CardQuizz({
   return (
     <div className="questionCardContainer">
       <div className="listenContainer">
-        <button type="button" className="buttonListen">
-          son
-        </button>
+        <img src={speaker} alt="speak" className="speakerQuizz" />
       </div>
       <h4>{question}</h4>
       <div className="inputCardContainer">
