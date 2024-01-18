@@ -84,7 +84,7 @@
   border-color: #c0a3ff; /* Same as background to "remove" border */
 }
 
-.progress-container {
+/* .progress-container {
   display: flex;
   justify-content: center;
 }
@@ -109,7 +109,7 @@
 .answer-billes.notcorrect {
   background-color: #f44336;
   color: white;
-}
+} */
 
 .question-counter {
   font-size: 1em;
@@ -149,14 +149,14 @@
   padding: 1rem 2rem;
   margin-top: 20px;
 }
-
+/* 
 .progress-container {
   background-color: white;
   border-radius: 20px;
   padding: 10px;
   margin: 20px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .score-display {
   font-size: 16px;

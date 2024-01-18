@@ -4,6 +4,7 @@ import "../style/ListenGame.css";
 import Speech from "react-text-to-speech";
 import wordsArray from "./ListGameWords";
 import AnswerBillesComponent from "./AnswerBillesComponent";
+import Results from "./Results";
 import speaker from "../assets/speak.png";
 
 const shuffleArray = (array) => {
@@ -27,15 +28,16 @@ function ListenGame() {
     return Number.isNaN(parsedScore) ? 0 : parsedScore;
   });
 
+  const reinitialiserLocalStorage = () => {
+    setUserScore(0);
+  };
+
   useEffect(() => {
     const shuffledWords = shuffleArray([...wordsArray]).slice(0, 10);
     setWords(shuffledWords);
     localStorage.setItem("totalScore", Math.min(userScore, 10));
-  }, [userScore]);
-
-  const reinitialiserLocalStorage = () => {
-    setUserScore(0);
-  };
+    reinitialiserLocalStorage(setUserScore(0));
+  }, []);
 
   const handleNextWord = () => {
     const correctWord = words[currentWordIndex].word.toUpperCase();
@@ -88,40 +90,39 @@ function ListenGame() {
         </Link>
         <p className="level">Niveau 1: Écoute</p>
       </div>
-      {quizFinished && (
-        <div className="end">
-          <p>Quiz terminé !</p>
-        </div>
-      )}
       <div className="game">
-        <div className="quizSpace">
-          <Speech
-            text={words[currentWordIndex].word}
-            pitch={1.5}
-            rate={2}
-            volume={0.5}
-            startBtn={startBtn}
-          />
-          <input
-            className="wordType"
-            type="text"
-            placeholder="tapez le mot ici"
-            value={userInput}
-            onChange={handleInputChange}
-            onKeyDown={handleInputChange}
-          />
-          <div
-            className={userInput !== "" ? "my-next-btn" : "no-next-btn"}
-            role="button"
-            tabIndex={0}
-            onClick={handleNextWord}
-            onKeyDown={handleKeyDown}
-          >
-            Suivant
+        {quizFinished ? (
+          <Results score={userScore} />
+        ) : (
+          <div className="quizSpace">
+            <Speech
+              text={words[currentWordIndex].word}
+              pitch={1.5}
+              rate={2}
+              volume={0.5}
+              startBtn={startBtn}
+            />
+            <input
+              className="wordType"
+              type="text"
+              placeholder="tapez le mot ici"
+              value={userInput}
+              onChange={handleInputChange}
+              onKeyDown={handleInputChange}
+            />
           </div>
+        )}
+        {/* style du theme */}
+        <div
+          className={userInput !== "" ? "my-next-btn" : "no-next-btn"}
+          role="button"
+          tabIndex={0}
+          onClick={handleNextWord}
+          onKeyDown={handleKeyDown}
+        >
+          <p>Suivant</p>
         </div>
         <AnswerBillesComponent answers={userAnswers} />
-        <div className="score">Score: {userScore}</div>
         <button onClick={reinitialiserLocalStorage} type="button">
           Réinitialiser localStorage
         </button>
