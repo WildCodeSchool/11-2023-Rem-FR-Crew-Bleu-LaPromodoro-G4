@@ -147,4 +147,24 @@
   display: none;
   }
 
- 
+  #card2
+  > div
+  > div.listenContainer
+  > div
+  > span:nth-child(2)
+  > span
+  > svg
+ {
+  display: none;
+  }
+
+  #card3
+  > div
+  > div.listenContainer
+  > div
+  > span:nth-child(2)
+  > span
+  > svg
+ {
+  display: none;
+  }
