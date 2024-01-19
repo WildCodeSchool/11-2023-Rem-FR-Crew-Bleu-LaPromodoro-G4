@@ -48,14 +48,6 @@
   transition: 0.2s;
 }
 
-.leave:hover {
-  color: white;
-  background-color: #f58fd8;
-  cursor: pointer;
-  /* box-shadow: 0 4px 8px rgba(53, 53, 53, 0.4); */
-  scale: 1.1;
-}
-
 .logo1 {
   cursor: pointer;
   margin-top: 1em;
@@ -130,9 +122,6 @@
   text-decoration: none;
   text-align: center;
   font-size: 1.2em;
-  font-weight: 700;
-  color: white;
-  background-color: #f58fd8;
   border-radius: 45px 45px 45px 45px;
   padding: 1rem 2rem;
   transition: 0.2s;
@@ -145,16 +134,12 @@
   font-weight: 600;
   border-radius: 45px 45px 45px 45px;
   padding: 1rem 2rem;
+  border: none;
   transition: 0.2s;
   color: #b3b3b3;
   background-color: white;
   pointer-events: none;
-}
-
-.my-next-btn:hover {
-  cursor: pointer;
-  /* box-shadow: 0 4px 8px #f58fd8; */
-  scale: 1.1;
+  transition: 0.2s;
 }
 
 .realtime {

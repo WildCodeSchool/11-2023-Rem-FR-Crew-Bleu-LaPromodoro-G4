@@ -94,6 +94,13 @@ const words = [
 ];
 
 function WordSynonymComponent() {
+  // Gestion des hovers sur les boutons
+  const [isHovered, setIsHovered] = useState(false);
+  // Import themes
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
+
   const [currentWord, setCurrentWord] = useState({
     word: "",
     synonyms: [],
@@ -168,7 +175,15 @@ function WordSynonymComponent() {
         ""
       ) : (
         <div className="header">
-          <Link to="/Menu" className="leave">
+          <Link
+            to="/Menu"
+            className="leave"
+            style={{
+              color: userTheme.color,
+              backgroundColor: userTheme.backgroundColor,
+              cursor: userTheme.crs,
+            }}
+          >
             {" "}
             Quitter
           </Link>
@@ -191,9 +206,15 @@ function WordSynonymComponent() {
                   <button
                     key={synonym}
                     type="button"
-                    className={`synonym-button ${
-                      selectedSynonym === synonym ? "selected" : ""
-                    }`}
+                    style={{
+                      color: selectedSynonym === synonym ? userTheme.color : "",
+                      backgroundColor:
+                        selectedSynonym === synonym
+                          ? userTheme.backgroundColor
+                          : "",
+                      cursor: userTheme.crs,
+                    }}
+                    className="synonym-button"
                     onClick={() => handleSynonymSelection(synonym)}
                   >
                     {synonym}
@@ -210,11 +231,20 @@ function WordSynonymComponent() {
             </button>
           </Link>
         ) : (
-          <div className="container-button">
-            <button className="leave" onClick={confirmSynonym} type="button">
-              Valider
-            </button>
-          </div>
+          <button
+            className="leave"
+            onClick={confirmSynonym}
+            type="button"
+            style={{
+              color: isHovered ? userTheme.color : "",
+              backgroundColor: isHovered ? userTheme.backgroundColor : "",
+              cursor: userTheme.crs,
+            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            Valider
+          </button>
         )}
       </div>
       <div className="realtime">
