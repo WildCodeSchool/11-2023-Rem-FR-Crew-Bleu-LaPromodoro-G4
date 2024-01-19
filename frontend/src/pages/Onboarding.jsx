@@ -14,13 +14,15 @@ const elementStyle = [
     color: "#b3b3b3",
     backgroundColor: "#f2f2f2",
     crs: "",
+    evt: "none",
     preview: themeImgDef,
   },
   {
     id: 1,
     color: "white",
-    backgroundColor: "#f58fd8",
+    backgroundColor: "#49D9FF",
     crs: "pointer",
+    evt: "auto",
     preview: themeImg1,
   },
   {
@@ -28,13 +30,15 @@ const elementStyle = [
     color: "white",
     backgroundColor: "#FF9E67",
     crs: "pointer",
+    evt: "auto",
     preview: themeImg2,
   },
   {
     id: 3,
     color: "white",
-    backgroundColor: "#49D9FF",
+    backgroundColor: "#f58fd8",
     crs: "pointer",
+    evt: "auto",
     preview: themeImg3,
   },
 ];
@@ -150,6 +154,8 @@ function Onboarding() {
             <h3>{userName || ""}</h3>
           </div>
         </div>
+
+        {/* Condition pour desactiver le defaut */}
         <Link to="/menu">
           <button
             id="onboarding-btn-next"
@@ -159,6 +165,7 @@ function Onboarding() {
               color: userTheme.color,
               backgroundColor: userTheme.backgroundColor,
               cursor: userTheme.crs,
+              pointerEvents: userName.evt,
             }}
             onClick={storeDataNext}
           >
@@ -169,5 +176,4 @@ function Onboarding() {
     </div>
   );
 }
-
 export default Onboarding;

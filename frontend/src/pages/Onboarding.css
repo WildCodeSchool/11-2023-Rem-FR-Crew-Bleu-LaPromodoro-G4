@@ -26,11 +26,18 @@ h2 {
 }
 
 .onboarding-btn-next {
+  font-family: "Gill Sans", "Gill Sans MT";
   border: none;
   border-radius: 3rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   padding: 1rem 2rem;
+  transition: 0.2s;
+}
+
+.onboarding-btn-next:hover {
+  scale: 1.1;
+  transition: 0.2s;
 }
 
 .onboarding-wrapper {
