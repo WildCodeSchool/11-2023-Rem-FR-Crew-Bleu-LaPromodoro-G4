@@ -396,6 +396,14 @@ function Quizz() {
           </div>
         </div>
       )}
+      {quizFinished ? (
+        <Link to="/Menu" className="leaveQuizz">
+          {" "}
+          Quitter
+        </Link>
+      ) : (
+        ""
+      )}
       <AnswerBillesComponent answers={answerBullets} />
     </div>
   );
