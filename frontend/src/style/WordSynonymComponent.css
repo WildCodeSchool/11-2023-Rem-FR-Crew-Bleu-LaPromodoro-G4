@@ -1,5 +1,5 @@
 body {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Gill Sans";
   background-color: #f2f2f2;
 }
 
@@ -22,10 +22,6 @@ body {
 }
 
 .leave:hover {
-  color: white;
-  background-color: #f58fd8;
-  cursor: pointer;
-  /* box-shadow: 0 4px 8px rgba(53, 53, 53, 0.4); */
   scale: 1.1;
 }
 
@@ -85,11 +81,6 @@ body {
   font-size: 1.5rem;
   transition: background-color 0.3s;
   width: 40%;
-}
-
-.synonym-button.selected {
-  background-color: #c0a3ff; /* Selected color */
-  border-color: #c0a3ff; /* Same as background to "remove" border */
 }
 
 /* .progress-container {
