@@ -199,10 +199,10 @@ function Quizz() {
           <p className="levelQuizz">Niveau 3: Jeu de définitions</p>
         </div>
       )}
-      {/* <div className="scoreQuizz">
+      <div className="scoreQuizz">
         <div>Score:</div>
         <div id="score">0</div>
-      </div> */}
+      </div>
       <h3 className="instruction">
         Lis la question et choisis la bonne réponse:
       </h3>
