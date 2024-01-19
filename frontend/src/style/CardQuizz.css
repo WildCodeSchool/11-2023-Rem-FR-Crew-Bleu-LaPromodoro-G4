@@ -135,3 +135,16 @@
     2px 2px 6px #c5c5c5,
     -6px -6px 12px #ffffff;
 }
+
+  #card1
+  > div
+  > div.listenContainer
+  > div
+  > span:nth-child(2)
+  > span
+  > svg
+ {
+  display: none;
+  }
+
+ 
