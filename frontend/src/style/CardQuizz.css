@@ -61,6 +61,12 @@
 .cardsHide {
   display: none;
 }
+
+.pageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .questionCardContainer {
   border-width: 4px 4px 4px 4px;
   border-color: rgb(62, 129, 162);
@@ -76,6 +82,7 @@
   flex-wrap: wrap;
   height: 300px;
   width: 550px;
+  margin: 80px;
 }
 
 .listenContainer {
@@ -136,35 +143,6 @@
     -6px -6px 12px #ffffff;
 }
 
-  #card1
-  > div
-  > div.listenContainer
-  > div
-  > span:nth-child(2)
-  > span
-  > svg
- {
+#quizzCard > div.listenContainer > div > span:nth-child(2) > span > svg {
   display: none;
-  }
-
-  #card2
-  > div
-  > div.listenContainer
-  > div
-  > span:nth-child(2)
-  > span
-  > svg
- {
-  display: none;
-  }
-
-  #card3
-  > div
-  > div.listenContainer
-  > div
-  > span:nth-child(2)
-  > span
-  > svg
- {
-  display: none;
-  }
+}

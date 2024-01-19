@@ -4,7 +4,6 @@ import CardQuizz from "../components/CardQuizz";
 import AnswerBillesComponent from "../components/AnswerBillesComponent";
 
 function Quizz() {
-
   const [count, setCount] = useState(() => {
     const storedScore = localStorage.getItem("totalScore");
     const parsedScore = storedScore ? parseInt(storedScore, 10) : 20;
@@ -15,11 +14,9 @@ function Quizz() {
     localStorage.setItem("totalScore", count.toString());
   }, [count]);
 
-  const [answerBullets, setAnswerBullets] = useState(
-    Array(10).fill("")
-  );
+  const [answerBullets, setAnswerBullets] = useState(Array(10).fill(""));
 
- const incrementCount = (cardId, isRight) => {
+  const incrementCount = (cardId, isRight) => {
     if (isRight) {
       setCount((prevCount) => Math.min(prevCount + 1, 30));
       answerBullets[cardId - 1] = "correct";
@@ -38,7 +35,7 @@ function Quizz() {
     // store the score in the local storage
     localStorage.setItem("totalScore", count.toString());
   };
-  
+
   return (
     <div>
       <div className="headerQuizz">
@@ -48,11 +45,14 @@ function Quizz() {
         </Link>
         <p className="levelQuizz">Niveau 3: Jeu de définitions</p>
         <div className="scoreQuizz">
-        <div>Score:</div>
-        <div id="score">0</div>
+          <div>Score:</div>
+          <div id="score">0</div>
+        </div>
       </div>
+      <div>
         <CardQuizz incrementCount={incrementCount} />
       </div>
+
       <AnswerBillesComponent answers={answerBullets} />
     </div>
   );
