@@ -1,0 +1,11 @@
+.bVerif {
+  display: flexbox;
+  background-color: rgba(178, 211, 213, 0.728);
+  cursor: pointer;
+  border: none;
+  padding: 20px 65px;
+  border-radius: 30px;
+  color: white;
+  font-weight: 600;
+  margin: 15px;
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../style/JeuOrdreLettres.css";
 
 function JeuOrdreLettres() {
   const [mot, setMot] = useState("");
@@ -7,6 +8,7 @@ function JeuOrdreLettres() {
   const [isLoading, setIsLoading] = useState(true);
   const [motAdeviner, setMotAdeviner] = useState("");
   const [totalScore, setTotalScore] = useState(30);
+  const [points, setPoints] = useState(30);
 
   useEffect(() => {
     const obtenirMotAleatoire = () => {
@@ -30,6 +32,7 @@ function JeuOrdreLettres() {
     const reponseCorrecte = motAdeviner;
     console.info(motAdeviner, reponseCorrecte, totalScore);
     if (reponseUtilisateur === reponseCorrecte) {
+      setPoints(points + 1);
       setTotalScore(totalScore + 1);
       setResultat("Bravo !");
     } else {
@@ -52,10 +55,11 @@ function JeuOrdreLettres() {
         value={reponseUtilisateur}
         onChange={(e) => setReponseUtilisateur(e.target.value)}
       />
-      <button type="button" onClick={verificationReponse}>
+      <button className="bVerif" type="button" onClick={verificationReponse}>
         Vérifier
       </button>
       <p>{resultat}</p>
+      <p>Score: {points}</p>
     </div>
   );
 }
