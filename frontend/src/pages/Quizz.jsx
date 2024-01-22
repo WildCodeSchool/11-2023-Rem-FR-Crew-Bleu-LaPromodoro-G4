@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CardQuizz from "../components/CardQuizz";
 import AnswerBillesComponent from "../components/AnswerBillesComponent";
+import Results from "../components/Results";
 
 function Quizz() {
   const [count, setCount] = useState(() => {
@@ -32,6 +33,11 @@ function Quizz() {
     updatedBullets[cardId - 1] = isRight ? "correct" : "notcorrect";
     setAnswerBullets(updatedBullets);
 
+    if (cardId === 10) {
+      const divResults = document.getElementById("divResults");
+      divResults.classList.remove("cardsHide");
+    }
+
     // store the score in the local storage
     localStorage.setItem("totalScore", count.toString());
   };
@@ -49,11 +55,17 @@ function Quizz() {
           <div id="score">0</div>
         </div>
       </div>
-      <div>
+      <div className="pageContainer">
         <CardQuizz incrementCount={incrementCount} />
       </div>
-
-      <AnswerBillesComponent answers={answerBullets} />
+      <div className="pageContainer">
+        <div id="divResults" className="cardsHide">
+          <Results score={count} level={3} />
+        </div>
+      </div>
+      <div className="pageContainer">
+        <AnswerBillesComponent answers={answerBullets} />
+      </div>
     </div>
   );
 }
