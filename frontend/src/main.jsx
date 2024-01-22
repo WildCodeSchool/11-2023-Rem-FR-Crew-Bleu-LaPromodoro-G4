@@ -9,6 +9,7 @@ import Menu from "./pages/Menu";
 import Level from "./pages/Level";
 import Speech from "./pages/Speech";
 import WordSynonymComponent from "./components/WordSynonymComponent";
+import WordSynonymComponentBIS from "./components/WordSynonymComponentBIS";
 import Quizz from "./pages/Quizz";
 import Reward from "./pages/Reward";
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/synonym",
         element: <WordSynonymComponent />,
+      },
+      {
+        path: "/WordSynonymComponentBis",
+        element: <WordSynonymComponentBIS />,
       },
       {
         path: "/quizz",
