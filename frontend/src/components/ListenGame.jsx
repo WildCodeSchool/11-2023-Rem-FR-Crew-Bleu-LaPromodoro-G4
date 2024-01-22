@@ -109,7 +109,9 @@ function ListenGame() {
           <Results score={userScore} level={levelTitle} />
         ) : (
           <div className="quizSpace">
+            <h3>Click sur l'icone puis entre ta réponse</h3>
             <Speech
+              className="speech-icon"
               text={words[currentWordIndex].word}
               lang="FR"
               startBtn={startBtn}
@@ -127,7 +129,15 @@ function ListenGame() {
         )}
         {/* style du theme */}
         {quizFinished ? (
-          <Link to="/Menu" className="leave">
+          <Link
+            to="/Menu"
+            className="leave"
+            style={{
+              color: userTheme.color,
+              backgroundColor: userTheme.backgroundColor,
+              cursor: userTheme.crs,
+            }}
+          >
             {" "}
             Quitter
           </Link>
