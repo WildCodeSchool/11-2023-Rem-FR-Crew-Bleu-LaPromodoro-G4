@@ -132,11 +132,50 @@ function MainNiveaux() {
             Verrouillé
           </button>
         )}
-        {/* Commenté : Icône de cadenas pour le niveau */}
         {/* <img
           src="/src/assets/cadenas.png"
           alt="icone cadenas"
           className="lock3"
+        /> */}
+      </div>
+      {/* Bloc pour le Niveau 4 */}
+      <div className="niveau4">
+        <h2>Niveau 4: Mélange de lettres</h2>
+        {/* - Si score >= 30, affiche un lien fonctionnel.
+      - Si score >= 40, le lien dirige vers "/JeuOrdreLettresBis".
+      - Si score < 30, affiche un bouton désactivé avec un style différent. */}
+        {userScore >= 30 ? (
+          <Link to={userScore >= 40 ? "/JeuOrdreLettresBis" : "/lettre"}>
+            <button
+              type="button"
+              className="btnEnter4"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
+              Entrer
+            </button>
+          </Link>
+        ) : (
+          <button
+            type="button"
+            className="btnEnter4"
+            disabled
+            style={{
+              color: userTheme.color,
+              backgroundColor: "#cccccc",
+              cursor: "not-allowed",
+            }}
+          >
+            Verrouillé
+          </button>
+        )}
+        {/* <img
+          src="/src/assets/cadenas.png"
+          alt="icone cadenas"
+          className="lock4"
         /> */}
       </div>
     </div>
