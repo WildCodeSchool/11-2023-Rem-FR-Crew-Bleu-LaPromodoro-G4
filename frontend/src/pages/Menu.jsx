@@ -12,6 +12,12 @@ import "../style/Menu.css";
 function Menu() {
   // On récupère le theme choisis par l'user
 
+  const isUnlocked = (level) => {
+    const scoreTotal = parseInt(localStorage.getItem("scoreTotal"), 10) || 0;
+    const levelScores = { 1: 0, 2: 10, 3: 20, 4: 30 };
+    return scoreTotal >= levelScores[level];
+  };
+
   const userThemeFromLocalStorage =
     JSON.parse(localStorage.getItem("userTheme")) || "";
   const [userTheme] = useState(userThemeFromLocalStorage);
@@ -44,7 +50,7 @@ function Menu() {
     <div className="mainContent">
       <div className="mainContainer">
         {backgroundComponent}
-        <MainNiveaux />
+        <MainNiveaux isUnlocked={isUnlocked} />
         <Instructions />
       </div>
       <div className="dialogue-bulle">
