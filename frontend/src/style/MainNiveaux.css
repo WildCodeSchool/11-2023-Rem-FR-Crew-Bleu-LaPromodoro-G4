@@ -35,7 +35,7 @@ a {
 .btnEnter1,
 .btnEnter2,
 .btnEnter3 .btnEnter4 {
-  font-family: "Gill Sans";
+  font-family: "Gill Sans", "Gill Sans MT";
   font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;

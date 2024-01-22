@@ -17,6 +17,11 @@ const shuffleArray = (array) => {
 };
 
 function ListenGame() {
+  // Import themes
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
+
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [words, setWords] = useState([""]);
   const [userInput, setUserInput] = useState("");
@@ -62,11 +67,11 @@ function ListenGame() {
     setUserInput(e.target.value.toUpperCase());
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleNextWord();
-    }
-  };
+  // const handleKeyDown = (e) => {
+  //   if (e.key === "Enter") {
+  //     handleNextWord();
+  //   }
+  // };
 
   const startBtn = (
     <img
@@ -84,7 +89,15 @@ function ListenGame() {
         ""
       ) : (
         <div className="header">
-          <Link to="/Menu" className="leave">
+          <Link
+            to="/Menu"
+            className="leave"
+            style={{
+              color: userTheme.color,
+              backgroundColor: userTheme.backgroundColor,
+              cursor: userTheme.crs,
+            }}
+          >
             {" "}
             Quitter
           </Link>
@@ -120,11 +133,18 @@ function ListenGame() {
           </Link>
         ) : (
           <div
+            style={{
+              scale: userInput !== "" ? "1.1" : "1",
+              color: userInput !== "" ? userTheme.color : "#b3b3b3",
+              backgroundColor:
+                userInput !== "" ? userTheme.backgroundColor : "white",
+              cursor: userTheme.crs,
+            }}
             className={userInput !== "" ? "my-next-btn" : "no-next-btn"}
             role="button"
             tabIndex={0}
             onClick={handleNextWord}
-            onKeyDown={handleKeyDown}
+            // onKeyDown={handleKeyDown}
           >
             <p>Suivant</p>
           </div>
