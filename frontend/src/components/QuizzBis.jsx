@@ -36,8 +36,8 @@ function Quizz() {
     setAnswerBullets(updatedBullets);
 
     if (cardId === 10) {
-      const divResults = document.getElementById("divResults");
-      divResults.classList.remove("cardsHide");
+      // const divResults = document.getElementById("divResults");
+      // divResults.classList.remove("cardsHide");
 
       const header = document.getElementById("headerQuizz");
       header.classList.add("cardsHide");
@@ -64,7 +64,10 @@ function Quizz() {
         </div>
       </div>
       <div className="pageContainer">
-        <div id="divResults" className="cardsHide">
+        <div
+          id="divResults"
+          className={finished ? "containerResult" : "cardsHide"}
+        >
           <Results score={0} level={levelTitle3} />
         </div>
 
