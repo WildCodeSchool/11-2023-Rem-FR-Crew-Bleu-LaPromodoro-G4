@@ -1,11 +1,24 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import "../style/Results.css";
 
 function Results({ score, level }) {
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
+
   return (
     <div className="myResult">
       <h2 className="spanResult">{level}</h2>
-      <div className="scoreResult">{score} points</div>
+      <div
+        className="scoreResult"
+        style={{
+          color: userTheme.color,
+          backgroundColor: userTheme.backgroundColor,
+        }}
+      >
+        {score} points
+      </div>
     </div>
   );
 }

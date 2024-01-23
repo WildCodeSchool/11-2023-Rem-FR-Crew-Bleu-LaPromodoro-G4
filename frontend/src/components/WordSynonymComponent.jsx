@@ -94,8 +94,6 @@ const words = [
 ];
 
 function WordSynonymComponent() {
-  // Gestion des hovers sur les boutons
-  const [isHovered, setIsHovered] = useState(false);
   // Import themes
   const userThemeFromLocalStorage =
     JSON.parse(localStorage.getItem("userTheme")) || "";
@@ -226,22 +224,30 @@ function WordSynonymComponent() {
         )}
         {quizFinished ? (
           <Link to="/menu">
-            <button type="button" className="leave">
+            <button
+              type="button"
+              className="leave"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
               Quitter
             </button>
           </Link>
         ) : (
           <button
-            className="leave"
             onClick={confirmSynonym}
             type="button"
             style={{
-              color: isHovered ? userTheme.color : "",
-              backgroundColor: isHovered ? userTheme.backgroundColor : "",
+              color: selectedSynonym ? userTheme.color : "#b3b3b3",
+              backgroundColor: selectedSynonym
+                ? userTheme.backgroundColor
+                : "white",
               cursor: userTheme.crs,
             }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            className={selectedSynonym ? "my-next-btn" : "no-next-btn"}
           >
             Valider
           </button>

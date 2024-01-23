@@ -14,15 +14,26 @@ body {
   text-decoration: none;
   text-align: center;
   font-size: 1.2em;
-  color: black;
-  background-color: white;
-  border-radius: 45px 45px 45px 45px;
+  border-radius: 3rem;
+  font-weight: 600;
   padding: 1rem 2rem;
   transition: 0.2s;
 }
 
 .leave:hover {
   scale: 1.1;
+}
+
+.no-leave {
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 3rem;
+  padding: 1rem 2rem;
+  transition: 0.2s;
+  pointer-events: none;
 }
 
 .level-title {
@@ -39,6 +50,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   min-width: 40vw;
   width: min-content;
   gap: 2rem;
