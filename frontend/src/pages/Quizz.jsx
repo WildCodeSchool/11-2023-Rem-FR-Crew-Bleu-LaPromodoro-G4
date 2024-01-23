@@ -42,6 +42,8 @@ function Quizz() {
     localStorage.setItem("totalScore", count.toString());
   };
 
+  const levelTitle3 = "Niveau 3: Quizz fini !";
+
   return (
     <div>
       <div className="headerQuizz">
@@ -49,7 +51,7 @@ function Quizz() {
           {" "}
           Quitter
         </Link>
-        <p className="levelQuizz">Niveau 3: Jeu de définitions</p>
+        <p className="levelQuizz">Niveau 3: Quizz</p>
         <div className="scoreQuizz">
           <div>Score:</div>
           <div id="score">0</div>
@@ -60,7 +62,7 @@ function Quizz() {
       </div>
       <div className="pageContainer">
         <div id="divResults" className="cardsHide">
-          <Results score={count} level={3} />
+          <Results score={count} level={levelTitle3} />
         </div>
       </div>
       <div className="pageContainer">
