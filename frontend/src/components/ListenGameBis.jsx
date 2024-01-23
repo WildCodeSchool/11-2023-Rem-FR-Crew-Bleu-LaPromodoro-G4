@@ -16,7 +16,7 @@ const shuffleArray = (array) => {
   return newArr;
 };
 
-function ListenGame() {
+function ListenGameBis() {
   // Import themes
   const userThemeFromLocalStorage =
     JSON.parse(localStorage.getItem("userTheme")) || "";
@@ -47,12 +47,10 @@ function ListenGame() {
     if (isCorrect) {
       setUserScore((prevScore) => {
         const newScore = Math.min(prevScore + 1, 10);
-        const storedScore = localStorage.getItem("totalScore");
-        const parsedScore = parseInt(storedScore, 10);
-        const updatedTotalScore = Number.isNaN(parsedScore)
-          ? 1
-          : Math.min(parsedScore + 1, 10);
-        localStorage.setItem("totalScore", updatedTotalScore.toString());
+        // const storedScore = localStorage.getItem("totalScore");
+        // const parsedScore = parseInt(storedScore, 10);
+        // const udaptedTotalScore = Math.min(parsedScore + 1, 10);
+        // localStorage.setItem("totalScore", udaptedTotalScore.toString());
         return newScore;
       });
     }
@@ -161,4 +159,4 @@ function ListenGame() {
   );
 }
 
-export default ListenGame;
+export default ListenGameBis;
