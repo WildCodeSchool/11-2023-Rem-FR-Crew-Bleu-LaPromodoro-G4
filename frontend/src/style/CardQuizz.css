@@ -8,6 +8,7 @@
 }
 .levelQuizz {
   font-size: 1.2em;
+  margin:50px 0px 0px;
 }
 
 .leaveQuizz {
@@ -18,8 +19,8 @@
   background-color: #b3b3b3;
   color: white;
   font-weight: 600;
-
-}
+  margin-top: 50px;
+  }
 
 .leaveQuizz:hover {
   transform: scale(1.1);
@@ -67,7 +68,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
- }
+  flex-direction: column;
+     }
+
 .questionCardContainer {
   border-width: 4px 4px 4px 4px;
   border-color: rgb(62, 129, 162);

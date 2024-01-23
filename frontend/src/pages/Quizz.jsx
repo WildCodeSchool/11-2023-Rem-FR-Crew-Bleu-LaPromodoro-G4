@@ -67,17 +67,18 @@ function Quizz() {
         <div id="divResults" className="cardsHide">
           <Results score={count} level={levelTitle3} />
         </div>
+
+        {finished ? (
+          <Link to="/Menu" className="leaveQuizz">
+            {" "}
+            Quitter
+          </Link>
+        ) : (
+          <div className="pageContainer">
+            <CardQuizz incrementCount={incrementCount} />
+          </div>
+        )}
       </div>
-      {finished ? (
-        <Link to="/Menu" className="leaveQuizz">
-          {" "}
-          Quitter
-        </Link>
-      ) : (
-        <div className="pageContainer">
-          <CardQuizz incrementCount={incrementCount} />
-        </div>
-      )}
 
       <div className="pageContainer">
         <AnswerBillesComponent answers={answerBullets} />
