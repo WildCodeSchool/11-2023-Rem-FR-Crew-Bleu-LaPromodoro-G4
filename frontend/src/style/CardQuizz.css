@@ -18,6 +18,7 @@
   background-color: #b3b3b3;
   color: white;
   font-weight: 600;
+
 }
 
 .leaveQuizz:hover {
@@ -66,7 +67,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
+ }
 .questionCardContainer {
   border-width: 4px 4px 4px 4px;
   border-color: rgb(62, 129, 162);

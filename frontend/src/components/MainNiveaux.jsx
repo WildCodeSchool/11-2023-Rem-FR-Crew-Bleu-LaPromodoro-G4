@@ -95,7 +95,7 @@ function MainNiveaux() {
         {/* - Si score >= 20, affiche un lien fonctionnel vers "/quizz".
             - Si score < 20, affiche un bouton désactivé avec un style différent. */}
         {userScore >= 20 ? (
-          <Link to="/quizz">
+          <Link to={userScore >= 30 ? "/quizzBis" : "/quizz"}>
             <button
               type="button"
               className="btnEnter3"
