@@ -59,7 +59,8 @@
 }
 .etape1,
 .etape2,
-.etape3 {
+.etape3,
+.etape4 {
   margin-top: 10px;
   border-radius: 10px;
   height: 160px;

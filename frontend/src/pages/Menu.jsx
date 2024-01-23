@@ -79,9 +79,10 @@ function Menu() {
       <div className="gaugeplace">
         <div className="txt-gauge">
           <p>0</p>
-          <p>100</p>
-          <p>200</p>
-          <p>300</p>
+          <p>10</p>
+          <p>20</p>
+          <p>30</p>
+          <p>40</p>
         </div>
         <Gauge />
       </div>

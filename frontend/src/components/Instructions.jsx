@@ -1,6 +1,9 @@
 import "../style/Instructions.css";
 import { useState } from "react";
 import Instruction from "../assets/instructions.png";
+import etape3 from "../assets/niveausuivant.png";
+import etape2 from "../assets/ecoutefini.png";
+import etape4 from "../assets/niveauxfini.png";
 
 function Instructions() {
   const [popupOpen, setPopupOpen] = useState(false);
@@ -36,12 +39,15 @@ function Instructions() {
               </div>
               <div className="etapes">
                 <p>Etape 2: Réussi le niveau à 100%</p>
+                <img src={etape2} alt="etape2" className="etape2" />
               </div>
               <div className="etapes">
                 <p>Etape 3: Débloque le niveau suivant</p>
+                <img src={etape3} alt="etape3" className="etape3" />
               </div>
               <div className="etapes">
                 <p>Etape 4: Termine les niveaux à 100%</p>
+                <img src={etape4} alt="etape4" className="etape4" />
               </div>
             </div>
             {/* <button type="button" className="closePopup" onClick={togglePopup}>
