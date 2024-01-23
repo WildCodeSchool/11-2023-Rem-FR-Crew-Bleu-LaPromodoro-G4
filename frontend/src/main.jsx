@@ -8,6 +8,7 @@ import Onboarding from "./pages/Onboarding";
 import Menu from "./pages/Menu";
 import Level from "./pages/Level";
 import Speech from "./pages/Speech";
+import ListenGameBis from "./components/ListenGameBis";
 import WordSynonymComponent from "./components/WordSynonymComponent";
 import WordSynonymComponentBIS from "./components/WordSynonymComponentBIS";
 import Quizz from "./pages/Quizz";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/speech",
         element: <Speech />,
+      },
+      {
+        path: "/ListenGameBis",
+        element: <ListenGameBis />,
       },
       {
         path: "/synonym",

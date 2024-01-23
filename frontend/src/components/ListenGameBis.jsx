@@ -16,7 +16,7 @@ const shuffleArray = (array) => {
   return newArr;
 };
 
-function ListenGame() {
+function ListenGameBis() {
   // Import themes
   const userThemeFromLocalStorage =
     JSON.parse(localStorage.getItem("userTheme")) || "";
@@ -47,12 +47,10 @@ function ListenGame() {
     if (isCorrect) {
       setUserScore((prevScore) => {
         const newScore = Math.min(prevScore + 1, 10);
-        const storedScore = localStorage.getItem("totalScore");
-        const parsedScore = parseInt(storedScore, 10);
-        const updatedTotalScore = Number.isNaN(parsedScore)
-          ? 1
-          : Math.min(parsedScore + 1, 10);
-        localStorage.setItem("totalScore", updatedTotalScore.toString());
+        // const storedScore = localStorage.getItem("totalScore");
+        // const parsedScore = parseInt(storedScore, 10);
+        // const udaptedTotalScore = Math.min(parsedScore + 1, 10);
+        // localStorage.setItem("totalScore", udaptedTotalScore.toString());
         return newScore;
       });
     }
@@ -113,9 +111,7 @@ function ListenGame() {
           <Results score={userScore} level={levelTitle} />
         ) : (
           <div className="quizSpace">
-            <h3>Click sur l'icone puis entre ta réponse</h3>
             <Speech
-              className="speech-icon"
               text={words[currentWordIndex].word}
               lang="FR"
               startBtn={startBtn}
@@ -133,15 +129,7 @@ function ListenGame() {
         )}
         {/* style du theme */}
         {quizFinished ? (
-          <Link
-            to="/Menu"
-            className="leave"
-            style={{
-              color: userTheme.color,
-              backgroundColor: userTheme.backgroundColor,
-              cursor: userTheme.crs,
-            }}
-          >
+          <Link to="/Menu" className="leave">
             {" "}
             Quitter
           </Link>
@@ -171,4 +159,4 @@ function ListenGame() {
   );
 }
 
-export default ListenGame;
+export default ListenGameBis;
