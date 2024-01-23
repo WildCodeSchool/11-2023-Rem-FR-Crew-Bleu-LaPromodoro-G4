@@ -1,0 +1,24 @@
+.myResult {
+  text-align: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3em;
+  padding: 3em;
+  border-radius: 3rem;
+}
+
+.spanResult {
+  display: block;
+}
+
+.scoreResult {
+  font-weight: 600;
+  padding: 1rem 3rem;
+  border-radius: 3rem;
+  background-color: #f58fd8;
+  color: white;
+  font-size: 22px;
+}

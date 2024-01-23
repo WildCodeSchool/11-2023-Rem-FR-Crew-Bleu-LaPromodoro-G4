@@ -1,0 +1,58 @@
+.container-instructions {
+  position: absolute;
+  top: 4.5%;
+  left: 1.5%;
+}
+
+.instructions {
+  background-color: white;
+  font-family: "Gill Sans", "Gill Sans MT";
+  font-size: 1.5em;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  transition: 0.2s;
+}
+
+.instructions:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+.popup {
+  display: block;
+  height: 600px;
+  width: 1000px;
+  padding: 1em;
+  margin: 1em 0 0 4em;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow:
+    rgba(255, 144, 168, 0.5) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.popup-content {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 100px 200px 150px;
+  justify-content: space-around;
+}
+
+.bar {
+  position: absolute;
+  bottom: 2%;
+  left: 15%;
+}
+
+.titleEtapes {
+  text-align: start;
+}
+
+.gauge-place {
+  position: absolute;
+  left: 200%;
+  top: 1250%;
+}

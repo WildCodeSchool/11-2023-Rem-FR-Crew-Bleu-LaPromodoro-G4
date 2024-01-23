@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: white;
+  position: absolute;
+  top: 25%;
+  right: 5%;
+  height: 500px;
+  width: 520px;
+  border-radius: 60px;
+  padding: 35px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.niveau1,
+.niveau2,
+.niveau3,
+.niveau4 {
+  display: flex;
+  margin-top: 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleDefinition {
+  filter: blur(4px);
+}
+
+a {
+  text-decoration: none;
+}
+.btnEnter1,
+.btnEnter2,
+.btnEnter3,
+.btnEnter4 {
+  font-family: "Gill Sans";
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  color: white;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btnEnter1 {
+  display: block;
+}
+.btnEnter2 {
+  display: block;
+}
+.btnEnter3 {
+  display: block;
+}
+.btnEnter4 {
+  display: none;
+}
+
+.btnEnter1:hover,
+.btnEnter2:hover,
+.btnEnter3:hover,
+.btnEnter4:hover {
+  transition: 0.2s;
+  transform: scale(1.1);
+}

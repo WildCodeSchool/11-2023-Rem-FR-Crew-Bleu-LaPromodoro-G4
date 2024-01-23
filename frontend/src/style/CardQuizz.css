@@ -1,0 +1,148 @@
+.headerQuizz {
+  margin-top: 1.5em;
+  margin-left: 8em;
+  gap: 2em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.levelQuizz {
+  font-size: 1.2em;
+}
+
+.leaveQuizz {
+  cursor: pointer;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 30px;
+  background-color: rgb(253, 173, 190);
+  color: white;
+  font-weight: 600;
+}
+
+.leaveQuizz:hover {
+  transform: scale(1.1);
+}
+
+.scoreQuizz {
+  display: none;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.instruction {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonCard {
+  display: flex;
+  background-color: rgba(178, 211, 213, 0.728);
+  cursor: pointer;
+  border: none;
+  padding: 20px 65px;
+  border-radius: 30px;
+  color: white;
+  font-weight: 600;
+  margin: 15px;
+}
+
+.buttonCard:hover {
+  transform: scale(1.1);
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cardsHide {
+  display: none;
+}
+
+.pageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.questionCardContainer {
+  border-width: 4px 4px 4px 4px;
+  border-color: rgb(62, 129, 162);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  padding: 20px;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  height: 300px;
+  width: 550px;
+  margin: 80px;
+}
+
+.listenContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.buttonListen {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  border-radius: 30px;
+}
+
+.buttonValidate {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: grey;
+  color: white;
+  font-weight: 600;
+}
+
+.buttonValidate:hover {
+  transform: scale(1.1);
+}
+.inputCardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputRadio1 {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.inputRadio2 {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.speakerQuizz {
+  width: 70px;
+  padding: 0.5em 1.5em;
+  font-size: 18px;
+  border-radius: 1.5em;
+  cursor: pointer;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow:
+    2px 2px 6px #c5c5c5,
+    -6px -6px 12px #ffffff;
+}
+
+#quizzCard > div.listenContainer > div > span:nth-child(2) > span > svg {
+  display: none;
+}
