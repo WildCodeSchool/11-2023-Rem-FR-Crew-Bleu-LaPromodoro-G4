@@ -51,11 +51,6 @@ function MainNiveaux() {
             Entrer
           </button>
         </Link>
-        <img
-          src="/src/assets/cadenas.png"
-          alt="icone cadenas"
-          className="lock1"
-        />
       </div>
 
       {/* Bloc pour le Niveau 2 */}
@@ -92,11 +87,6 @@ function MainNiveaux() {
             Verrouillé
           </button>
         )}
-        <img
-          src="/src/assets/cadenas.png"
-          alt="icone cadenas"
-          className="lock2"
-        />
       </div>
 
       {/* Bloc pour le Niveau 3 */}

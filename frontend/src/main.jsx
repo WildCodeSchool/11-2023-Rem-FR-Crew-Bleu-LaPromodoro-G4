@@ -8,9 +8,12 @@ import Onboarding from "./pages/Onboarding";
 import Menu from "./pages/Menu";
 import Level from "./pages/Level";
 import Speech from "./pages/Speech";
+import ListenGameBis from "./components/ListenGameBis";
 import WordSynonymComponent from "./components/WordSynonymComponent";
+import WordSynonymComponentBIS from "./components/WordSynonymComponentBIS";
 import Quizz from "./pages/Quizz";
 import Reward from "./pages/Reward";
+import JeuOrdreLettres from "./pages/JeuOrdreLettres";
 
 const router = createBrowserRouter([
   {
@@ -33,8 +36,16 @@ const router = createBrowserRouter([
         element: <Speech />,
       },
       {
+        path: "/ListenGameBis",
+        element: <ListenGameBis />,
+      },
+      {
         path: "/synonym",
         element: <WordSynonymComponent />,
+      },
+      {
+        path: "/WordSynonymComponentBis",
+        element: <WordSynonymComponentBIS />,
       },
       {
         path: "/quizz",
@@ -43,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "/reward",
         element: <Reward />,
+      },
+      {
+        path: "/JeuOrdreLettres",
+        element: <JeuOrdreLettres />,
       },
     ],
   },

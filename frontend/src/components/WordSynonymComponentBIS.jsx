@@ -93,8 +93,8 @@ const words = [
   { word: "Peur", correctSynonyms: ["Effroi"], falseSynonyms: ["Courage"] },
 ];
 
-function WordSynonymComponent() {
-  // Import themes
+function WordSynonymComponentBIS() {
+  const [isHovered, setIsHovered] = useState(false);
   const userThemeFromLocalStorage =
     JSON.parse(localStorage.getItem("userTheme")) || "";
   const [userTheme] = useState(userThemeFromLocalStorage);
@@ -113,9 +113,6 @@ function WordSynonymComponent() {
   const totalQuestions = 10;
 
   useEffect(() => {
-    if (!localStorage.getItem("totalScore")) {
-      localStorage.setItem("totalScore", "10");
-    }
     if (questionNumber <= totalQuestions) {
       const randomIndex = Math.floor(Math.random() * words.length);
       const newWord = words[randomIndex];
@@ -139,27 +136,13 @@ function WordSynonymComponent() {
     setAnswers(updatedAnswers);
 
     if (isCorrect) {
-      setScore((prevScore) => {
-        const newScore = Math.min(prevScore + 1, 20);
-        const existingScore =
-          parseInt(localStorage.getItem("totalScore"), 10) || 10;
-        const updatedTotalScore = Math.min(existingScore + 1, 20);
-        localStorage.setItem("totalScore", updatedTotalScore.toString());
-        return newScore;
-      });
+      setScore((prevScore) => Math.min(prevScore + 1, 20));
     }
-    // console.info(
-    //   `Question Numéro: ${questionNumber}, / ${totalQuestions}`
-    // );
-    // console.info(`Is Correct: ${isCorrect}, nouvo score: ${newScore}`);
 
     if (questionNumber < totalQuestions) {
       setQuestionNumber(questionNumber + 1);
       setSelectedSynonym("");
     } else if (questionNumber === totalQuestions) {
-      // console.info(
-      //   "totalScore dans le localStorage: ${updatedScore}"
-      // );
       setShowSynonyms(false);
       setQuizFinished(true);
     }
@@ -196,7 +179,6 @@ function WordSynonymComponent() {
             <h3>
               Sélectionne le synonyme du mot suivant puis valide ta réponse
             </h3>
-            {/* <div className="score-display">Score: {score}</div> */}
             <div className="word-display">{currentWord.word}</div>
             {showSynonyms && (
               <div className="synonyms-container">
@@ -224,30 +206,22 @@ function WordSynonymComponent() {
         )}
         {quizFinished ? (
           <Link to="/menu">
-            <button
-              type="button"
-              className="leave"
-              style={{
-                color: userTheme.color,
-                backgroundColor: userTheme.backgroundColor,
-                cursor: userTheme.crs,
-              }}
-            >
+            <button type="button" className="leave">
               Quitter
             </button>
           </Link>
         ) : (
           <button
+            className="leave"
             onClick={confirmSynonym}
             type="button"
             style={{
-              color: selectedSynonym ? userTheme.color : "#b3b3b3",
-              backgroundColor: selectedSynonym
-                ? userTheme.backgroundColor
-                : "white",
+              color: isHovered ? userTheme.color : "",
+              backgroundColor: isHovered ? userTheme.backgroundColor : "",
               cursor: userTheme.crs,
             }}
-            className={selectedSynonym ? "my-next-btn" : "no-next-btn"}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
             Valider
           </button>
@@ -260,4 +234,4 @@ function WordSynonymComponent() {
   );
 }
 
-export default WordSynonymComponent;
+export default WordSynonymComponentBIS;

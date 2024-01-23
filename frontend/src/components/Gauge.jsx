@@ -7,7 +7,7 @@ function Gauge() {
     const savedScore = JSON.parse(localStorage.getItem("totalScore")) || 0;
     setScore(savedScore);
   }, []);
-  const gaugeWidth = Math.min(100, (score / 30) * 100);
+  const gaugeWidth = Math.min(100, (score / 40) * 100);
 
   const userThemeFromLocalStorage =
     JSON.parse(localStorage.getItem("userTheme")) || "";

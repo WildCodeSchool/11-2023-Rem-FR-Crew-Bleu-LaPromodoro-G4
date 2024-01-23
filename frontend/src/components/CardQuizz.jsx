@@ -105,41 +105,39 @@ function CardQuizz({ incrementCount }) {
   }
 
   return (
-    <div className="pageContainer">
-      <div
-        id="quizzCard"
-        className={card === 10 ? "cardsHide" : "questionCardContainer"}
-      >
-        <div className="listenContainer">
-          <Speech
-            text="question"
-            pitch={1.5}
-            rate={1.5}
-            volume={0.5}
-            startBtn={startBtn}
-          />
+    <div
+      id="quizzCard"
+      className={card === 10 ? "cardsHide" : "questionCardContainer"}
+    >
+      <div className="listenContainer">
+        <Speech
+          text={quizzAnimal[card].question}
+          pitch={1.5}
+          rate={1.5}
+          volume={0.5}
+          startBtn={startBtn}
+        />
+      </div>
+      <h4>{quizzAnimal[card].question}</h4>
+      <div className="inputCardContainer">
+        <div className="inputRadio1">
+          <input type="radio" id="input1" name="choice" value="input1" />
+          <label htmlFor="input1">{quizzAnimal[card].answer1}</label>
         </div>
-        <h4>{quizzAnimal[card].question}</h4>
-        <div className="inputCardContainer">
-          <div className="inputRadio1">
-            <input type="radio" id="input1" name="choice" value="input1" />
-            <label htmlFor="input1">{quizzAnimal[card].answer1}</label>
-          </div>
-          <div className="inputRadio2">
-            <input type="radio" id="input2" name="choice" value="input2" />
-            <label htmlFor="input2">{quizzAnimal[card].answer2}</label>
-          </div>
+        <div className="inputRadio2">
+          <input type="radio" id="input2" name="choice" value="input2" />
+          <label htmlFor="input2">{quizzAnimal[card].answer2}</label>
         </div>
-        <div>
-          <button
-            id="buttonValidate"
-            type="submit"
-            className="buttonValidate"
-            onClick={handleClick}
-          >
-            Valider
-          </button>
-        </div>
+      </div>
+      <div>
+        <button
+          id="buttonValidate"
+          type="submit"
+          className="buttonValidate"
+          onClick={handleClick}
+        >
+          Valider
+        </button>
       </div>
     </div>
   );
