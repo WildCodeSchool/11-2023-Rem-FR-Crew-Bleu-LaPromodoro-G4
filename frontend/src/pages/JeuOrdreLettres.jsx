@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import "../style/JeuOrdreLettres.css";
 import AnswerBilles from "../components/AnswerBillesComponent";
 
@@ -72,58 +74,96 @@ function JeuOrdreLettres() {
   };
 
   return (
-    <div className="myLevelBody">
-      <div className="header">
-        <Link
-          to="/Menu"
-          className="leave"
-          style={{
-            color: userTheme.color,
-            backgroundColor: userTheme.backgroundColor,
-            cursor: userTheme.crs,
-          }}
-        >
-          {" "}
-          Quitter
-        </Link>
-        <p className="level">Niveau IV: Ordre des lettres</p>
-      </div>
-      <div className="game">
-        <div className="card">
-          <label htmlFor="saisieOrdre">
-            Saisissez le bon ordre: {mot.split("").join(" ")}
-          </label>
-          <input
-            className="wordType"
-            type="text"
-            placeholder="tapez le mot ici"
-            value={reponseUtilisateur}
-            onChange={(e) => setReponseUtilisateur(e.target.value)}
-          />
+    <>
+      <motion.div
+        className="slide-in1"
+        style={{
+          backgroundColor: userTheme.backgroundColor,
+        }}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 1 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="slide-in2"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 1 }}
+        transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="slide-out1"
+        style={{
+          backgroundColor: userTheme.backgroundColor,
+        }}
+        initial={{ scaleX: 1 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 0 }}
+        transition={{ duration: 2.3, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="slide-out2"
+        initial={{ scaleX: 1 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 0 }}
+        transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <div className="myLevelBody">
+        <div className="header">
+          <Link
+            to="/Menu"
+            className="leave"
+            style={{
+              color: userTheme.color,
+              backgroundColor: userTheme.backgroundColor,
+              cursor: userTheme.crs,
+            }}
+          >
+            {" "}
+            Quitter
+          </Link>
+          <p className="level">Niveau IV: Ordre des lettres</p>
         </div>
-        <div
-          style={{
-            scale: reponseUtilisateur !== "" ? "1.1" : "1",
-            color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
-            backgroundColor:
-              reponseUtilisateur !== "" ? userTheme.backgroundColor : "white",
-            cursor: userTheme.crs,
-          }}
-          className={reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"}
-          role="button"
-          tabIndex={0}
-          onClick={verificationReponse}
-          // onKeyDown={handleKeyDown}
-        >
-          <p>Suivant</p>
+        <div className="game">
+          <div className="card">
+            <label htmlFor="saisieOrdre">
+              Saisissez le bon ordre: {mot.split("").join(" ")}
+            </label>
+            <input
+              className="wordType"
+              type="text"
+              placeholder="tapez le mot ici"
+              value={reponseUtilisateur}
+              onChange={(e) => setReponseUtilisateur(e.target.value)}
+            />
+          </div>
+          <div
+            style={{
+              scale: reponseUtilisateur !== "" ? "1.1" : "1",
+              color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
+              backgroundColor:
+                reponseUtilisateur !== "" ? userTheme.backgroundColor : "white",
+              cursor: userTheme.crs,
+            }}
+            className={
+              reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"
+            }
+            role="button"
+            tabIndex={0}
+            onClick={verificationReponse}
+            // onKeyDown={handleKeyDown}
+          >
+            <p>Suivant</p>
+          </div>
+          <AnswerBilles answers={answers} />{" "}
+          <p className="etatReponse">{answerStatus}</p>{" "}
+          {/* affichage de l'état de la réponse */}
+          <p className="scoreDisplay">Score: {points}/10</p>{" "}
+          {/* affichage du score */}
         </div>
-        <AnswerBilles answers={answers} />{" "}
-        <p className="etatReponse">{answerStatus}</p>{" "}
-        {/* affichage de l'état de la réponse */}
-        <p className="scoreDisplay">Score: {points}/10</p>{" "}
-        {/* affichage du score */}
       </div>
-    </div>
+    </>
   );
 }
 
