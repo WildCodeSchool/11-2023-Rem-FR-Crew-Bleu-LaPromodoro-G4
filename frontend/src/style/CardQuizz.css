@@ -8,6 +8,7 @@
 }
 .levelQuizz {
   font-size: 1.2em;
+  margin: 50px 0px 0px;
 }
 
 .leaveQuizz {
@@ -15,9 +16,10 @@
   border: none;
   padding: 20px 40px;
   border-radius: 30px;
-  background-color: rgb(253, 173, 190);
+  background-color: #b3b3b3;
   color: white;
   font-weight: 600;
+  margin-top: 50px;
 }
 
 .leaveQuizz:hover {
@@ -66,7 +68,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
+
+.containerResult {
+  margin-top: 80px;
+}
+
 .questionCardContainer {
   border-width: 4px 4px 4px 4px;
   border-color: rgb(62, 129, 162);
@@ -80,9 +88,11 @@
   padding: 20px;
   border-radius: 20px;
   flex-wrap: wrap;
-  height: 300px;
-  width: 550px;
+  height: 500px;
+  width: 750px;
   margin: 80px;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .listenContainer {
@@ -102,9 +112,9 @@
 .buttonValidate {
   cursor: pointer;
   border: none;
-  padding: 10px 20px;
+  padding: 20px 40px;
   border-radius: 30px;
-  background-color: grey;
+  background-color: #b3b3b3;
   color: white;
   font-weight: 600;
 }

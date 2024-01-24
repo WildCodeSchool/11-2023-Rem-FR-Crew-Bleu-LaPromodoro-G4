@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import CardQuizz from "../components/CardQuizz";
-import AnswerBillesComponent from "../components/AnswerBillesComponent";
-import Results from "../components/Results";
+import CardQuizz from "./CardQuizz";
+import AnswerBillesComponent from "./AnswerBillesComponent";
+import Results from "./Results";
 
 function Quizz() {
-  const [count, setCount] = useState(() => {
-    const storedScore = localStorage.getItem("totalScore");
-    const parsedScore = storedScore ? parseInt(storedScore, 10) : 20;
-    return Number.isNaN(parsedScore) ? 20 : Math.max(parsedScore, 20);
-  });
+  //  const [count, setCount] = useState(0);
+  //   const storedScore = localStorage.getItem("totalScore");
+  //   const parsedScore = storedScore ? parseInt(storedScore, 10) : 20;
+  //   return Number.isNaN(parsedScore) ? 20 : Math.max(parsedScore, 20);
+  // });
 
   const [finished, setFinished] = useState(false);
 
-  useEffect(() => {
-    localStorage.setItem("totalScore", count.toString());
-  }, [count]);
+  // useEffect(() => {
+  //   localStorage.setItem("totalScore", count.toString());
+  // }, [count]);
 
   const [answerBullets, setAnswerBullets] = useState(Array(10).fill(""));
 
   const incrementCount = (cardId, isRight) => {
     if (isRight) {
-      setCount((prevCount) => Math.min(prevCount + 1, 30));
+      //  setCount((prevCount) => Math.min(prevCount + 1, 30));
       answerBullets[cardId - 1] = "correct";
     } else {
       answerBullets[cardId - 1] = "notcorrect";
     }
     // get div element from HTML page to put the score inside
-    const divScore = document.getElementById("score");
-    divScore.innerHTML = count.toString();
+    // const divScore = document.getElementById("score");
+    // divScore.innerHTML = count.toString();
 
     // changed element of answer array into correct
     const updatedBullets = [...answerBullets];
@@ -45,7 +45,7 @@ function Quizz() {
     }
 
     // store the score in the local storage
-    localStorage.setItem("totalScore", count.toString());
+    // localStorage.setItem("totalScore", count.toString());
   };
 
   const levelTitle3 = "Niveau 3: Quizz fini !";
@@ -68,7 +68,7 @@ function Quizz() {
           id="divResults"
           className={finished ? "containerResult" : "cardsHide"}
         >
-          <Results score={count} level={levelTitle3} />
+          <Results score={0} level={levelTitle3} />
         </div>
 
         {finished ? (

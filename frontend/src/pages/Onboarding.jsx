@@ -7,6 +7,8 @@ import themeImgDef from "../assets/themedef.png";
 import themeImg1 from "../assets/theme1.png";
 import themeImg2 from "../assets/theme2.png";
 import themeImg3 from "../assets/theme3.png";
+import animhaut from "../assets/animhaut.png";
+import animbas from "../assets/animebas.png";
 
 const elementStyle = [
   {
@@ -172,6 +174,10 @@ function Onboarding() {
             Suivant
           </button>
         </Link>
+      </div>
+      <div className="animation">
+        <img src={animbas} alt="animation bas" className="animeB" />
+        <img src={animhaut} alt="animation haut" className="animeH" />
       </div>
     </div>
   );

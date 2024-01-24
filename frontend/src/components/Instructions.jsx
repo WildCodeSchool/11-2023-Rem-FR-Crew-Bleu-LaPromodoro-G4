@@ -1,5 +1,9 @@
 import "../style/Instructions.css";
 import { useState } from "react";
+import Instruction from "../assets/instructions.png";
+import etape3 from "../assets/niveausuivant.png";
+import etape2 from "../assets/ecoutefini.png";
+import etape4 from "../assets/niveauxfini.png";
 
 function Instructions() {
   const [popupOpen, setPopupOpen] = useState(false);
@@ -28,11 +32,23 @@ function Instructions() {
           <div className="popup">
             <div className="popup-content">
               <h2 className="titleEtapes">Instructions</h2>
-              <div className="etapes" />
-              <p>Etape 1: Selectionne un niveau</p>
-              <p>Etape 2: Réussi le niveau à 100%</p>
-              <p>Etape 3: Débloque le niveau suivant</p>
-              <p>Etape 4: Termine le jeu en remplissant la barre au maximum</p>
+              <div />
+              <div className="etapes">
+                <p>Etape 1: Selectionne un niveau</p>
+                <img src={Instruction} alt="instruction" className="etape1" />
+              </div>
+              <div className="etapes">
+                <p>Etape 2: Réussi le niveau à 100%</p>
+                <img src={etape2} alt="etape2" className="etape2" />
+              </div>
+              <div className="etapes">
+                <p>Etape 3: Débloque le niveau suivant</p>
+                <img src={etape3} alt="etape3" className="etape3" />
+              </div>
+              <div className="etapes">
+                <p>Etape 4: Termine les niveaux à 100%</p>
+                <img src={etape4} alt="etape4" className="etape4" />
+              </div>
             </div>
             {/* <button type="button" className="closePopup" onClick={togglePopup}>
               Close
