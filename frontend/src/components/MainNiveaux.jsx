@@ -1,6 +1,7 @@
 import "../style/MainNiveaux.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+// import Transition from "./Transition";
 
 function MainNiveaux() {
   // Récupère et parse le thème utilisateur depuis le localStorage.
@@ -30,6 +31,10 @@ function MainNiveaux() {
     };
   }, []);
 
+  // const handlePlayTransition = () => {
+  //   return <Transition />;
+  // };
+
   return (
     <div className="container">
       {/* Bloc pour le Niveau 1 */}
@@ -41,6 +46,7 @@ function MainNiveaux() {
           <button
             type="button"
             className="btnEnter1"
+            // onClick={handlePlayTransition}
             // Style du bouton basé sur le thème utilisateur.
             style={{
               color: userTheme.color,
@@ -48,7 +54,7 @@ function MainNiveaux() {
               cursor: userTheme.crs,
             }}
           >
-            Entrer
+            {userScore >= 10 ? "Refaire" : "Entrer"}
           </button>
         </Link>
       </div>
@@ -64,13 +70,14 @@ function MainNiveaux() {
             <button
               type="button"
               className="btnEnter2"
+              // onClick={handlePlayTransition}
               style={{
                 color: userTheme.color,
                 backgroundColor: userTheme.backgroundColor,
                 cursor: userTheme.crs,
               }}
             >
-              Entrer
+              {userScore >= 20 ? "Refaire" : "Entrer"}
             </button>
           </Link>
         ) : (
@@ -99,13 +106,14 @@ function MainNiveaux() {
             <button
               type="button"
               className="btnEnter3"
+              // onClick={handlePlayTransition}
               style={{
                 color: userTheme.color,
                 backgroundColor: userTheme.backgroundColor,
                 cursor: userTheme.crs,
               }}
             >
-              Entrer
+              {userScore >= 30 ? "Refaire" : "Entrer"}
             </button>
           </Link>
         ) : (

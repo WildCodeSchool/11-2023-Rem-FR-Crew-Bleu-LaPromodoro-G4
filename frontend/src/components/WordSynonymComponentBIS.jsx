@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { motion } from "framer-motion";
 import AnswerBillesComponent from "./AnswerBillesComponent";
 import Results from "./Results";
 import "../style/WordSynonymComponent.css";
@@ -151,86 +151,123 @@ function WordSynonymComponentBIS() {
   const endTitle = "Niveau 2 : Trouve les synonymes fini !";
 
   return (
-    <div className="myLevelBody">
-      {quizFinished ? (
-        ""
-      ) : (
-        <div className="header">
-          <Link
-            to="/Menu"
-            className="leave"
-            style={{
-              color: userTheme.color,
-              backgroundColor: userTheme.backgroundColor,
-              cursor: userTheme.crs,
-            }}
-          >
-            {" "}
-            Quitter
-          </Link>
-          <p className="level">Niveau 2: Synonyme</p>
-        </div>
-      )}
-      <div className="game">
+    <>
+      <motion.div
+        className="slide-in1"
+        style={{
+          backgroundColor: userTheme.backgroundColor,
+        }}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 1 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="slide-in2"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 1 }}
+        transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="slide-out1"
+        style={{
+          backgroundColor: userTheme.backgroundColor,
+        }}
+        initial={{ scaleX: 1 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 0 }}
+        transition={{ duration: 2.3, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="slide-out2"
+        initial={{ scaleX: 1 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 0 }}
+        transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <div className="myLevelBody">
         {quizFinished ? (
-          <Results score={score} level={endTitle} />
+          ""
         ) : (
-          <div className="card">
-            <h3>
-              Sélectionne le synonyme du mot suivant puis valide ta réponse
-            </h3>
-            <div className="word-display">{currentWord.word}</div>
-            {showSynonyms && (
-              <div className="synonyms-container">
-                {currentWord.synonyms.map((synonym) => (
-                  <button
-                    key={synonym}
-                    type="button"
-                    style={{
-                      color: selectedSynonym === synonym ? userTheme.color : "",
-                      backgroundColor:
-                        selectedSynonym === synonym
-                          ? userTheme.backgroundColor
-                          : "",
-                      cursor: userTheme.crs,
-                    }}
-                    className="synonym-button"
-                    onClick={() => handleSynonymSelection(synonym)}
-                  >
-                    {synonym}
-                  </button>
-                ))}
-              </div>
-            )}
+          <div className="header">
+            <Link
+              to="/Menu"
+              className="leave"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
+              {" "}
+              Quitter
+            </Link>
+            <p className="level">Niveau 2: Synonyme</p>
           </div>
         )}
-        {quizFinished ? (
-          <Link to="/menu">
-            <button type="button" className="leave">
-              Quitter
+        <div className="game">
+          {quizFinished ? (
+            <Results score={score} level={endTitle} />
+          ) : (
+            <div className="card">
+              <h3>
+                Sélectionne le synonyme du mot suivant puis valide ta réponse
+              </h3>
+              <div className="word-display">{currentWord.word}</div>
+              {showSynonyms && (
+                <div className="synonyms-container">
+                  {currentWord.synonyms.map((synonym) => (
+                    <button
+                      key={synonym}
+                      type="button"
+                      style={{
+                        color:
+                          selectedSynonym === synonym ? userTheme.color : "",
+                        backgroundColor:
+                          selectedSynonym === synonym
+                            ? userTheme.backgroundColor
+                            : "",
+                        cursor: userTheme.crs,
+                      }}
+                      className="synonym-button"
+                      onClick={() => handleSynonymSelection(synonym)}
+                    >
+                      {synonym}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+          {quizFinished ? (
+            <Link to="/menu">
+              <button type="button" className="leave">
+                Quitter
+              </button>
+            </Link>
+          ) : (
+            <button
+              className="leave"
+              onClick={confirmSynonym}
+              type="button"
+              style={{
+                color: isHovered ? userTheme.color : "",
+                backgroundColor: isHovered ? userTheme.backgroundColor : "",
+                cursor: userTheme.crs,
+              }}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              Valider
             </button>
-          </Link>
-        ) : (
-          <button
-            className="leave"
-            onClick={confirmSynonym}
-            type="button"
-            style={{
-              color: isHovered ? userTheme.color : "",
-              backgroundColor: isHovered ? userTheme.backgroundColor : "",
-              cursor: userTheme.crs,
-            }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            Valider
-          </button>
-        )}
+          )}
+        </div>
+        <div className="realtime">
+          <AnswerBillesComponent answers={answers} />
+        </div>
       </div>
-      <div className="realtime">
-        <AnswerBillesComponent answers={answers} />
-      </div>
-    </div>
+    </>
   );
 }
 

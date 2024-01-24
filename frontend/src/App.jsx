@@ -1,11 +1,7 @@
-import { Outlet } from "react-router-dom";
+import AnimatedOutlet from "./AnimatedOutlet";
 
 function App() {
-  return (
-    <main>
-      <Outlet />
-    </main>
-  );
+  return <AnimatedOutlet />;
 }
 
 export default App;

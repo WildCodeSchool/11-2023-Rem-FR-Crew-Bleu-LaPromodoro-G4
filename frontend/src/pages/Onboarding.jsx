@@ -2,13 +2,14 @@ import "../root.css";
 import "./Onboarding.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import themeImgDef from "../assets/themedef.png";
 import themeImg1 from "../assets/theme1.png";
 import themeImg2 from "../assets/theme2.png";
 import themeImg3 from "../assets/theme3.png";
-import animhaut from "../assets/animhaut.png";
-import animbas from "../assets/animebas.png";
+// import animhaut from "../assets/animhaut.png";
+// import animbas from "../assets/animebas.png";
 
 const elementStyle = [
   {
@@ -96,7 +97,15 @@ function Onboarding() {
   }, [selectedTheme]);
 
   return (
-    <div className="onboarding-grid">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      exit={{
+        opacity: 0,
+      }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      className="onboarding-grid"
+    >
       <div className="onboarding-container">
         <div className="onboarding-wrapper">
           <div className="user-input">
@@ -175,11 +184,11 @@ function Onboarding() {
           </button>
         </Link>
       </div>
-      <div className="animation">
-        <img src={animbas} alt="animation bas" className="animeB" />
-        <img src={animhaut} alt="animation haut" className="animeH" />
-      </div>
-    </div>
+      {/* <div className="animation">
+    <img src={animbas} alt="animation bas" className="animeB" />
+    <img src={animhaut} alt="animation haut" className="animeH" />
+  </div> */}
+    </motion.div>
   );
 }
 export default Onboarding;

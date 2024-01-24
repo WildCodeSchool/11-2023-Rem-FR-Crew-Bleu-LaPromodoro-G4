@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../style/ListenGame.css";
 import Speech from "react-text-to-speech";
+import { motion } from "framer-motion";
 import wordsArray from "./ListGameWords";
 import AnswerBillesComponent from "./AnswerBillesComponent";
 import Results from "./Results";
 import speaker from "../assets/speak.png";
+import "../App.css";
 
 const shuffleArray = (array) => {
   const newArr = [...array];
@@ -88,86 +90,122 @@ function ListenGame() {
   const levelTitle = "Niveau 1: Écoute fini !";
 
   return (
-    <div className="myLevelBody">
-      {quizFinished ? (
-        ""
-      ) : (
-        <div className="header">
-          <Link
-            to="/Menu"
-            className="leave"
-            style={{
-              color: userTheme.color,
-              backgroundColor: userTheme.backgroundColor,
-              cursor: userTheme.crs,
-            }}
-          >
-            {" "}
-            Quitter
-          </Link>
-          <p className="level">Niveau 1: Écoute</p>
+    <>
+      <motion.div
+        className="slide-in1"
+        style={{
+          backgroundColor: userTheme.backgroundColor,
+        }}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 1 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="slide-in2"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 1 }}
+        transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="slide-out1"
+        style={{
+          backgroundColor: userTheme.backgroundColor,
+        }}
+        initial={{ scaleX: 1 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 0 }}
+        transition={{ duration: 2.3, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="slide-out2"
+        initial={{ scaleX: 1 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 0 }}
+        transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <div className="myLevelBody">
+        {quizFinished ? (
+          ""
+        ) : (
+          <div className="header">
+            <Link
+              to="/Menu"
+              className="leave"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
+              {" "}
+              Quitter
+            </Link>
+            <p className="level">Niveau 1: Écoute</p>
+          </div>
+        )}
+        <div className="game">
+          {quizFinished ? (
+            <Results score={userScore} level={levelTitle} />
+          ) : (
+            <div className="quizSpace">
+              <h3>Click sur l'icone puis entre ta réponse</h3>
+              <Speech
+                className="speech-icon"
+                text={words[currentWordIndex].word}
+                lang="FR"
+                startBtn={startBtn}
+                onError={() => console.error("Browser not supported!")}
+              />
+              <input
+                className="wordType"
+                type="text"
+                placeholder="tapez le mot ici"
+                value={userInput}
+                onChange={handleInputChange}
+                onKeyDown={handleInputChange}
+              />
+            </div>
+          )}
+          {/* style du theme */}
+          {quizFinished ? (
+            <Link
+              to="/Menu"
+              className="leave"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
+              {" "}
+              Quitter
+            </Link>
+          ) : (
+            <div
+              style={{
+                scale: userInput !== "" ? "1.1" : "1",
+                color: userInput !== "" ? userTheme.color : "#b3b3b3",
+                backgroundColor:
+                  userInput !== "" ? userTheme.backgroundColor : "white",
+                cursor: userTheme.crs,
+              }}
+              className={userInput !== "" ? "my-next-btn" : "no-next-btn"}
+              role="button"
+              tabIndex={0}
+              onClick={handleNextWord}
+              // onKeyDown={handleKeyDown}
+            >
+              <p>Suivant</p>
+            </div>
+          )}
         </div>
-      )}
-      <div className="game">
-        {quizFinished ? (
-          <Results score={userScore} level={levelTitle} />
-        ) : (
-          <div className="quizSpace">
-            <h3>Click sur l'icone puis entre ta réponse</h3>
-            <Speech
-              className="speech-icon"
-              text={words[currentWordIndex].word}
-              lang="FR"
-              startBtn={startBtn}
-              onError={() => console.error("Browser not supported!")}
-            />
-            <input
-              className="wordType"
-              type="text"
-              placeholder="tapez le mot ici"
-              value={userInput}
-              onChange={handleInputChange}
-              onKeyDown={handleInputChange}
-            />
-          </div>
-        )}
-        {/* style du theme */}
-        {quizFinished ? (
-          <Link
-            to="/Menu"
-            className="leave"
-            style={{
-              color: userTheme.color,
-              backgroundColor: userTheme.backgroundColor,
-              cursor: userTheme.crs,
-            }}
-          >
-            {" "}
-            Quitter
-          </Link>
-        ) : (
-          <div
-            style={{
-              scale: userInput !== "" ? "1.1" : "1",
-              color: userInput !== "" ? userTheme.color : "#b3b3b3",
-              backgroundColor:
-                userInput !== "" ? userTheme.backgroundColor : "white",
-              cursor: userTheme.crs,
-            }}
-            className={userInput !== "" ? "my-next-btn" : "no-next-btn"}
-            role="button"
-            tabIndex={0}
-            onClick={handleNextWord}
-            // onKeyDown={handleKeyDown}
-          >
-            <p>Suivant</p>
-          </div>
-        )}
+        <div className="realtime">
+          <AnswerBillesComponent answers={userAnswers} />
+        </div>
       </div>
-      <div className="realtime">
-        <AnswerBillesComponent answers={userAnswers} />
-      </div>
-    </div>
+    </>
   );
 }
 
