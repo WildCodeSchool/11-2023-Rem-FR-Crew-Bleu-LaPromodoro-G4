@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../style/ListenGame.css";

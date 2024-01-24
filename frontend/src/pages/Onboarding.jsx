@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import "../root.css";
 import "./Onboarding.css";
 import { useState, useEffect } from "react";

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
