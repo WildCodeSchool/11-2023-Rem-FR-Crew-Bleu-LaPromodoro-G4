@@ -95,7 +95,7 @@ function MainNiveaux() {
         {/* - Si score >= 20, affiche un lien fonctionnel vers "/quizz".
             - Si score < 20, affiche un bouton désactivé avec un style différent. */}
         {userScore >= 20 ? (
-          <Link to="/quizz">
+          <Link to={userScore >= 30 ? "/quizzBis" : "/quizz"}>
             <button
               type="button"
               className="btnEnter3"
@@ -128,6 +128,41 @@ function MainNiveaux() {
           alt="icone cadenas"
           className="lock3"
         /> */}
+      </div>
+      {/* Bloc pour le Niveau 4 */}
+      <div className="niveau4">
+        <h2>Niveau 4: Mélange des mots</h2>
+        {/* - Si score >= 10, affiche un lien fonctionnel.
+            - Si score >= 20, le lien dirige vers "/WordSynonymComponentBis".
+            - Si score < 10, affiche un bouton désactivé avec un style différent. */}
+        {userScore >= 30 ? (
+          <Link to={userScore >= 40 ? "/LienBis" : "/JeuOrdreLettres"}>
+            <button
+              type="button"
+              className="btnEnter2"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
+              Entrer
+            </button>
+          </Link>
+        ) : (
+          <button
+            type="button"
+            className="btnEnter2"
+            disabled
+            style={{
+              color: userTheme.color,
+              backgroundColor: "#cccccc",
+              cursor: "not-allowed",
+            }}
+          >
+            Verrouillé
+          </button>
+        )}
       </div>
     </div>
   );

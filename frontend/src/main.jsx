@@ -13,8 +13,10 @@ import ListenGameBis from "./components/ListenGameBis";
 import WordSynonymComponent from "./components/WordSynonymComponent";
 import WordSynonymComponentBIS from "./components/WordSynonymComponentBIS";
 import Quizz from "./pages/Quizz";
+import QuizzBis from "./components/QuizzBis";
 import Reward from "./pages/Reward";
 import JeuOrdreLettres from "./pages/JeuOrdreLettres";
+import JeuOrdreLettresBis from "./pages/JeuOrdreLettresBis";
 
 const router = createBrowserRouter([
   {
@@ -57,12 +59,20 @@ const router = createBrowserRouter([
         element: <Quizz />,
       },
       {
+        path: "/QuizzBis",
+        element: <QuizzBis />,
+      },
+      {
         path: "/reward",
         element: <Reward />,
       },
       {
         path: "/JeuOrdreLettres",
         element: <JeuOrdreLettres />,
+      },
+      {
+        path: "/JeuOrdreLettresBis",
+        element: <JeuOrdreLettresBis />,
       },
     ],
   },
