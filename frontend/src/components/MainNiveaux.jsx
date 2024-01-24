@@ -136,7 +136,9 @@ function MainNiveaux() {
             - Si score >= 20, le lien dirige vers "/WordSynonymComponentBis".
             - Si score < 10, affiche un bouton désactivé avec un style différent. */}
         {userScore >= 30 ? (
-          <Link to={userScore >= 40 ? "/LienBis" : "/JeuOrdreLettres"}>
+          <Link
+            to={userScore >= 40 ? "/JeuOrdreLettresBis" : "/JeuOrdreLettres"}
+          >
             <button
               type="button"
               className="btnEnter2"

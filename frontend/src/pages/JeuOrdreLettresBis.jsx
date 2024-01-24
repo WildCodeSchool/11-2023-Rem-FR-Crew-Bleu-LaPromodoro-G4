@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../style/JeuOrdreLettres.css";
+import { Link } from "react-router-dom";
 import AnswerBilles from "../components/AnswerBillesComponent";
 
 // Création d'un tableau par défaut pour les réponses, initialisé avec "empty".
@@ -10,10 +11,15 @@ function JeuOrdreLettres() {
   const [mot, setMot] = useState(""); // mot à afficher pour l'utilisateur
   const [reponseUtilisateur, setReponseUtilisateur] = useState(""); // réponse donnée par l'utilisateur
   const [answerStatus, setAnswerStatus] = useState(""); // etat de la réponse (correcte ou incorrecte)
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [motAdeviner, setMotAdeviner] = useState(""); // mot à deviner
   const [points, setPoints] = useState(0); //  points accumules par l'utilisateur
   const [answers, setAnswers] = useState(defaultAnswers); // réponses données pour chaque tentative
+
+  // Import themes
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
 
   // Fonction pour obtenir un mot aléatoire de la liste + melange
   const obtenirMotAleatoire = () => {
@@ -31,7 +37,7 @@ function JeuOrdreLettres() {
   // useEffect pour initialiser le jeu
   useEffect(() => {
     setMot(obtenirMotAleatoire()); // c'est le mot mélangé pour l'affichage
-    setIsLoading(false); // fin du chargement
+    // setIsLoading(false); // fin du chargement
     setReponseUtilisateur(""); // on Réinitialise la réponse de l'utilisateur
   }, [answerStatus]);
 
@@ -55,32 +61,57 @@ function JeuOrdreLettres() {
   };
 
   return (
-    <div>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          <h1>Jeu d'Ordre de Lettres</h1>
-          <p>Ordre des lettres: {mot.split("").join(" ")}</p>
-          <label htmlFor="saisieOrdre">Saisissez la bonne ordre:</label>
+    <div className="myLevelBody">
+      <div className="header">
+        <Link
+          to="/Menu"
+          className="leave"
+          style={{
+            color: userTheme.color,
+            backgroundColor: userTheme.backgroundColor,
+            cursor: userTheme.crs,
+          }}
+        >
+          {" "}
+          Quitter
+        </Link>
+        <p className="level">Niveau IV: Ordre des lettres</p>
+      </div>
+      <div className="game">
+        <div className="card">
+          <label htmlFor="saisieOrdre">
+            Saisissez le bon ordre: {mot.split("").join(" ")}
+          </label>
           <input
-            id="saisieOrdre"
+            className="wordType"
             type="text"
+            placeholder="tapez le mot ici"
             value={reponseUtilisateur}
             onChange={(e) => setReponseUtilisateur(e.target.value)}
           />
-          <button
-            className="bVerif"
-            type="button"
-            onClick={verificationReponse}
-          >
-            Vérifier
-          </button>
-          <AnswerBilles answers={answers} />
-          <p>{answerStatus}</p>
-          <p>Score: {points}/10</p>
-        </>
-      )}
+        </div>
+        <div
+          style={{
+            scale: reponseUtilisateur !== "" ? "1.1" : "1",
+            color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
+            backgroundColor:
+              reponseUtilisateur !== "" ? userTheme.backgroundColor : "white",
+            cursor: userTheme.crs,
+          }}
+          className={reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"}
+          role="button"
+          tabIndex={0}
+          onClick={verificationReponse}
+          // onKeyDown={handleKeyDown}
+        >
+          <p>Suivant</p>
+        </div>
+        <AnswerBilles answers={answers} />{" "}
+        <p className="etatReponse">{answerStatus}</p>{" "}
+        {/* affichage de l'état de la réponse */}
+        <p className="scoreDisplay">Score: {points}/10</p>{" "}
+        {/* affichage du score */}
+      </div>
     </div>
   );
 }
