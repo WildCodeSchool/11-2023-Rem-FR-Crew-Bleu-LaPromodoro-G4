@@ -156,7 +156,7 @@ function MainNiveaux() {
                 cursor: userTheme.crs,
               }}
             >
-              Entrer
+              {userScore >= 40 ? "Refaire" : "Entrer"}
             </button>
           </Link>
         ) : (

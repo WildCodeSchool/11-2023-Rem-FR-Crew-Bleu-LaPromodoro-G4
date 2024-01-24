@@ -86,7 +86,7 @@ function Menu() {
           opacity: 1,
           scale: 1,
           transition: {
-            opacity: { delay: 0.5, duration: 0.5 },
+            opacity: { delay: 1, duration: 0.5 },
             scale: { delay: 2, duration: 3, ease: [0.22, 1, 0.36, 1] },
           },
         }}
