@@ -117,9 +117,11 @@ function JeuOrdreLettres() {
         >
           <p>Suivant</p>
         </div>
-        <AnswerBilles answers={answers} /> <p>{answerStatus}</p>{" "}
+        <AnswerBilles answers={answers} />{" "}
+        <p className="etatReponse">{answerStatus}</p>{" "}
         {/* affichage de l'état de la réponse */}
-        <p>Score: {points}/10</p> {/* affichage du score */}
+        <p className="scoreDisplay">Score: {points}/10</p>{" "}
+        {/* affichage du score */}
       </div>
     </div>
   );
