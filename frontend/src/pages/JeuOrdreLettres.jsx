@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../style/JeuOrdreLettres.css";
 import AnswerBilles from "../components/AnswerBillesComponent";
 
@@ -10,17 +11,21 @@ function JeuOrdreLettres() {
   const [mot, setMot] = useState(""); // mot à afficher pour l'utilisateur
   const [reponseUtilisateur, setReponseUtilisateur] = useState(""); // réponse donnée par l'utilisateur
   const [answerStatus, setAnswerStatus] = useState(""); // etat de la réponse (correcte ou incorrecte)
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [motAdeviner, setMotAdeviner] = useState(""); // mot à deviner
   const [totalScore, setTotalScore] = useState(30); // score total (debutes à 30) pour le localStorage
   const [points, setPoints] = useState(0); //  points accumules par l'utilisateur
   const [answers, setAnswers] = useState(defaultAnswers); // réponses données pour chaque tentative
 
-  // Fonction pour obtenir un mot aléatoire de la liste + melange
+  // Import themes
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
+
   const obtenirMotAleatoire = () => {
-    const mots = ["chat", "poulet", "bonjour"]; // Liste de mots.
-    const motAleatoire = mots[Math.floor(Math.random() * mots.length)]; // Sélection aléatoire.
-    setMotAdeviner(motAleatoire); // Mise à jour du mot à deviner.
+    const mots = ["chat", "poulet", "bonjour"];
+    const motAleatoire = mots[Math.floor(Math.random() * mots.length)];
+    setMotAdeviner(motAleatoire);
 
     // Mélange des caractères
     const tableauCaractere = motAleatoire.split("");
@@ -34,7 +39,7 @@ function JeuOrdreLettres() {
     const scoreGlobalInitial = localStorage.getItem("totalScore") || 30;
     setTotalScore(parseInt(scoreGlobalInitial, 10)); // récupération du score global
     setMot(obtenirMotAleatoire()); // Mise à jour du mot
-    setIsLoading(false); // Fin du chargement
+    // setIsLoading(false); // Fin du chargement
     setReponseUtilisateur(""); // Reinitialisation de la réponse utilisateur
   }, [answerStatus, totalScore]);
 
@@ -67,33 +72,55 @@ function JeuOrdreLettres() {
   };
 
   return (
-    <div>
-      {isLoading ? (
-        <div>Loading...</div> // Affichage pendant le chargement.
-      ) : (
-        <>
-          <h1>Jeu d'Ordre de Lettres</h1>
-          <p>Ordre des lettres: {mot.split("").join(" ")}</p>
-          <label htmlFor="saisieOrdre">Saisissez la bonne ordre:</label>
+    <div className="myLevelBody">
+      <div className="header">
+        <Link
+          to="/Menu"
+          className="leave"
+          style={{
+            color: userTheme.color,
+            backgroundColor: userTheme.backgroundColor,
+            cursor: userTheme.crs,
+          }}
+        >
+          {" "}
+          Quitter
+        </Link>
+        <p className="level">Niveau IV: Ordre des lettres</p>
+      </div>
+      <div className="game">
+        <div className="card">
+          <label htmlFor="saisieOrdre">
+            Saisissez le bon ordre: {mot.split("").join(" ")}
+          </label>
           <input
-            id="saisieOrdre"
+            className="wordType"
             type="text"
+            placeholder="tapez le mot ici"
             value={reponseUtilisateur}
             onChange={(e) => setReponseUtilisateur(e.target.value)}
           />
-          <button
-            className="bVerif"
-            type="button"
-            onClick={verificationReponse}
-          >
-            Vérifier
-          </button>
-          <AnswerBilles answers={answers} />{" "}
-          {/* affichage des billes de réponse */}
-          <p>{answerStatus}</p> {/* affichage de l'état de la réponse */}
-          <p>Score: {points}/10</p> {/* affichage du score */}
-        </>
-      )}
+        </div>
+        <div
+          style={{
+            scale: reponseUtilisateur !== "" ? "1.1" : "1",
+            color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
+            backgroundColor:
+              reponseUtilisateur !== "" ? userTheme.backgroundColor : "white",
+            cursor: userTheme.crs,
+          }}
+          className={reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"}
+          role="button"
+          tabIndex={0}
+          onClick={verificationReponse}
+          // onKeyDown={handleKeyDown}
+        >
+          <p>Suivant</p>
+        </div>
+        <AnswerBilles answers={answers} /> <p>{answerStatus}</p>{" "}
+        {/* affichage de l'état de la réponse */}
+        <p>Score: {points}/10</p> {/* affichage du score */}
+      </div>
     </div>
   );
 }
