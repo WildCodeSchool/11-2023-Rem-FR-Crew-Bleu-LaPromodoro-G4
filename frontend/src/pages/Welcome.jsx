@@ -5,7 +5,7 @@ import "../style/Welcome.css";
 function Welcome() {
   return (
     <div className="splineScroll">
-      <Spline scene="https://prod.spline.design/3V84yyxDH5lzibCC/scene.splinecode" />
+      <Spline scene="https://prod.spline.design/LwV4wR9w7zjtOyQp/scene.splinecode" />
     </div>
   );
 }
