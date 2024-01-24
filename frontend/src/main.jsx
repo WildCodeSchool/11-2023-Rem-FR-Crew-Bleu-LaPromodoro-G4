@@ -15,6 +15,7 @@ import Quizz from "./pages/Quizz";
 import QuizzBis from "./components/QuizzBis";
 import Reward from "./pages/Reward";
 import JeuOrdreLettres from "./pages/JeuOrdreLettres";
+import JeuOrdreLettresBis from "./pages/JeuOrdreLettresBis";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/JeuOrdreLettres",
         element: <JeuOrdreLettres />,
+      },
+      {
+        path: "/JeuOrdreLettresBis",
+        element: <JeuOrdreLettresBis />,
       },
     ],
   },
