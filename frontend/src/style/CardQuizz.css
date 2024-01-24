@@ -16,7 +16,7 @@
   border: none;
   padding: 20px 40px;
   border-radius: 30px;
-  background-color: #b3b3b3;
+  background-color: #f58fd8;
   color: white;
   font-weight: 600;
   margin-top: 50px;
@@ -39,7 +39,7 @@
 
 .buttonCard {
   display: flex;
-  background-color: rgba(178, 211, 213, 0.728);
+  background-color: #f58fd8;
   cursor: pointer;
   border: none;
   padding: 20px 65px;
@@ -71,13 +71,35 @@
   flex-direction: column;
 }
 
+.resultContainer {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+}
+
 .containerResult {
-  margin-top: 80px;
+  margin:auto;
+}
+
+.myLevelBodyQ {
+  background-color: rgb(236, 236, 236);
+    font-weight: 600;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.gameQ {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: auto;
 }
 
 .questionCardContainer {
   border-width: 4px 4px 4px 4px;
-  border-color: rgb(62, 129, 162);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: white;
   display: flex;
@@ -85,15 +107,16 @@
   align-items: center;
   justify-content: center;
   gap: 2em;
-  padding: 20px;
-  border-radius: 20px;
+  padding: 3em;
+  border-radius: 3rem;
   flex-wrap: wrap;
   height: 500px;
-  width: 750px;
+  width: 800px;
   margin: 80px;
   font-size: 1.5rem;
   font-weight: 600;
 }
+
 
 .listenContainer {
   display: flex;
@@ -153,6 +176,6 @@
     -6px -6px 12px #ffffff;
 }
 
-#quizzCard > div.listenContainer > div > span:nth-child(2) > span > svg {
+/* #quizzCard > div.listenContainer > div > span:nth-child(2) > span > svg {
   display: none;
-}
+} */

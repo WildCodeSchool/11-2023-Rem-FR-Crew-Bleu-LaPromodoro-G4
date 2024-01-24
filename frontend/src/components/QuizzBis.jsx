@@ -51,7 +51,7 @@ function Quizz() {
   const levelTitle3 = "Niveau 3: Quizz fini !";
 
   return (
-    <div>
+    <div className="myLevelBodyQ">
       <div id="headerQuizz" className="headerQuizz">
         <Link to="/Menu" className="leaveQuizz">
           {" "}
@@ -63,7 +63,7 @@ function Quizz() {
           <div id="score">0</div>
         </div>
       </div>
-      <div className="pageContainer">
+      <div className="gameQ">
         <div
           id="divResults"
           className={finished ? "containerResult" : "cardsHide"}

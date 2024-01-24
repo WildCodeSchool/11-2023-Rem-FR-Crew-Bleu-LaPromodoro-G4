@@ -12,6 +12,7 @@ function Quizz() {
   });
 
   const [finished, setFinished] = useState(false);
+  const [localScore, setLocalScore] = useState(0);
 
   useEffect(() => {
     localStorage.setItem("totalScore", count.toString());
@@ -22,13 +23,14 @@ function Quizz() {
   const incrementCount = (cardId, isRight) => {
     if (isRight) {
       setCount((prevCount) => Math.min(prevCount + 1, 30));
+      setLocalScore(localScore + 1);
       answerBullets[cardId - 1] = "correct";
     } else {
       answerBullets[cardId - 1] = "notcorrect";
     }
     // get div element from HTML page to put the score inside
     const divScore = document.getElementById("score");
-    divScore.innerHTML = count.toString();
+    divScore.innerHTML = localScore.toString();
 
     // changed element of answer array into correct
     const updatedBullets = [...answerBullets];
@@ -51,7 +53,7 @@ function Quizz() {
   const levelTitle3 = "Niveau 3: Quizz fini !";
 
   return (
-    <div>
+    <div className="myLevelBodyQ">
       <div id="headerQuizz" className="headerQuizz">
         <Link to="/Menu" className="leaveQuizz">
           {" "}
@@ -63,12 +65,12 @@ function Quizz() {
           <div id="score">0</div>
         </div>
       </div>
-      <div className="pageContainer">
+      <div className="gameQ">
         <div
           id="divResults"
           className={finished ? "containerResult" : "cardsHide"}
         >
-          <Results score={count} level={levelTitle3} />
+          <Results score={localScore} level={levelTitle3} />
         </div>
 
         {finished ? (
@@ -83,7 +85,7 @@ function Quizz() {
         )}
       </div>
 
-      <div className="pageContainer">
+      <div className="resultContainer">
         <AnswerBillesComponent answers={answerBullets} />
       </div>
     </div>
