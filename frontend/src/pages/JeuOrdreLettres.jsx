@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../style/JeuOrdreLettres.css";
 
 function JeuOrdreLettres() {
@@ -9,6 +10,11 @@ function JeuOrdreLettres() {
   const [motAdeviner, setMotAdeviner] = useState("");
   const [totalScore, setTotalScore] = useState(30);
   const [points, setPoints] = useState(30);
+
+  // Import themes
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
 
   useEffect(() => {
     const obtenirMotAleatoire = () => {
@@ -45,21 +51,54 @@ function JeuOrdreLettres() {
   }
 
   return (
-    <div>
-      <h1>Jeu d'Ordre de Lettres</h1>
-      <p>Ordre des lettres: {mot.split("").join(" ")}</p>
-      <label htmlFor="saisieOrdre">Saisissez la bonne ordre:</label>
-      <input
-        id="saisieOrdre"
-        type="text"
-        value={reponseUtilisateur}
-        onChange={(e) => setReponseUtilisateur(e.target.value)}
-      />
-      <button className="bVerif" type="button" onClick={verificationReponse}>
-        Vérifier
-      </button>
-      <p>{resultat}</p>
-      <p>Score: {points}</p>
+    <div className="myLevelBody">
+      <div className="header">
+        <Link
+          to="/Menu"
+          className="leave"
+          style={{
+            color: userTheme.color,
+            backgroundColor: userTheme.backgroundColor,
+            cursor: userTheme.crs,
+          }}
+        >
+          {" "}
+          Quitter
+        </Link>
+        <p className="level">Niveau IV: Ordre des lettres</p>
+      </div>
+      <div className="game">
+        <div className="card">
+          <label htmlFor="saisieOrdre">
+            Saisissez le bon ordre: {mot.split("").join(" ")}
+          </label>
+          <input
+            className="wordType"
+            type="text"
+            placeholder="tapez le mot ici"
+            value={reponseUtilisateur}
+            onChange={(e) => setReponseUtilisateur(e.target.value)}
+          />
+        </div>
+        <div
+          style={{
+            scale: reponseUtilisateur !== "" ? "1.1" : "1",
+            color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
+            backgroundColor:
+              reponseUtilisateur !== "" ? userTheme.backgroundColor : "white",
+            cursor: userTheme.crs,
+          }}
+          className={reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"}
+          role="button"
+          tabIndex={0}
+          onClick={verificationReponse}
+          // onKeyDown={handleKeyDown}
+        >
+          <p>Suivant</p>
+        </div>
+        <p>{resultat}</p>
+        <p className="scoreJeuDesLettres">Score: {points}</p>
+      </div>
     </div>
   );
 }
