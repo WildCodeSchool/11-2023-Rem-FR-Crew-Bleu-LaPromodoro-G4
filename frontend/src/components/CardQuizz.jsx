@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../style/CardQuizz.css";
 import PropTypes from "prop-types";
 // import Speech from "react-text-to-speech";
-import speaker from "../assets/speak.png";
+// import speaker from "../assets/speak.png";
 
 const quizzAnimal = [
   {
@@ -117,7 +117,7 @@ function CardQuizz({ incrementCount }) {
       className={card === 10 ? "cardsHide" : "questionCardContainer"}
     >
       {/* <div className="listenContainer"> */}
-        {/* <Speech
+      {/* <Speech
           text={quizzAnimal[card].question}
           pitch={1.5}
           rate={1.5}
@@ -125,7 +125,7 @@ function CardQuizz({ incrementCount }) {
           startBtn={startBtn}
         /> */}
       {/* </div> */}
-      <h4>{quizzAnimal[card].question}</h4>
+      <h4 className="questionQ">{quizzAnimal[card].question}</h4>
       <div className="inputCardContainer">
         <div className="inputRadio1">
           <input type="radio" id="input1" name="choice" value="input1" />
