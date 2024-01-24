@@ -113,7 +113,7 @@ function Quizz() {
             <div id="score">0</div>
           </div>
         </div>
-        <div className="pageContainer">
+        <div className="gameQ">
           <div
             id="divResults"
             className={finished ? "containerResult" : "cardsHide"}
