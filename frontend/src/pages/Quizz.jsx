@@ -93,7 +93,7 @@ function Quizz() {
         exit={{ scaleX: 0 }}
         transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
       />
-      <div>
+      <div className="myLevelBodyQ">
         <div id="headerQuizz" className="headerQuizz">
           <Link
             to="/Menu"
