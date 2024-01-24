@@ -2,7 +2,6 @@
     background-color: rgb(242,242,242);
    
     text-align: center;
-    align-items: center;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -12,7 +11,11 @@
    
 }
 
-
+.picture{
+  width: 200px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+}
 
 .btn-restart{
     display: flex;
