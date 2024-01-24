@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from "react";
 import { Typewriter } from "react-simple-typewriter";
@@ -8,6 +9,7 @@ import Pig from "../components/Pig";
 import Instructions from "../components/Instructions";
 import MainNiveaux from "../components/MainNiveaux";
 import Gauge from "../components/Gauge";
+import ResetButton from "../components/ResetButton";
 
 import "../style/Menu.css";
 
@@ -95,7 +97,11 @@ function Menu() {
         <div className="mainContainer">
           {backgroundComponent}
           <MainNiveaux isUnlocked={isUnlocked} />
+          <ResetButton userTheme={userTheme} />
           <Instructions />
+        </div>
+        <div className="mainContainerReset">
+          <ResetButton userTheme={userTheme} />
         </div>
         <div className="dialogue-bulle">
           <button type="button" className="dialogue" onClick={changePopup}>
