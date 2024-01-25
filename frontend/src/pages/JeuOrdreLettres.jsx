@@ -25,7 +25,38 @@ function JeuOrdreLettres() {
   const [userTheme] = useState(userThemeFromLocalStorage);
 
   const obtenirMotAleatoire = () => {
-    const mots = ["chat", "poulet", "bonjour"];
+    const mots = [
+      "chat",
+      "poulet",
+      "bonjour",
+      "maison",
+      "étoile",
+      "manger",
+      "solei",
+      "merci",
+      "lune",
+      "sable",
+      "amour",
+      "papillon",
+      "chien",
+      "poubelle",
+      "écharpe",
+      "ordinateur",
+      "serpent",
+      "jour",
+      "nuit",
+      "table",
+      "cuisine",
+      "chambre",
+      "chaussure",
+      "pantalon",
+      "bâtiment",
+      "cahier",
+      "stylo",
+      "savon",
+      "lit",
+      "bouche",
+    ];
     const motAleatoire = mots[Math.floor(Math.random() * mots.length)];
     setMotAdeviner(motAleatoire);
 
@@ -125,24 +156,6 @@ function JeuOrdreLettres() {
           </Link>
           <p className="level">Niveau IV: Ordre des lettres</p>
         </div>
-<<<<<<< HEAD
-        <div
-          style={{
-            scale: reponseUtilisateur !== "" ? "1.1" : "1",
-            color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
-            backgroundColor:
-              reponseUtilisateur !== "" ? userTheme.backgroundColor : "white",
-            cursor: userTheme.crs,
-          }}
-          className={reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"}
-          role="button"
-          tabIndex={0}
-          onClick={verificationReponse}
-
-          // onKeyDown={handleKeyDown}
-        >
-          <p>Suivant</p>
-=======
         <div className="game">
           <div className="card">
             <label htmlFor="saisieOrdre">
@@ -179,7 +192,6 @@ function JeuOrdreLettres() {
           {/* affichage de l'état de la réponse */}
           <p className="scoreDisplay">Score: {points}/10</p>{" "}
           {/* affichage du score */}
->>>>>>> dev
         </div>
       </div>
     </>
