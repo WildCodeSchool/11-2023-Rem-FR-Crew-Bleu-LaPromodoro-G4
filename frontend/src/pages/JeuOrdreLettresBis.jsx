@@ -60,7 +60,7 @@ function JeuOrdreLettres() {
     ]; // Liste de mots.
     const motAleatoire = mots[Math.floor(Math.random() * mots.length)]; // Sélection aléatoire.
     setMotAdeviner(motAleatoire); // Mise à jour du mot à deviner.
-    
+
     // Mélange des caractères
     const tableauCaractere = motAleatoire.split("");
     tableauCaractere.sort(() => 0.5 - Math.random());
@@ -98,6 +98,7 @@ function JeuOrdreLettres() {
     // mise à jour des points et du score total si la réponse  OK
     if (isCorrect) {
       setPoints((prevPoints) => (prevPoints < 10 ? prevPoints + 1 : 10));
+      obtenirMotAleatoire();
     }
     setAnswerStatus(currentAnswer); // mise à jour de l'état de la réponse
   };
