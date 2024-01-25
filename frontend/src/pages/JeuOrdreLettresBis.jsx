@@ -25,7 +25,38 @@ function JeuOrdreLettres() {
 
   // Fonction pour obtenir un mot aléatoire de la liste + melange
   const obtenirMotAleatoire = () => {
-    const mots = ["chat", "poulet", "bonjour"]; // Liste de mots.
+    const mots = [
+      "chat",
+      "poulet",
+      "bonjour",
+      "maison",
+      "étoile",
+      "manger",
+      "solei",
+      "merci",
+      "lune",
+      "sable",
+      "amour",
+      "papillon",
+      "chien",
+      "poubelle",
+      "écharpe",
+      "ordinateur",
+      "serpent",
+      "jour",
+      "nuit",
+      "table",
+      "cuisine",
+      "chambre",
+      "chaussure",
+      "pantalon",
+      "bâtiment",
+      "cahier",
+      "stylo",
+      "savon",
+      "lit",
+      "bouche",
+    ]; // Liste de mots.
     const motAleatoire = mots[Math.floor(Math.random() * mots.length)]; // Sélection aléatoire.
     setMotAdeviner(motAleatoire); // Mise à jour du mot à deviner.
 
