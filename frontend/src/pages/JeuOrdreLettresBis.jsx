@@ -1,9 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from "react";
-import "../style/JeuOrdreLettres.css";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import "../style/JeuOrdreLettres.css";
 import AnswerBilles from "../components/AnswerBillesComponent";
+import Results from "../components/Results";
 
 // Création d'un tableau par défaut pour les réponses, initialisé avec "empty".
 const defaultAnswers = new Array(10).fill("empty");
@@ -17,17 +18,17 @@ function JeuOrdreLettres() {
   const [motAdeviner, setMotAdeviner] = useState(""); // mot à deviner
   const [points, setPoints] = useState(0); //  points accumules par l'utilisateur
   const [answers, setAnswers] = useState(defaultAnswers); // réponses données pour chaque tentative
+  const [quizFinished, setQuizFinished] = useState(false);
 
   // Import themes
   const userThemeFromLocalStorage =
     JSON.parse(localStorage.getItem("userTheme")) || "";
   const [userTheme] = useState(userThemeFromLocalStorage);
 
-  // Fonction pour obtenir un mot aléatoire de la liste + melange
   const obtenirMotAleatoire = () => {
-    const mots = ["chat", "poulet", "bonjour"]; // Liste de mots.
-    const motAleatoire = mots[Math.floor(Math.random() * mots.length)]; // Sélection aléatoire.
-    setMotAdeviner(motAleatoire); // Mise à jour du mot à deviner.
+    const mots = ["chat", "poulet", "bonjour"];
+    const motAleatoire = mots[Math.floor(Math.random() * mots.length)];
+    setMotAdeviner(motAleatoire);
 
     // Mélange des caractères
     const tableauCaractere = motAleatoire.split("");
@@ -38,29 +39,39 @@ function JeuOrdreLettres() {
 
   // useEffect pour initialiser le jeu
   useEffect(() => {
-    setMot(obtenirMotAleatoire()); // c'est le mot mélangé pour l'affichage
-    // setIsLoading(false); // fin du chargement
-    setReponseUtilisateur(""); // on Réinitialise la réponse de l'utilisateur
+    setMot(obtenirMotAleatoire()); // Mise à jour du mot
+    // setIsLoading(false); // Fin du chargement
+    setReponseUtilisateur(""); // Reinitialisation de la réponse utilisateur
   }, [answerStatus]);
 
+  // useEffect pour surveiller les changements de points
   useEffect(() => {
-    console.info("Le score a été mis à jour :", points); // affiche score actuel (pour nous car j'y arrivais pas)
-  }, [points]); // On déclenche ca a chaque changement du score
-
-  const verificationReponse = () => {
-    const isCorrect = reponseUtilisateur === motAdeviner; // verifie si la réponse est ok ou pas
-    const currentAnswer = isCorrect ? "correct" : "notcorrect"; // Statut réponse (pour les billes)
-    const questionIndex = answers.filter((answer) => answer !== "empty").length; // index de la question
-    const updatedAnswers = [...answers]; // copie du tableau de reponses
-    updatedAnswers[questionIndex] = currentAnswer; // on met jour le statut de la réponse
-    setAnswers(updatedAnswers); // Onenregistre le tableau
-
-    if (isCorrect) {
-      setPoints((prevPoints) => (prevPoints < 10 ? prevPoints + 1 : 10)); // on augmente le score si la réponse est correcte.
-      obtenirMotAleatoire(); // hop un nouveau mot pour la prochaine question
+    console.info("Le score a été mis à jour :", points);
+    const allAnswersGiven = answers.every((answer) => answer !== "empty");
+    if (allAnswersGiven) {
+      setQuizFinished(true);
     }
-    setAnswerStatus(currentAnswer); // on met à jour le statut de la réponse.
+  }, [points, answers]);
+
+  // fonction pour vérifier la réponse de l'utilisateur
+  const verificationReponse = () => {
+    const isCorrect = reponseUtilisateur === motAdeviner; // vérification de la réponse
+    const currentAnswer = isCorrect ? "correct" : "notcorrect";
+
+    // mise à jour de la liste des réponses
+    const questionIndex = answers.filter((answer) => answer !== "empty").length;
+    const updatedAnswers = [...answers];
+    updatedAnswers[questionIndex] = currentAnswer;
+    setAnswers(updatedAnswers);
+
+    // mise à jour des points et du score total si la réponse  OK
+    if (isCorrect) {
+      setPoints((prevPoints) => (prevPoints < 10 ? prevPoints + 1 : 10));
+    }
+    setAnswerStatus(currentAnswer); // mise à jour de l'état de la réponse
   };
+
+  const levelTitle = "Niveau 4: Ordre des lettres fini !";
 
   return (
     <>
@@ -99,52 +110,77 @@ function JeuOrdreLettres() {
         transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
       />
       <div className="myLevelBody">
-        <div className="header">
-          <Link
-            to="/Menu"
-            className="leave"
-            style={{
-              color: userTheme.color,
-              backgroundColor: userTheme.backgroundColor,
-              cursor: userTheme.crs,
-            }}
-          >
-            {" "}
-            Quitter
-          </Link>
-          <p className="level">Niveau 3: Ordre des lettres</p>
-        </div>
+        {quizFinished ? (
+          ""
+        ) : (
+          <div className="header">
+            <Link
+              to="/Menu"
+              className="leave"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
+              {" "}
+              Quitter
+            </Link>
+            <p className="level">Niveau 4: Ordre des lettres</p>
+          </div>
+        )}
         <div className="game">
-          <div className="card">
-            <label htmlFor="saisieOrdre">
-              Saisissez le bon ordre: {mot.split("").join(" ")}
-            </label>
-            <input
-              className="wordType"
-              type="text"
-              placeholder="tapez le mot ici"
-              value={reponseUtilisateur}
-              onChange={(e) => setReponseUtilisateur(e.target.value)}
-            />
-          </div>
-          <div
-            style={{
-              scale: reponseUtilisateur !== "" ? "1.1" : "1",
-              color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
-              backgroundColor:
-                reponseUtilisateur !== "" ? userTheme.backgroundColor : "white",
-              cursor: userTheme.crs,
-            }}
-            className={
-              reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"
-            }
-            role="button"
-            tabIndex={0}
-            onClick={verificationReponse}
-            // onKeyDown={handleKeyDown}
-          >
-            <p>Suivant</p>
-          </div>
+          {quizFinished ? (
+            <Results score={points} level={levelTitle} />
+          ) : (
+            <div className="card">
+              <label htmlFor="saisieOrdre">
+                Saisissez le bon ordre: {mot.split("").join(" ")}
+              </label>
+              <input
+                className="wordType"
+                type="text"
+                placeholder="tapez le mot ici"
+                value={reponseUtilisateur}
+                onChange={(e) => setReponseUtilisateur(e.target.value)}
+              />
+            </div>
+          )}
+          {quizFinished ? (
+            <Link
+              to="/Menu"
+              className="leave"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
+              {" "}
+              Quitter
+            </Link>
+          ) : (
+            <div
+              style={{
+                scale: reponseUtilisateur !== "" ? "1.1" : "1",
+                color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
+                backgroundColor:
+                  reponseUtilisateur !== ""
+                    ? userTheme.backgroundColor
+                    : "white",
+                cursor: userTheme.crs,
+              }}
+              className={
+                reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"
+              }
+              role="button"
+              tabIndex={0}
+              onClick={verificationReponse}
+              // onKeyDown={handleKeyDown}
+            >
+              <p>Suivant</p>
+            </div>
+          )}
           <AnswerBilles answers={answers} />{" "}
           <p className="etatReponse">{answerStatus}</p>{" "}
           {/* affichage de l'état de la réponse */}

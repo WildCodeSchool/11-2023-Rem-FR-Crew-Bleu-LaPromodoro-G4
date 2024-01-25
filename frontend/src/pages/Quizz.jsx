@@ -7,31 +7,36 @@ import AnswerBillesComponent from "../components/AnswerBillesComponent";
 import Results from "../components/Results";
 
 function Quizz() {
-  const [count, setCount] = useState(() => {
+  const [totalScore, setTotalScore] = useState(() => {
     const storedScore = localStorage.getItem("totalScore");
     const parsedScore = storedScore ? parseInt(storedScore, 10) : 20;
     return Number.isNaN(parsedScore) ? 20 : Math.max(parsedScore, 20);
   });
 
-  const userThemeFromLocalStorage =
-    JSON.parse(localStorage.getItem("userTheme")) || "";
-  const [userTheme] = useState(userThemeFromLocalStorage);
+  const [count, setCount] = useState(0);
 
   const [finished, setFinished] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem("totalScore", count.toString());
-  }, [count]);
+    localStorage.setItem("totalScore", totalScore.toString());
+  }, [totalScore]);
 
   const [answerBullets, setAnswerBullets] = useState(Array(10).fill(""));
+
+  // Import themes
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
 
   const incrementCount = (cardId, isRight) => {
     if (isRight) {
       setCount((prevCount) => Math.min(prevCount + 1, 30));
+      setTotalScore((prevTotalScore) => Math.min(prevTotalScore + 1, 30));
       answerBullets[cardId - 1] = "correct";
     } else {
       answerBullets[cardId - 1] = "notcorrect";
     }
+
     // get div element from HTML page to put the score inside
     const divScore = document.getElementById("score");
     divScore.innerHTML = count.toString();
@@ -42,20 +47,21 @@ function Quizz() {
     setAnswerBullets(updatedBullets);
 
     if (cardId === 10) {
-      // const divResults = document.getElementById("divResults");
-      // divResults.classList.remove("cardsHide");
-
       const header = document.getElementById("headerQuizz");
       header.classList.add("cardsHide");
       setFinished(true);
     }
-
-    // store the score in the local storage
-    localStorage.setItem("totalScore", count.toString());
   };
 
-  const levelTitle3 = "Niveau 3: Quizz fini !";
+  // useEffect(() => {
+  //   const storeScore = localStorage.getItem("totalScore");
+  //   if (storeScore && parseInt(storeScore, 10 > 30) {
+  //     localStorage.setItem("totalScore", 30);
+  //     setCount(30);
+  //   })
+  // } []);
 
+  const levelTitle3 = "Niveau 3: Quizz fini !";
   return (
     <>
       <motion.div
@@ -92,7 +98,7 @@ function Quizz() {
         exit={{ scaleX: 0 }}
         transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
       />
-      <div>
+      <div className="myLevelBodyQ">
         <div id="headerQuizz" className="headerQuizz">
           <Link
             to="/Menu"
@@ -112,7 +118,7 @@ function Quizz() {
             <div id="score">0</div>
           </div>
         </div>
-        <div className="pageContainer">
+        <div className="gameQ">
           <div
             id="divResults"
             className={finished ? "containerResult" : "cardsHide"}
@@ -121,7 +127,15 @@ function Quizz() {
           </div>
 
           {finished ? (
-            <Link to="/Menu" className="leaveQuizz">
+            <Link
+              to="/Menu"
+              className="leaveQuizz"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
               {" "}
               Quitter
             </Link>
