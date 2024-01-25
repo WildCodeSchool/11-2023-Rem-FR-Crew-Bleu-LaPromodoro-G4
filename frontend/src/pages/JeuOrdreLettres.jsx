@@ -34,7 +34,7 @@ function JeuOrdreLettres() {
       "maison",
       "étoile",
       "manger",
-      "solei",
+      "soleil",
       "merci",
       "lune",
       "sable",
