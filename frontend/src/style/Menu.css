@@ -21,6 +21,16 @@ canvas {
   overflow: hidden;
 }
 
+/* Modif Restet Start */
+.mainContainerReset {
+  position: relative;
+  width: 100vw;
+  max-width: 2000px;
+  height: 100vh;
+  overflow: hidden;
+}
+/* Modif Reset END */
+
 .dialogue {
   position: fixed;
   top: 43%;
