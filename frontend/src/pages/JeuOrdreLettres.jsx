@@ -125,6 +125,24 @@ function JeuOrdreLettres() {
           </Link>
           <p className="level">Niveau IV: Ordre des lettres</p>
         </div>
+<<<<<<< HEAD
+        <div
+          style={{
+            scale: reponseUtilisateur !== "" ? "1.1" : "1",
+            color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
+            backgroundColor:
+              reponseUtilisateur !== "" ? userTheme.backgroundColor : "white",
+            cursor: userTheme.crs,
+          }}
+          className={reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"}
+          role="button"
+          tabIndex={0}
+          onClick={verificationReponse}
+
+          // onKeyDown={handleKeyDown}
+        >
+          <p>Suivant</p>
+=======
         <div className="game">
           <div className="card">
             <label htmlFor="saisieOrdre">
@@ -161,6 +179,7 @@ function JeuOrdreLettres() {
           {/* affichage de l'état de la réponse */}
           <p className="scoreDisplay">Score: {points}/10</p>{" "}
           {/* affichage du score */}
+>>>>>>> dev
         </div>
       </div>
     </>
