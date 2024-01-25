@@ -19,6 +19,7 @@ function JeuOrdreLettres() {
   const [points, setPoints] = useState(0); //  points accumules par l'utilisateur
   const [answers, setAnswers] = useState(defaultAnswers); // réponses données pour chaque tentative
   const [quizFinished, setQuizFinished] = useState(false);
+  const [answerCount, setAnswerCount] = useState(0);
 
   // Import themes
   const userThemeFromLocalStorage =
@@ -72,7 +73,7 @@ function JeuOrdreLettres() {
     setMot(obtenirMotAleatoire()); // Mise à jour du mot
     // setIsLoading(false); // Fin du chargement
     setReponseUtilisateur(""); // Reinitialisation de la réponse utilisateur
-  }, [answerStatus]);
+  }, [answerStatus, answerCount]);
 
   // useEffect pour surveiller les changements de points
   useEffect(() => {
@@ -99,6 +100,7 @@ function JeuOrdreLettres() {
       setPoints((prevPoints) => (prevPoints < 10 ? prevPoints + 1 : 10));
     }
     setAnswerStatus(currentAnswer); // mise à jour de l'état de la réponse
+    setAnswerCount((prevCount) => prevCount + 1); // mise à jour du compteur de réponses
   };
 
   const levelTitle = "Niveau 4: Ordre des lettres fini !";
