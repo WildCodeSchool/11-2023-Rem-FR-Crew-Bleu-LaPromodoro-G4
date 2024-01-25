@@ -31,7 +31,7 @@ function Quizz() {
   const incrementCount = (cardId, isRight) => {
     if (isRight) {
       setCount((prevCount) => Math.min(prevCount + 1, 30));
-      setTotalScore((prevTotalScore) => prevTotalScore + 1);
+      setTotalScore((prevTotalScore) => Math.min(prevTotalScore + 1, 30));
       answerBullets[cardId - 1] = "correct";
     } else {
       answerBullets[cardId - 1] = "notcorrect";
@@ -52,6 +52,14 @@ function Quizz() {
       setFinished(true);
     }
   };
+
+  // useEffect(() => {
+  //   const storeScore = localStorage.getItem("totalScore");
+  //   if (storeScore && parseInt(storeScore, 10 > 30) {
+  //     localStorage.setItem("totalScore", 30);
+  //     setCount(30);
+  //   })
+  // } []);
 
   const levelTitle3 = "Niveau 3: Quizz fini !";
   return (
