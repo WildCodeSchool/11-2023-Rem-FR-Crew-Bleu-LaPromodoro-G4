@@ -1,41 +1,51 @@
-.end-component{
-    background-color: rgb(242,242,242);
-   
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-   
+.end-component {
+  background-color: rgb(242, 242, 242);
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
 }
 
-.picture-user{
+.picture-user {
   width: 200px;
   margin-bottom: 20px;
   border-radius: 30px;
+  margin: 20px;
 }
 
-.btn-restart{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(253,173,190);
-    cursor: pointer;
-    border: none;
-    padding: 20px 65px;
-    border-radius: 30px;
-    color: rgb(255,242,230);
-    font-weight: 600;
-    margin: 30px auto;
-    font-size: 1rem;
-    transition: 0.5s ease-in-out;
-    
-    
-  }
+.btns-restart {
+  display: flex;
+  gap: 2rem;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+}
 
-  .btn-restart:hover{
-    transform: scale(1.1);
+.btn-restart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(253, 173, 190);
+  cursor: pointer;
+  border: none;
+  padding: 20px 65px;
+  border-radius: 30px;
+  color: rgb(255, 242, 230);
+  font-weight: 600;
+  margin: 30px auto;
+  font-size: 1rem;
+  transition: 0.5s ease-in-out;
+}
 
+.btn-restart:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 700px) {
+  .btns-restart {
+    display: block;
   }
+}

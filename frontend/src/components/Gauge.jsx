@@ -2,16 +2,28 @@ import React, { useState, useEffect } from "react";
 import "../style/Gauge.css";
 
 function Gauge() {
-  const [score, setScore] = useState(0);
-  useEffect(() => {
-    const savedScore = JSON.parse(localStorage.getItem("totalScore")) || 0;
-    setScore(savedScore);
-  }, []);
-  const gaugeWidth = Math.min(100, (score / 40) * 100);
-
+  const [score, setScore] = useState(
+    parseInt(localStorage.getItem("totalScore"), 10) || 0
+  );
   const userThemeFromLocalStorage =
     JSON.parse(localStorage.getItem("userTheme")) || "";
   const [userTheme] = useState(userThemeFromLocalStorage);
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const storedScore = localStorage.getItem("totalScore");
+      setScore(storedScore ? parseInt(storedScore, 10) : 0);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  const gaugeWidth = Math.min(100, (score / 40) * 100);
 
   return (
     <div>

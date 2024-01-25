@@ -86,6 +86,10 @@ function CardQuizz({ incrementCount }) {
 
   const [card, setCard] = useState(0);
 
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
+
   function handleClick() {
     const choice1 = document.getElementById("input1");
     const choice2 = document.getElementById("input2");
@@ -142,6 +146,11 @@ function CardQuizz({ incrementCount }) {
           type="submit"
           className="buttonValidate"
           onClick={handleClick}
+          style={{
+            color: userTheme.color,
+            backgroundColor: userTheme.backgroundColor,
+            cursor: userTheme.crs,
+          }}
         >
           Valider
         </button>
