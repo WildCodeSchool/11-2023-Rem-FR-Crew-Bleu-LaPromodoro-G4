@@ -27,7 +27,38 @@ function JeuOrdreLettres() {
   const [userTheme] = useState(userThemeFromLocalStorage);
 
   const obtenirMotAleatoire = () => {
-    const mots = ["chat", "poulet", "bonjour"];
+    const mots = [
+      "chat",
+      "poulet",
+      "bonjour",
+      "maison",
+      "étoile",
+      "manger",
+      "solei",
+      "merci",
+      "lune",
+      "sable",
+      "amour",
+      "papillon",
+      "chien",
+      "poubelle",
+      "écharpe",
+      "ordinateur",
+      "serpent",
+      "jour",
+      "nuit",
+      "table",
+      "cuisine",
+      "chambre",
+      "chaussure",
+      "pantalon",
+      "bâtiment",
+      "cahier",
+      "stylo",
+      "savon",
+      "lit",
+      "bouche",
+    ];
     const motAleatoire = mots[Math.floor(Math.random() * mots.length)];
     setMotAdeviner(motAleatoire);
 
