@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import CardQuizz from "../components/CardQuizz";
 import AnswerBillesComponent from "../components/AnswerBillesComponent";
 import Results from "../components/Results";
@@ -10,6 +12,10 @@ function Quizz() {
     const parsedScore = storedScore ? parseInt(storedScore, 10) : 20;
     return Number.isNaN(parsedScore) ? 20 : Math.max(parsedScore, 20);
   });
+
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
 
   const [finished, setFinished] = useState(false);
 
@@ -51,42 +57,78 @@ function Quizz() {
   const levelTitle3 = "Niveau 3: Quizz fini !";
 
   return (
-    <div>
-      <div id="headerQuizz" className="headerQuizz">
-        <Link to="/Menu" className="leaveQuizz">
-          {" "}
-          Quitter
-        </Link>
-        <p className="levelQuizz">Niveau 3: Quizz</p>
-        <div className="scoreQuizz">
-          <div>Score:</div>
-          <div id="score">0</div>
-        </div>
-      </div>
-      <div className="pageContainer">
-        <div
-          id="divResults"
-          className={finished ? "containerResult" : "cardsHide"}
-        >
-          <Results score={count} level={levelTitle3} />
-        </div>
-
-        {finished ? (
+    <>
+      <motion.div
+        className="slide-in1"
+        style={{
+          backgroundColor: userTheme.backgroundColor,
+        }}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 1 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="slide-in2"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 1 }}
+        transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="slide-out1"
+        style={{
+          backgroundColor: userTheme.backgroundColor,
+        }}
+        initial={{ scaleX: 1 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 0 }}
+        transition={{ duration: 2.3, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="slide-out2"
+        initial={{ scaleX: 1 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 0 }}
+        transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <div>
+        <div id="headerQuizz" className="headerQuizz">
           <Link to="/Menu" className="leaveQuizz">
             {" "}
             Quitter
           </Link>
-        ) : (
-          <div className="pageContainer">
-            <CardQuizz incrementCount={incrementCount} />
+          <p className="levelQuizz">Niveau 3: Quizz</p>
+          <div className="scoreQuizz">
+            <div>Score:</div>
+            <div id="score">0</div>
           </div>
-        )}
-      </div>
+        </div>
+        <div className="pageContainer">
+          <div
+            id="divResults"
+            className={finished ? "containerResult" : "cardsHide"}
+          >
+            <Results score={count} level={levelTitle3} />
+          </div>
 
-      <div className="pageContainer">
-        <AnswerBillesComponent answers={answerBullets} />
+          {finished ? (
+            <Link to="/Menu" className="leaveQuizz">
+              {" "}
+              Quitter
+            </Link>
+          ) : (
+            <div className="pageContainer">
+              <CardQuizz incrementCount={incrementCount} />
+            </div>
+          )}
+        </div>
+
+        <div className="pageContainer">
+          <AnswerBillesComponent answers={answerBullets} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

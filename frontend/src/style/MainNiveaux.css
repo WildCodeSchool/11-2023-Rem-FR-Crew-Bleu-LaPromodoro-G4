@@ -8,11 +8,12 @@ body {
   position: absolute;
   top: 25%;
   right: 5%;
-  height: 500px;
-  width: 520px;
-  border-radius: 60px;
-  padding: 35px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: max-content;
+  border-radius: 4rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .niveau1,
@@ -20,9 +21,9 @@ body {
 .niveau3,
 .niveau4 {
   display: flex;
-  margin-top: 40px;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .titleDefinition {
@@ -36,7 +37,7 @@ a {
 .btnEnter2,
 .btnEnter3,
 .btnEnter4 {
-  font-family: "Gill Sans";
+  font-family: "Gill Sans", "Gill Sans MT";
   font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;

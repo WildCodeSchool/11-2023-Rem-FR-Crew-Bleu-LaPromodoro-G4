@@ -169,7 +169,14 @@
   transform: translateY(-1px);
 } */
 
-#root > main > div > div.game > div.quizSpace > div > span:nth-child(2) {
+#root
+  > div.myLevelBody
+  > div.game
+  > div.quizSpace
+  > div
+  > span:nth-child(2)
+  > span
+  > svg {
   display: none;
 }
 /* .progressBar {
