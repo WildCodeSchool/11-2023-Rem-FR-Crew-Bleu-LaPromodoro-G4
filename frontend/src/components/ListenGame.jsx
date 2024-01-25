@@ -74,11 +74,11 @@ function ListenGame() {
     setUserInput(e.target.value.toUpperCase());
   };
 
-  // const handleKeyDown = (e) => {
-  //   if (e.key === "Enter") {
-  //     handleNextWord();
-  //   }
-  // };
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleNextWord();
+    }
+  };
 
   const startBtn = (
     <img
@@ -196,7 +196,7 @@ function ListenGame() {
               role="button"
               tabIndex={0}
               onClick={handleNextWord}
-              // onKeyDown={handleKeyDown}
+              onKeyDown={handleKeyPress}
             >
               <p>Suivant</p>
             </div>

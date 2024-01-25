@@ -3,7 +3,7 @@ import "../style/EndComponent.css";
 import { Link } from "react-router-dom";
 
 function EndComponent() {
-  ////Récupration des infos utilisateur dans le LocalStorage/////
+  /// /Récupration des infos utilisateur dans le LocalStorage/////
   const userNameLocalStorage = localStorage.getItem("userName");
   const [userImage, setImagePath] = useState("");
 
@@ -18,7 +18,7 @@ function EndComponent() {
     }
   }, []);
 
-  ////Vider le LocalStorage////
+  /// /Vider le LocalStorage////
   const clearLocalStorage = () => {
     localStorage.clear();
   };

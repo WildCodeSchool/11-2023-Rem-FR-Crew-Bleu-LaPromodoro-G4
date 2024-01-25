@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "../style/JeuOrdreLettres.css";
 import AnswerBilles from "../components/AnswerBillesComponent";
+import Results from "../components/Results";
 
 // Création d'un tableau par défaut pour les réponses, initialisé avec "empty".
 const defaultAnswers = new Array(10).fill("empty");
@@ -18,6 +19,7 @@ function JeuOrdreLettres() {
   const [totalScore, setTotalScore] = useState(30); // score total (debutes à 30) pour le localStorage
   const [points, setPoints] = useState(0); //  points accumules par l'utilisateur
   const [answers, setAnswers] = useState(defaultAnswers); // réponses données pour chaque tentative
+  const [quizFinished, setQuizFinished] = useState(false);
 
   // Import themes
   const userThemeFromLocalStorage =
@@ -48,7 +50,11 @@ function JeuOrdreLettres() {
   // useEffect pour surveiller les changements de points
   useEffect(() => {
     console.info("Le score a été mis à jour :", points);
-  }, [points]);
+    const allAnswersGiven = answers.every((answer) => answer !== "empty");
+    if (allAnswersGiven) {
+      setQuizFinished(true);
+    }
+  }, [points, answers]);
 
   // fonction pour vérifier la réponse de l'utilisateur
   const verificationReponse = () => {
@@ -72,6 +78,8 @@ function JeuOrdreLettres() {
     }
     setAnswerStatus(currentAnswer); // mise à jour de l'état de la réponse
   };
+
+  const levelTitle = "Niveau 4: Ordre des lettres fini !";
 
   return (
     <>
@@ -110,22 +118,25 @@ function JeuOrdreLettres() {
         transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
       />
       <div className="myLevelBody">
-        <div className="header">
-          <Link
-            to="/Menu"
-            className="leave"
-            style={{
-              color: userTheme.color,
-              backgroundColor: userTheme.backgroundColor,
-              cursor: userTheme.crs,
-            }}
-          >
-            {" "}
-            Quitter
-          </Link>
-          <p className="level">Niveau IV: Ordre des lettres</p>
-        </div>
-<<<<<<< HEAD
+        {quizFinished ? (
+          ""
+        ) : (
+          <div className="header">
+            <Link
+              to="/Menu"
+              className="leave"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
+              {" "}
+              Quitter
+            </Link>
+            <p className="level">Niveau 4: Ordre des lettres</p>
+          </div>
+        )}
         <div
           style={{
             scale: reponseUtilisateur !== "" ? "1.1" : "1",
@@ -142,44 +153,64 @@ function JeuOrdreLettres() {
           // onKeyDown={handleKeyDown}
         >
           <p>Suivant</p>
-=======
+        </div>
         <div className="game">
-          <div className="card">
-            <label htmlFor="saisieOrdre">
-              Saisissez le bon ordre: {mot.split("").join(" ")}
-            </label>
-            <input
-              className="wordType"
-              type="text"
-              placeholder="tapez le mot ici"
-              value={reponseUtilisateur}
-              onChange={(e) => setReponseUtilisateur(e.target.value)}
-            />
-          </div>
-          <div
-            style={{
-              scale: reponseUtilisateur !== "" ? "1.1" : "1",
-              color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
-              backgroundColor:
-                reponseUtilisateur !== "" ? userTheme.backgroundColor : "white",
-              cursor: userTheme.crs,
-            }}
-            className={
-              reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"
-            }
-            role="button"
-            tabIndex={0}
-            onClick={verificationReponse}
-            // onKeyDown={handleKeyDown}
-          >
-            <p>Suivant</p>
-          </div>
+          {quizFinished ? (
+            <Results score={points} level={levelTitle} />
+          ) : (
+            <div className="card">
+              <label htmlFor="saisieOrdre">
+                Saisissez le bon ordre: {mot.split("").join(" ")}
+              </label>
+              <input
+                className="wordType"
+                type="text"
+                placeholder="tapez le mot ici"
+                value={reponseUtilisateur}
+                onChange={(e) => setReponseUtilisateur(e.target.value)}
+              />
+            </div>
+          )}
+          {quizFinished ? (
+            <Link
+              to="/Menu"
+              className="leave"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
+              {" "}
+              Quitter
+            </Link>
+          ) : (
+            <div
+              style={{
+                scale: reponseUtilisateur !== "" ? "1.1" : "1",
+                color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
+                backgroundColor:
+                  reponseUtilisateur !== ""
+                    ? userTheme.backgroundColor
+                    : "white",
+                cursor: userTheme.crs,
+              }}
+              className={
+                reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"
+              }
+              role="button"
+              tabIndex={0}
+              onClick={verificationReponse}
+              // onKeyDown={handleKeyDown}
+            >
+              <p>Suivant</p>
+            </div>
+          )}
           <AnswerBilles answers={answers} />{" "}
           <p className="etatReponse">{answerStatus}</p>{" "}
           {/* affichage de l'état de la réponse */}
           <p className="scoreDisplay">Score: {points}/10</p>{" "}
           {/* affichage du score */}
->>>>>>> dev
         </div>
       </div>
     </>
