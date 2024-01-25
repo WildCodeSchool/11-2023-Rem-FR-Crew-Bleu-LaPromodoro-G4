@@ -124,6 +124,7 @@ function JeuOrdreLettres() {
         role="button"
         tabIndex={0}
         onClick={verificationReponse}
+        // onKeyDown={handleKeyDown}
       >
         <p>Suivant</p>
       </div>
