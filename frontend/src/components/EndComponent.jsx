@@ -73,7 +73,15 @@ function EndComponent() {
         </h1>
         <div className="btns-restart">
           <Link to="/onboarding">
-            <button type="button" className="btn-restart">
+            <button
+              type="button"
+              className="btn-restart"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
               Revenir au menu
             </button>
           </Link>
@@ -82,6 +90,11 @@ function EndComponent() {
               type="button"
               className="btn-restart"
               onClick={clearLocalStorage}
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
             >
               Nouvelle partie
             </button>
