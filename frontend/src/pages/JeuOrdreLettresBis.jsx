@@ -112,7 +112,7 @@ function JeuOrdreLettres() {
             {" "}
             Quitter
           </Link>
-          <p className="level">Niveau IV: Ordre des lettres</p>
+          <p className="level">Niveau 3: Ordre des lettres</p>
         </div>
         <div className="game">
           <div className="card">

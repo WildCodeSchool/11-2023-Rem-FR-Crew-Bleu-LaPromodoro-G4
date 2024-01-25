@@ -16,10 +16,11 @@
   border: none;
   padding: 20px 40px;
   border-radius: 30px;
-  background-color: #b3b3b3;
+  /* background-color: #b3b3b3; */
   color: white;
   font-weight: 600;
   margin-top: 50px;
+  font-size: 1.2rem;
 }
 
 .leaveQuizz:hover {
@@ -113,10 +114,11 @@
   cursor: pointer;
   border: none;
   padding: 20px 40px;
-  border-radius: 30px;
+  border-radius: 3rem;
   background-color: #b3b3b3;
   color: white;
   font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .buttonValidate:hover {

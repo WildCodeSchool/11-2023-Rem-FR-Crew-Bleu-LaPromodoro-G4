@@ -1,7 +1,7 @@
 import "../style/Instructions.css";
 import { useState } from "react";
 import Instruction from "../assets/instructions.png";
-import etape3 from "../assets/niveausuivant.png";
+import etape3 from "../assets/nextlvl.png";
 import etape2 from "../assets/ecoutefini.png";
 import etape4 from "../assets/niveauxfini.png";
 

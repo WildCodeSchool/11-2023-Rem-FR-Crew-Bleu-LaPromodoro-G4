@@ -123,12 +123,13 @@ function JeuOrdreLettres() {
             {" "}
             Quitter
           </Link>
-          <p className="level">Niveau IV: Ordre des lettres</p>
+          <p className="level">Niveau 3: Ordre des lettres</p>
         </div>
         <div className="game">
           <div className="card">
+            <h3>Saisissez le bon ordre des lettres</h3>
             <label htmlFor="saisieOrdre">
-              Saisissez le bon ordre: {mot.split("").join(" ")}
+              <h1>{mot.split("").join(" ")}</h1>
             </label>
             <input
               className="wordType"

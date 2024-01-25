@@ -94,7 +94,15 @@ function Quizz() {
       />
       <div>
         <div id="headerQuizz" className="headerQuizz">
-          <Link to="/Menu" className="leaveQuizz">
+          <Link
+            to="/Menu"
+            className="leaveQuizz"
+            style={{
+              color: userTheme.color,
+              backgroundColor: userTheme.backgroundColor,
+              cursor: userTheme.crs,
+            }}
+          >
             {" "}
             Quitter
           </Link>
