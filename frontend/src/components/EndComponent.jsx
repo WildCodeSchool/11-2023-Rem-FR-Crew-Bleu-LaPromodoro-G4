@@ -30,16 +30,23 @@ function EndComponent() {
         Félicitations {userNameLocalStorage} <br /> Tu as atteint les 40 points
         !{" "}
       </h1>
+      <div className="btns-restart">
+        <Link to="/onboarding">
+          <button type="button" className="btn-restart">
+            Revenir au menu
+          </button>
+        </Link>
 
-      <Link to="/onboarding">
-        <button
-          type="button"
-          className="btn-restart"
-          onClick={clearLocalStorage}
-        >
-          Revenir au menu
-        </button>
-      </Link>
+        <Link to="/onboarding">
+          <button
+            type="button"
+            className="btn-restart"
+            onClick={clearLocalStorage}
+          >
+            Nouvelle partie
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

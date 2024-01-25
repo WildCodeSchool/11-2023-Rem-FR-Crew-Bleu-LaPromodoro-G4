@@ -1,18 +1,27 @@
 .end-component {
   background-color: rgb(242, 242, 242);
-
   text-align: center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 10px;
 }
 
 .picture-user {
   width: 200px;
   margin-bottom: 20px;
   border-radius: 30px;
+  margin: 20px;
+}
+
+.btns-restart {
+  display: flex;
+  gap: 2rem;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-restart {
@@ -33,4 +42,10 @@
 
 .btn-restart:hover {
   transform: scale(1.1);
+}
+
+@media screen and (max-width: 700px) {
+  .btns-restart {
+    display: block;
+  }
 }
