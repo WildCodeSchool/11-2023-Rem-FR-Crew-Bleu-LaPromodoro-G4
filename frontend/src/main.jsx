@@ -15,6 +15,7 @@ import WordSynonymComponentBIS from "./components/WordSynonymComponentBIS";
 import Quizz from "./pages/Quizz";
 import QuizzBis from "./components/QuizzBis";
 import Reward from "./pages/Reward";
+import End from "./pages/End";
 import JeuOrdreLettres from "./pages/JeuOrdreLettres";
 import JeuOrdreLettresBis from "./pages/JeuOrdreLettresBis";
 
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       {
         path: "/JeuOrdreLettresBis",
         element: <JeuOrdreLettresBis />,
+      },
+      {
+        path: "/end",
+        element: <End />,
       },
     ],
   },

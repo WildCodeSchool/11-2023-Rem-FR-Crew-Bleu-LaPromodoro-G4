@@ -1,6 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { motion } from "framer-motion";
 import CardQuizz from "../components/CardQuizz";
 import AnswerBillesComponent from "../components/AnswerBillesComponent";
@@ -13,10 +13,6 @@ function Quizz() {
     return Number.isNaN(parsedScore) ? 20 : Math.max(parsedScore, 20);
   });
 
-  const userThemeFromLocalStorage =
-    JSON.parse(localStorage.getItem("userTheme")) || "";
-  const [userTheme] = useState(userThemeFromLocalStorage);
-
   const [finished, setFinished] = useState(false);
 
   useEffect(() => {
@@ -24,6 +20,11 @@ function Quizz() {
   }, [count]);
 
   const [answerBullets, setAnswerBullets] = useState(Array(10).fill(""));
+
+  // Import themes
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
 
   const incrementCount = (cardId, isRight) => {
     if (isRight) {
@@ -92,9 +93,17 @@ function Quizz() {
         exit={{ scaleX: 0 }}
         transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
       />
-      <div>
+      <div className="myLevelBodyQ">
         <div id="headerQuizz" className="headerQuizz">
-          <Link to="/Menu" className="leaveQuizz">
+          <Link
+            to="/Menu"
+            className="leaveQuizz"
+            style={{
+              color: userTheme.color,
+              backgroundColor: userTheme.backgroundColor,
+              cursor: userTheme.crs,
+            }}
+          >
             {" "}
             Quitter
           </Link>
@@ -104,7 +113,7 @@ function Quizz() {
             <div id="score">0</div>
           </div>
         </div>
-        <div className="pageContainer">
+        <div className="gameQ">
           <div
             id="divResults"
             className={finished ? "containerResult" : "cardsHide"}
@@ -113,7 +122,15 @@ function Quizz() {
           </div>
 
           {finished ? (
-            <Link to="/Menu" className="leaveQuizz">
+            <Link
+              to="/Menu"
+              className="leaveQuizz"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
               {" "}
               Quitter
             </Link>
