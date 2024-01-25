@@ -79,6 +79,57 @@ function JeuOrdreLettres() {
     setAnswerStatus(currentAnswer); // mise à jour de l'état de la réponse
   };
 
+  let content;
+  if (quizFinished) {
+    if (totalScore === 40) {
+      content = (
+        <Link
+          to="/End"
+          className="leave"
+          style={{
+            color: userTheme.color,
+            backgroundColor: userTheme.backgroundColor,
+            cursor: userTheme.crs,
+          }}
+        >
+          Quitter
+        </Link>
+      );
+    } else {
+      content = (
+        <Link
+          to="/Menu"
+          className="leave"
+          style={{
+            color: userTheme.color,
+            backgroundColor: userTheme.backgroundColor,
+            cursor: userTheme.crs,
+          }}
+        >
+          Quitter
+        </Link>
+      );
+    }
+  } else {
+    content = (
+      <div
+        style={{
+          scale: reponseUtilisateur !== "" ? "1.1" : "1",
+          color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
+          backgroundColor:
+            reponseUtilisateur !== "" ? userTheme.backgroundColor : "white",
+          cursor: userTheme.crs,
+        }}
+        className={reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"}
+        role="button"
+        tabIndex={0}
+        onClick={verificationReponse}
+      >
+        <p>Suivant</p>
+      </div>
+    );
+  }
+
   const levelTitle = "Niveau 4: Ordre des lettres fini !";
 
   return (
@@ -137,23 +188,6 @@ function JeuOrdreLettres() {
             <p className="level">Niveau 4: Ordre des lettres</p>
           </div>
         )}
-        <div
-          style={{
-            scale: reponseUtilisateur !== "" ? "1.1" : "1",
-            color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
-            backgroundColor:
-              reponseUtilisateur !== "" ? userTheme.backgroundColor : "white",
-            cursor: userTheme.crs,
-          }}
-          className={reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"}
-          role="button"
-          tabIndex={0}
-          onClick={verificationReponse}
-
-          // onKeyDown={handleKeyDown}
-        >
-          <p>Suivant</p>
-        </div>
         <div className="game">
           {quizFinished ? (
             <Results score={points} level={levelTitle} />
@@ -171,41 +205,7 @@ function JeuOrdreLettres() {
               />
             </div>
           )}
-          {quizFinished ? (
-            <Link
-              to="/Menu"
-              className="leave"
-              style={{
-                color: userTheme.color,
-                backgroundColor: userTheme.backgroundColor,
-                cursor: userTheme.crs,
-              }}
-            >
-              {" "}
-              Quitter
-            </Link>
-          ) : (
-            <div
-              style={{
-                scale: reponseUtilisateur !== "" ? "1.1" : "1",
-                color: reponseUtilisateur !== "" ? userTheme.color : "#b3b3b3",
-                backgroundColor:
-                  reponseUtilisateur !== ""
-                    ? userTheme.backgroundColor
-                    : "white",
-                cursor: userTheme.crs,
-              }}
-              className={
-                reponseUtilisateur !== "" ? "my-next-btn" : "no-next-btn"
-              }
-              role="button"
-              tabIndex={0}
-              onClick={verificationReponse}
-              // onKeyDown={handleKeyDown}
-            >
-              <p>Suivant</p>
-            </div>
-          )}
+          {content}
           <AnswerBilles answers={answers} />{" "}
           <p className="etatReponse">{answerStatus}</p>{" "}
           {/* affichage de l'état de la réponse */}
