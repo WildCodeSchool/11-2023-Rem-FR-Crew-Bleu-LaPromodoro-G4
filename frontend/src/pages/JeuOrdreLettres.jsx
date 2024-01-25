@@ -225,8 +225,9 @@ function JeuOrdreLettres() {
             <Results score={points} level={levelTitle} />
           ) : (
             <div className="card">
+              <h3>Saisissez le bon ordre des lettres</h3>
               <label htmlFor="saisieOrdre">
-                Saisissez le bon ordre: {mot.split("").join(" ")}
+                <h1>{mot.split("").join(" ")}</h1>
               </label>
               <input
                 className="wordType"
