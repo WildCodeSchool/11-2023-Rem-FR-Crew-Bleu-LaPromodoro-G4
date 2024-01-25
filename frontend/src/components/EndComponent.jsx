@@ -64,22 +64,29 @@ function EndComponent() {
         exit={{ scaleX: 0 }}
         transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
       />
+
       <div className="end-component">
         <img className="picture-user" src={userImage} alt="picture_user" />
         <h1>
           Félicitations {userNameLocalStorage} <br /> Tu as atteint les 40
           points !{" "}
         </h1>
-
-        <Link to="/onboarding">
-          <button
-            type="button"
-            className="btn-restart"
-            onClick={clearLocalStorage}
-          >
-            Revenir au menu
-          </button>
-        </Link>
+        <div className="btns-restart">
+          <Link to="/onboarding">
+            <button type="button" className="btn-restart">
+              Revenir au menu
+            </button>
+          </Link>
+          <Link to="/onboarding">
+            <button
+              type="button"
+              className="btn-restart"
+              onClick={clearLocalStorage}
+            >
+              Nouvelle partie
+            </button>
+          </Link>
+        </div>
       </div>
     </>
   );
