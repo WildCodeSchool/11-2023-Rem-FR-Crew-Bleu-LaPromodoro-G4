@@ -15,10 +15,6 @@ function Quizz() {
 
   const [count, setCount] = useState(0);
 
-  const userThemeFromLocalStorage =
-    JSON.parse(localStorage.getItem("userTheme")) || "";
-  const [userTheme] = useState(userThemeFromLocalStorage);
-
   const [finished, setFinished] = useState(false);
 
   useEffect(() => {
@@ -26,6 +22,11 @@ function Quizz() {
   }, [totalScore]);
 
   const [answerBullets, setAnswerBullets] = useState(Array(10).fill(""));
+
+  // Import themes
+  const userThemeFromLocalStorage =
+    JSON.parse(localStorage.getItem("userTheme")) || "";
+  const [userTheme] = useState(userThemeFromLocalStorage);
 
   const incrementCount = (cardId, isRight) => {
     if (isRight) {
@@ -89,9 +90,17 @@ function Quizz() {
         exit={{ scaleX: 0 }}
         transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
       />
-      <div>
+      <div className="myLevelBodyQ">
         <div id="headerQuizz" className="headerQuizz">
-          <Link to="/Menu" className="leaveQuizz">
+          <Link
+            to="/Menu"
+            className="leaveQuizz"
+            style={{
+              color: userTheme.color,
+              backgroundColor: userTheme.backgroundColor,
+              cursor: userTheme.crs,
+            }}
+          >
             {" "}
             Quitter
           </Link>
@@ -101,7 +110,7 @@ function Quizz() {
             <div id="score">0</div>
           </div>
         </div>
-        <div className="pageContainer">
+        <div className="gameQ">
           <div
             id="divResults"
             className={finished ? "containerResult" : "cardsHide"}
@@ -110,7 +119,15 @@ function Quizz() {
           </div>
 
           {finished ? (
-            <Link to="/Menu" className="leaveQuizz">
+            <Link
+              to="/Menu"
+              className="leaveQuizz"
+              style={{
+                color: userTheme.color,
+                backgroundColor: userTheme.backgroundColor,
+                cursor: userTheme.crs,
+              }}
+            >
               {" "}
               Quitter
             </Link>
