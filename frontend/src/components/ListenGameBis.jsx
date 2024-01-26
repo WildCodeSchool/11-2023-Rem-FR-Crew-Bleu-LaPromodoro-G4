@@ -148,6 +148,7 @@ function ListenGameBis() {
             <Results score={userScore} level={levelTitle} />
           ) : (
             <div className="quizSpace">
+              <h3>Click sur l'icone puis entre ta réponse</h3>
               <Speech
                 text={words[currentWordIndex].word}
                 lang="FR"
